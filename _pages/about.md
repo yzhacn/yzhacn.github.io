@@ -7,10 +7,14 @@ redirect_from:
   - /about.html
 ---
 
-I'm a new second-year graduate student at [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/dcmp), [Hokkaido University](https://www.hokudai.ac.jp/). 
-My research interests include condensed matter physics, particularly the phenomenon of frustration in magnetic materials. Fascinating and complex magnetic orderings emerge from frustration and the resulting topological structures. As a first-year physics M.S. student, I am studying physics and using numerical methods to simulate models, such as the frustrated Heisenberg model, under the mean-field approximation. In addition to physics, I am passionate about assembling and maintaining high-spec workstations for scientific computation.
+I am a new second-year graduate student at [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/dcmp), [Hokkaido University](https://www.hokudai.ac.jp/). 
+I am interested in condensed matter physics, particularly the phenomenon of frustration in magnetic materials. Fascinating and complex magnetic orderings emerge from frustration and the resulting topological structures.
+I am studying physics and using numerical methods to simulate models, such as the frustrated Heisenberg model, under the mean-field approximation. In addition to physics, I am passionate about assembling and maintaining high-spec workstations for scientific computation.
 
-我对凝聚态物理感兴趣，特别是磁性材料中的阻挫（frustration）现象。一些有趣且复杂的磁序从阻挫和由此构建的拓扑结构中产生（比如磁性斯格明子）。作为硕士一年级物理学生，我正在学习物理，并使用数值方法模拟诸如海森堡模型等在平均场近似下的模型。除了物理，我还热衷于组装和维护用于科学计算的高规格工作站。（2024/10/24）
+我对凝聚态物理感兴趣，特别是磁性材料中的阻挫（frustration）现象。
+一些有趣且复杂的磁序从阻挫和由此构建的拓扑结构中产生（比如磁性斯格明子）。
+我正在学习物理，并使用数值方法模拟诸如海森堡模型等在平均场近似下的模型。
+除了物理，我还热衷于组装和维护用于科学计算的高规格工作站。
 
 
 
