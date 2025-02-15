@@ -30,6 +30,8 @@ computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532).
 
   今天我使用[模版](https://github.com/academicpages/academicpages.github.io)创建了属于我自己的个人学术网站！具体信息可以参照知乎用户[一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34)在[知乎](https://zhuanlan.zhihu.com/p/711554540)上的文章。
 
+Notes
+======
 * 2024.10.17 I created a note entitled ‘From Classical Heisenberg Model to Spiral Magnetism’, which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
 
   我编写了一个note，题为[“从古典海森堡模型到螺旋磁性”](https://yzhacn.github.io/files/20241017_spiral.pdf)（日本語：[『古典 Heisenberg 模型から螺旋磁性へ』](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)）。
