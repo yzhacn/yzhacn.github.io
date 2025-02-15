@@ -19,7 +19,7 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 
 
-...
+NEWS
 ======
 ...
 
