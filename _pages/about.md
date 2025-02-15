@@ -32,4 +32,4 @@ computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532).
 
 * 2024.10.17 I have created a note titled ‘From Classical Heisenberg Model to Spiral Magnetism,’ which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
 
-  我编写了一个note题为[“从古典海森堡模型到螺旋磁性”](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)（日本語：[『古典 Heisenberg 模型から螺旋磁性へ』]）(https://yzhacn.github.io/files/20241017_spiral_ja.pdf)，目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。PDF文件有中文版和日语版，很抱歉没有英文版。
+  我编写了一个note题为[“从古典海森堡模型到螺旋磁性”](https://yzhacn.github.io/files/20241017_spiral.pdf)（日本語：[『古典 Heisenberg 模型から螺旋磁性へ』](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)），目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。PDF文件有中文版和日语版，很抱歉没有英文版。
