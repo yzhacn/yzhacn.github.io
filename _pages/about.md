@@ -21,7 +21,8 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 NEWS
 ======
-...
+2025.02.15 
+------
 
 
 ...
