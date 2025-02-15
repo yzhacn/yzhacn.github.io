@@ -24,9 +24,3 @@ NEWS
 * 2025.02.16-2025.02.18 I gave a poster presentation entitled ‘Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems’ at ['Workshop on theory of cross correlations, multipoles, and
 computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 * 2025.02.15 I created my own personal academic website using [templete](https://github.com/academicpages/academicpages.github.io).
-------
-
-
-...
-------
-...
