@@ -16,29 +16,19 @@ Education
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* 2025.2-2025.3: Research Assistant
+  * Hokkaido University
+  * Duties included: Mean-field calculation of Skyrmion Lattice & assembling and maintaining high-spec workstations for scientific computation
+  * Supervisor: Professor S. H
   
 Skills
 ======
 * Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Language 
+  * Chinese: Native speaker
+  * Japanese Professional working proficiency (Certificate of Japanese-Language Proficiency: N1 (152/180), credential ID: N1A180545J)
+  * English Limited working proficiency (TOEIC Listening & Reading Official Score Certificate: Total Score 845)
+* Table tennis
 
 Publications
 ======
