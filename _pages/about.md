@@ -21,7 +21,7 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 NEWS
 ======
-* 2025.02.15 I created my own personal academic website using [templete URL](https://github.com/academicpages/academicpages.github.io).
+* 2025.02.15 I created my own personal academic website using [templete](https://github.com/academicpages/academicpages.github.io).
 ------
 
 
