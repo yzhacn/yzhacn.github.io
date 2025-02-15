@@ -38,7 +38,7 @@ author:
   orcid            : "https://orcid.org/0009-0008-8568-446X"
   semantic         : # URL
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
+  researchgate     : "https://www.researchgate.net/profile/Yan-Zha-6"# URL
   scopus           : # URL
 
   # Repositories and software development
@@ -59,7 +59,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : "https://www.linkedin.com/in/yzha/"
+  linkedin         : "www.linkedin.com/in/yzha"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
