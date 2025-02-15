@@ -24,8 +24,8 @@ NEWS
 * 2025.02.16-2025.02.18 I gave a poster presentation entitled ‘Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems’ at ['Workshop on theory of cross correlations, multipoles, and
 computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 
-在位于日本静冈县御殿场的御殿場高原召开的['Workshop on theory of cross correlations, multipoles, and computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532)中，以学术海报的形式进行了题为“多轨道$f$电子系统中的方形磁性斯格明子晶格的平均场分析”的学术报告。
+  在位于日本静冈县御殿场的御殿場高原召开的['Workshop on theory of cross correlations, multipoles, and computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532)中，以学术海报的形式进行了题为“多轨道$f$电子系统中的方形磁性斯格明子晶格的平均场分析”的学术报告。
 
 * 2025.02.15 I created my own personal academic website using [templete](https://github.com/academicpages/academicpages.github.io).
 
-今天我使用[模版](https://github.com/academicpages/academicpages.github.io)创建了属于我自己的个人学术网站！具体信息可以参照知乎用户[一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34)在[知乎](https://zhuanlan.zhihu.com/p/711554540)上的文章。
+  今天我使用[模版](https://github.com/academicpages/academicpages.github.io)创建了属于我自己的个人学术网站！具体信息可以参照知乎用户[一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34)在[知乎](https://zhuanlan.zhihu.com/p/711554540)上的文章。
