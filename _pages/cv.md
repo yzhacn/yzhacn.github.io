@@ -21,7 +21,7 @@ Work experience
   * Duties included:
     1. Mean-field calculation of a SkL
     2. Assembling and maintaining high-spec workstations for scientific computation
-  * Supervisor: Professor S. H.
+  * Supervisor: Prof. Dr. S. H.
   
 Skills
 ======
