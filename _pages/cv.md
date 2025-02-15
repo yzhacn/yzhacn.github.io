@@ -19,17 +19,21 @@ Work experience
 * 2025.2-2025.3: Research Assistant
   * Hokkaido University
   * Duties included: Mean-field calculation of Skyrmion Lattice & assembling and maintaining high-spec workstations for scientific computation
-  * Supervisor: Professor S. H
+  * Supervisor: Professor S. H.
   
 Skills
 ======
-* Skill 1
+* Coding
+    * Mathematica
+    * Python
 * Language 
   * Chinese: Native speaker
   * Japanese Professional working proficiency (Certificate of Japanese-Language Proficiency: N1 (152/180), credential ID: N1A180545J)
   * English Limited working proficiency (TOEIC Listening & Reading Official Score Certificate: Total Score 845)
 * Table tennis
-
+  *Yokohama City University Table Tennis Club, 2021.9-2024.3
+  *Yokohama City University Medical Table Tennis Club, 2022.8-2024.3
+  
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
