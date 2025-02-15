@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a new second-year graduate student at [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/dcmp), [Hokkaido University](https://www.hokudai.ac.jp/). 
+I am a new second-year graduate student at [Department of Condensed Matter Physics](https://www.global.hokudai.ac.jp/), [Hokkaido University](https://www.global.hokudai.ac.jp/). 
 I am interested in condensed matter physics, particularly the phenomenon of frustration in magnetic materials. Fascinating and complex magnetic orderings emerge from frustration and the resulting topological structures.
 I am studying physics and using numerical methods to simulate models, such as the frustrated Heisenberg model, under the mean-field approximation. In addition to physics, I am passionate about assembling and maintaining high-spec workstations for scientific computation.
 
