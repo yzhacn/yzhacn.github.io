@@ -11,7 +11,7 @@ redirect_from:
 
 Education
 ======
-* M.S. in Jekyll, GitHub University, 2024.4-present
+* M.S. in Department of Condensed Matter Physics, Graduate School of Science, Hokkaido University, 2024.4-present
 * B.S. in School of Science, Yokohama City University, 2020.4-2024.3
 
 Work experience
