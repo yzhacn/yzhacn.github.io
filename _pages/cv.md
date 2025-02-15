@@ -18,7 +18,9 @@ Work experience
 ======
 * 2025.2-2025.3: Research Assistant
   * Hokkaido University
-  * Duties included: Mean-field calculation of Skyrmion Lattice & assembling and maintaining high-spec workstations for scientific computation
+  * Duties included:
+    1. Mean-field calculation of a SkL
+    2. Assembling and maintaining high-spec workstations for scientific computation
   * Supervisor: Professor S. H.
   
 Skills
