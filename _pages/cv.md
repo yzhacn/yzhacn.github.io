@@ -28,11 +28,11 @@ Skills
     * Python
 * Language 
   * Chinese: Native speaker
-  * Japanese Professional working proficiency (Certificate of Japanese-Language Proficiency: N1 (152/180), credential ID: N1A180545J)
-  * English Limited working proficiency (TOEIC Listening & Reading Official Score Certificate: Total Score 845)
+  * Japanese:  Professional working proficiency (Certificate of Japanese-Language Proficiency: N1 (152/180), credential ID: N1A180545J)
+  * English: Limited working proficiency (TOEIC Listening & Reading Official Score Certificate: Total Score 845)
 * Table tennis
-  *Yokohama City University Table Tennis Club, 2021.9-2024.3
-  *Yokohama City University Medical Table Tennis Club, 2022.8-2024.3
+  * Yokohama City University Table Tennis Club, 2021.9-2024.3
+  * Yokohama City University Medical Table Tennis Club, 2022.8-2024.3
   
 Publications
 ======
