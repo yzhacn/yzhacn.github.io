@@ -1,13 +1,18 @@
 ---
 permalink: /
-title: "Welcome to Yan Zha (查言)'s homepage!"
+title: "Welcome to Yan Zha's homepage!"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+I'm a new second-year graduate student at [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/dcmp), [Hokkaido University]([https://uestc.edu.cn/](https://www.hokudai.ac.jp/)). 
+My research interests include condensed matter physics, particularly the phenomenon of frustration in magnetic materials. Fascinating and complex magnetic orderings emerge from frustration and the resulting topological structures. As a first-year physics M.S. student, I am studying physics and using numerical methods to simulate models, such as the frustrated Heisenberg model, under the mean-field approximation. In addition to physics, I am passionate about assembling and maintaining high-spec workstations for scientific computation.
+
+我对凝聚态物理感兴趣，特别是磁性材料中的阻挫（frustration）现象。一些有趣且复杂的磁序从阻挫和由此构建的拓扑结构中产生（比如磁性斯格明子）。作为硕士一年级物理学生，我正在学习物理，并使用数值方法模拟诸如海森堡模型等在平均场近似下的模型。除了物理，我还热衷于组装和维护用于科学计算的高规格工作站。（2024/10/24）
+
+
 
 A data-driven personal website
 ======
@@ -15,7 +20,7 @@ Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you se
 
 Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the markdown files! Finally, you can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
 
-Getting started
+Getting sterted
 ======
 1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
 1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
