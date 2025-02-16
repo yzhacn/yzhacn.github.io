@@ -35,7 +35,7 @@ Notes
 * 2024.10.17 I created a note entitled 'From Classical Heisenberg Model to Spiral Magnetism', which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
 
   我编写了一个note，题为“从古典海森堡模型到螺旋磁性”（日本語：『古典 Heisenberg 模型から螺旋磁性へ』。
-  目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。目前有[中文版](https://yzhacn.github.io/files/20241017_spiral.pdf)和[日语版](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)，很抱歉没有英文版。
+  目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。目前有[中文版](https://yzhacn.github.io/files/20241017_spiral.pdf)和[日本語版](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)，很抱歉没有英文版。
 
 * 2024.10.17 I created a note entitled 'One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume'. The note is available in [the Chinese version](https://yzhacn.github.io/files/20241017_ising.pdf) only.
 
