@@ -21,7 +21,7 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 NEWS
 ======
-* 2025.02.16-2025.02.18 I gave a [poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation entitled ‘Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems’ at ['Workshop on theory of cross correlations, multipoles, and
+* 2025.02.16-2025.02.18 I gave a [poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation entitled 'Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems' at ['Workshop on theory of cross correlations, multipoles, and
 computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 
   在位于日本静冈县御殿场的御殿場高原召开的['Workshop on theory of cross correlations, multipoles, and computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532)中，我以[学术海报](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf)的形式进行了题为“对于多轨道$f$电子系统中涌现出的方形磁性斯格明子晶格的平均场分析”的学术报告。
@@ -32,12 +32,12 @@ computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532).
 
 Notes
 ======
-* 2024.10.17 I created a note entitled ‘From Classical Heisenberg Model to Spiral Magnetism’, which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
+* 2024.10.17 I created a note entitled 'From Classical Heisenberg Model to Spiral Magnetism', which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
 
   我编写了一个note，题为“从古典海森堡模型到螺旋磁性”（日本語：『古典 Heisenberg 模型から螺旋磁性へ』。
   目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。目前有[中文版](https://yzhacn.github.io/files/20241017_spiral.pdf)和[日语版](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)，很抱歉没有英文版。
 
-* 2024.10.17 I created a note entitled ‘One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume’. The note is available in [the Chinese version](https://yzhacn.github.io/files/20241017_ising.pdf) only.
+* 2024.10.17 I created a note entitled 'One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume'. The note is available in [the Chinese version](https://yzhacn.github.io/files/20241017_ising.pdf) only.
 
   我编写了一个note，题为“一维伊辛(Ising)模型: 相变，对称性破缺与定积热容的临界指数”。
-  目的是让初学者更好地理解一维伊辛模型的性质。目前仅有[中文版本](https://yzhacn.github.io/files/20241017_ising.pdf)。
+  目的是让统计力学的初学者更好地理解一维伊辛模型的性质。目前仅有[中文版本](https://yzhacn.github.io/files/20241017_ising.pdf)。
