@@ -11,7 +11,7 @@ I am a new second-year graduate student at [Department of Condensed Matter Physi
 I am interested in condensed matter physics, particularly the phenomenon of frustration in magnetic materials. Fascinating and complex magnetic orderings emerge from frustration and the resulting topological structures.
 I am studying physics and using numerical methods to simulate models, such as the frustrated Heisenberg model, under the mean-field approximation. In addition to physics, I am passionate about assembling and maintaining high-spec workstations for scientific computation.
 
-我从2025年四月开始在[凝聚态物理专业](https://www2.sci.hokudai.ac.jp/gs/dcmp), [北海道大学](https://www.hokudai.ac.jp/)成为一名博士前期（硕士）2年级学生。
+我从2025年四月开始在[北海道大学](https://www.hokudai.ac.jp/)的[凝聚态物理专业](https://www2.sci.hokudai.ac.jp/gs/dcmp)成为一名博士前期（硕士）2年级学生。
 我对凝聚态物理感兴趣，特别是磁性材料中的阻挫（frustration）现象。
 一些有趣且复杂的磁序从阻挫和由此构建的拓扑结构中产生（比如磁性斯格明子）。
 我正在学习物理，并使用数值方法模拟诸如海森堡模型等在平均场近似下的模型。
@@ -35,7 +35,7 @@ Notes
 * 2024.10.17 I created a note entitled ‘From Classical Heisenberg Model to Spiral Magnetism’, which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
 
   我编写了一个note，题为“从古典海森堡模型到螺旋磁性”（日本語：『古典 Heisenberg 模型から螺旋磁性へ』。
-  目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。目前有[中文版](https://yzhacn.github.io/files/20241017_spiral.pdf)和[日语版]((https://yzhacn.github.io/files/20241017_spiral_ja.pdf))，很抱歉没有英文版。
+  目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。目前有[中文版](https://yzhacn.github.io/files/20241017_spiral.pdf)和[日语版](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)，很抱歉没有英文版。
 
 * 2024.10.17 I created a note entitled ‘One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume’. The note is available in [the Chinese version](https://yzhacn.github.io/files/20241017_ising.pdf) only.
 
