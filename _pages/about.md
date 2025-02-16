@@ -15,7 +15,7 @@ I am studying physics and using numerical methods to simulate models, such as th
 我对凝聚态物理感兴趣，特别是磁性材料中的阻挫（frustration）现象。
 一些有趣且复杂的磁序从阻挫和由此构建的拓扑结构中产生（比如磁性斯格明子）。
 我正在学习物理，并使用数值方法模拟诸如海森堡模型等在平均场近似下的模型。
-除了物理，我还热衷于组装和维护用于科学计算的高规格工作站。
+除了物理，我还热衷于组装和维护用于科学计算的高性能工作站。
 
 
 
