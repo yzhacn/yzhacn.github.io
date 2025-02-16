@@ -21,10 +21,10 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 NEWS
 ======
-* 2025.02.16-2025.02.18 I gave a poster presentation entitled [‘Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems’](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) at ['Workshop on theory of cross correlations, multipoles, and
+* 2025.02.16-2025.02.18 I gave a [poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation entitled ‘Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems’ at ['Workshop on theory of cross correlations, multipoles, and
 computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 
-  在位于日本静冈县御殿场的御殿場高原召开的['Workshop on theory of cross correlations, multipoles, and computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532)中，我以学术海报的形式进行了题为[“对于多轨道$f$电子系统中涌现出的方形磁性斯格明子晶格的平均场分析”](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf)的学术报告。
+  在位于日本静冈县御殿场的御殿場高原召开的['Workshop on theory of cross correlations, multipoles, and computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532)中，我以[学术海报](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf)的形式进行了题为“对于多轨道$f$电子系统中涌现出的方形磁性斯格明子晶格的平均场分析”的学术报告。
 
 * 2025.02.15 I created my own personal academic website using [templete](https://github.com/academicpages/academicpages.github.io).
 
