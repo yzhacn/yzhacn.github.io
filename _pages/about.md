@@ -30,7 +30,7 @@ computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532).
 
   今天我使用[模版](https://github.com/academicpages/academicpages.github.io)创建了属于我自己的个人学术网站！具体信息可以参照知乎用户[一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34)在[知乎](https://zhuanlan.zhihu.com/p/711554540)上的文章。
 
-* I attended ['Asymmetry Autumn School'](https://asymmetry.hiroshima-u.ac.jp/event/1097). @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan
+* 2024.09.20-2024.09.23 I attended ['Asymmetry Autumn School'](https://asymmetry.hiroshima-u.ac.jp/event/1097). @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan
 
   我参加了在日本北海道中部美瑛町的国立大雪青少年交流之家召开的[”非平衡量子青年研究者秋季学校（アシンメトリ量子若手秋の学校）”](https://asymmetry.hiroshima-u.ac.jp/event/1097)。
 
