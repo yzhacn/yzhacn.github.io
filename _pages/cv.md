@@ -35,6 +35,7 @@ Skills
 * Table tennis
   * Yokohama City University Table Tennis Club, 2021.9-2024.3
   * Yokohama City University Medical Table Tennis Club, 2022.8-2024.3
+* Photograph
   
 Publications
 ======
@@ -56,4 +57,4 @@ Teaching
   
 Service and leadership
 ======
-*
+* Updating...
