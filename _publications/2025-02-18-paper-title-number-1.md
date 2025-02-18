@@ -3,7 +3,8 @@ title: "A square skyrmion lattice in multi-orbital $f$-electron systems"
 collection: publications
 category: manuscripts
 permalink: /publication/2025-02-18-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+excerpt: 'We report the emergence of a square-shaped skyrmion lattice in multi-orbital 
+f-electron systems with easy-axis magnetic anisotropy on a centrosymmetric square lattice.'
 date: 2025-02-17
 venue: 'arXiv'
 paperurl: 'https://arxiv.org/pdf/2502.11765'
