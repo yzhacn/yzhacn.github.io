@@ -21,7 +21,7 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 NEWS
 ======
-* 2025.02.18 The preprint of my unpublished article titled "A square skyrmion lattice in multi-orbital $f$-electron systems" is available on arXiv. [arXiv:2502.11765](https://arxiv.org/abs/2502.11765)
+* 2025.02.18 The preprint of my unpublished article titled "A square skyrmion lattice in multi-orbital $f$-electron systems" is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
   我的尚未正式发表的论文手稿，题为：“多轨道$f$电子系统中的方形磁性斯格明子晶格”，现在可以在arXiv上查看（[arXiv:2502.11765](https://arxiv.org/abs/2502.11765)）。
 
