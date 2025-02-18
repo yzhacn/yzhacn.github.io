@@ -21,6 +21,13 @@ I am studying physics and using numerical methods to simulate models, such as th
 
 NEWS
 ======
+* 2025.02.18 The preprint of my unpublished article titled "A square skyrmion lattice in multi-orbital $f$-electron systems" is available on [arXiv](http://arxiv.org/abs/2502.11765).
+
+  我的尚未正式发表的论文手稿，题为：“多轨道$f$电子系统中的方形磁性斯格明子晶格”，现在可以在[arXiv](http://arxiv.org/abs/2502.11765)上查看。
+
+
+
+
 * 2025.02.16-2025.02.18 I gave a [poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation entitled 'Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems' at ['Workshop on theory of cross correlations, multipoles, and
 computational material design'](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 
