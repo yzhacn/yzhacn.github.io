@@ -21,13 +21,5 @@ compounds without orbital angular momentum.'
 date: 2025-02-17
 venue: 'arXiv'
 paperurl: 'https://arxiv.org/pdf/2502.11765'
-citation: '@misc{zha2025squareskyrmionlatticemultiorbital,
-      title={A square skyrmion lattice in multi-orbital $f$-electron systems}, 
-      author={Yan Zha and Satoru Hayami},
-      year={2025},
-      eprint={2502.11765},
-      archivePrefix={arXiv},
-      primaryClass={cond-mat.str-el},
-      url={https://arxiv.org/abs/2502.11765}, 
-}'
+citation: 'Y. Zha and S. Hayami, A square skyrmion lattice in multi-orbital $f$-electron systems (2025), arXiv:2502.11765 [cond-mat.str-el].'
 ---
