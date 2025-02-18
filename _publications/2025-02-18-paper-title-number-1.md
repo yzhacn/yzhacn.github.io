@@ -1,13 +1,13 @@
 ---
-title: "example 1"
+title: "A square skyrmion lattice in multi-orbital $f$-electron systems"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
+permalink: /publication/2025-02-18-paper-title-number-1
 excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
+date: 2025-02-17
+venue: 'arXiv'
+# slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
+paperurl: 'https://arxiv.org/pdf/2502.11765'
 citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
 
