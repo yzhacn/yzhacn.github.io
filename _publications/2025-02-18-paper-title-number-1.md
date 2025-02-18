@@ -6,9 +6,30 @@ permalink: /publication/2025-02-18-paper-title-number-1
 excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2025-02-17
 venue: 'arXiv'
-# slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
 paperurl: 'https://arxiv.org/pdf/2502.11765'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+citation: '@misc{zha2025squareskyrmionlatticemultiorbital,
+      title={A square skyrmion lattice in multi-orbital $f$-electron systems}, 
+      author={Yan Zha and Satoru Hayami},
+      year={2025},
+      eprint={2502.11765},
+      archivePrefix={arXiv},
+      primaryClass={cond-mat.str-el},
+      url={https://arxiv.org/abs/2502.11765}, 
+}'
 ---
 
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+We report the emergence of a square-shaped skyrmion lattice in multi-orbital
+$f$-electron systems with easy-axis magnetic anisotropy on a centrosymmetric
+square lattice. By performing mean-field calculations for an effective
+localized model consisting of two Kramers doublets, we construct the
+low-temperature phase diagram in a static external magnetic field.
+Consequently, we find that a square-shaped skyrmion lattice with the skyrmion
+number of one appears in the intermediate-field region when the crystal field
+splitting between the two doublets is small. Furthermore, we identify another
+double-$Q$ state with a nonzero net scalar chirality at zero- and low-field
+regions, which is attributed to the help of the multi-orbital degree of
+freedom. Our results offer another route to search for skyrmion-hosting
+materials in centrosymmetric $f$-electron tetragonal systems with multi-orbital
+degrees of freedom, e.g., Ce-based compounds. This contrasts with conventional
+other $f$-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
+compounds without orbital angular momentum.
