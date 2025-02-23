@@ -50,13 +50,17 @@ Presentations
   {% endfor %}</ul>
   
 
-Scholarships
+Scholarships & Tuition Fee Waiver
 ======
-* YCU tuition fee reduction (1/2 of the amount, maximum), Yokohama City University, 2023.4--2024.3
-* YCU tuition fee reduction (1/2 of the amount, maximum), Yokohama City University, 2022.4--2023.4
-* YCU tuition fee reduction (1/2 of the amount, maximum), Yokohama City University, 2021.4--2022.3
-* JEES Scholarships, 40k yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.4--2023.3
-* YCU tuition fee reduction (full amount, maximum), Yokohama City University, 2020.4--2021.3
+* Scholarships
+  * JEES Scholarships, 40k yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.4--2023.3
+
+* Tuition Fee Waiver
+  * HU Tuition Fee Waiver (full amount, maximum), University, 2024.10--2025.3
+  * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2023.4--2024.3
+  * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2022.4--2023.4
+  * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2021.4--2022.3
+  * YCU Tuition Fee Reduction (full amount, maximum), Yokohama City University, 2020.4--2021.3
 
 Service and leadership
 ======
