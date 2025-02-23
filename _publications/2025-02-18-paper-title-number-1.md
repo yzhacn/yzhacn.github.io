@@ -3,7 +3,7 @@ title: "A square skyrmion lattice in multi-orbital $f$-electron systems"
 collection: publications
 category: manuscripts
 permalink: /publication/2025-02-18-paper-title-number-1
-excerpt: 'We report the emergence of a square-shaped skyrmion lattice in multi-orbital
+excerpt: 'Abstract: We report the emergence of a square-shaped skyrmion lattice in multi-orbital
 $f$-electron systems with easy-axis magnetic anisotropy on a centrosymmetric
 square lattice. By performing mean-field calculations for an effective
 localized model consisting of two Kramers doublets, we construct the
