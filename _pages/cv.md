@@ -56,7 +56,7 @@ Scholarships & Tuition Fee Waiver
   * JEES Scholarships, 40k yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.4--2023.3
 
 * Tuition Fee Waiver
-  * HU Tuition Fee Waiver (full amount, maximum), University, 2024.10--2025.3
+  * HU Tuition Fee Waiver (full amount, maximum), Hokkaido University, 2024.10--2025.3
   * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2023.4--2024.3
   * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2022.4--2023.4
   * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2021.4--2022.3
