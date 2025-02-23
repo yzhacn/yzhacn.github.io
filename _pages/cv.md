@@ -49,7 +49,11 @@ Presentations
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
   
-  
+
+Scholarship
+======
+* YCU tuition fee reduction (1/2 of the amount, maximum)}, Yokohama City University, 2023.4--2024.3
+
 Service and leadership
 ======
 * Updating...
