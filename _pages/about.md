@@ -7,6 +7,7 @@ redirect_from:
   - /about.html
 ---
 Starting in April 2025, I will become a second-year master’s student in the [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/en/dcmp) at [Hokkaido University](https://www.global.hokudai.ac.jp/). (Sapporo city, Hokkaido prefecture, Japan) 
+
 I am strongly interested in condensed matter physics, particularly various magnetism-related phenomena. 
 Currently, I am focusing on the study of magnetic skyrmion lattices. 
 Magnetic skyrmions, originally proposed by British physicist Tony Skyrme in the 1960s, are topologically stable structures arising in nonlinear $\sigma$ models. 
