@@ -17,7 +17,7 @@ The formation of skyrmions typically requires specific interaction mechanisms in
 My current research aims to explore whether other specific interaction mechanisms may also contribute to the emergence of magnetic skyrmions.
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
-High-performance workstations are essential for large-scale numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
+High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
 （2025/03/09）
 
 我将于2025年4月起，在在[北海道大学](https://www.hokudai.ac.jp/)的[凝聚态物理专业](https://www2.sci.hokudai.ac.jp/gs/dcmp)攻读博士前期（硕士）的二年级课程。
