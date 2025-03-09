@@ -6,17 +6,28 @@ redirect_from:
   - /about/
   - /about.html
 ---
+Starting in April 2025, I will become a second-year master’s student in the [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/en/dcmp) at [Hokkaido University](https://www.global.hokudai.ac.jp/). (Sapporo city, Hokkaido prefecture, Japan) 
+I am strongly interested in condensed matter physics, particularly various magnetism-related phenomena. 
+Currently, I am focusing on the study of magnetic skyrmion lattices. 
+Magnetic skyrmions, originally proposed by British physicist Tony Skyrme in the 1960s, are topologically stable structures arising in nonlinear $\sigma$ models. 
+In condensed matter physics, magnetic skyrmions are considered special types of topological field excitations; more precisely, they correspond to localized topological solutions (topological solitons) in field theory.
 
-I am a new second-year graduate student at [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/en/dcmp), [Hokkaido University](https://www.global.hokudai.ac.jp/). 
-I am interested in condensed matter physics, particularly the phenomenon of frustration in magnetic materials. Fascinating and complex magnetic orderings emerge from frustration and the resulting topological structures.
-I am studying physics and using numerical methods to simulate models, such as the frustrated Heisenberg model, under the mean-field approximation. In addition to physics, I am passionate about assembling and maintaining high-spec workstations for scientific computation.
+The formation of skyrmions typically requires specific interaction mechanisms in materials, such as the Dzyaloshinskii–Moriya interaction (DMI), magnetic frustration, magnetic anisotropy, and external magnetic fields. 
+My current research aims to explore whether other specific interaction mechanisms may also contribute to the emergence of magnetic skyrmions.
 
-我从2025年四月开始在[北海道大学](https://www.hokudai.ac.jp/)的[凝聚态物理专业](https://www2.sci.hokudai.ac.jp/gs/dcmp)成为一名博士前期（硕士）2年级学生。
-我对凝聚态物理感兴趣，特别是磁性材料中的阻挫（frustration）现象。
-一些有趣且复杂的磁序从阻挫和由此构建的拓扑结构中产生（比如磁性斯格明子）。
-我正在学习物理，并使用数值方法模拟诸如海森堡模型等在平均场近似下的模型。
-除了物理，我还热衷于组装和维护用于科学计算的高性能工作站。
+In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
+High-performance workstations are essential for large-scale numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
+（2025/03/09）
 
+我将于2025年4月起，在在[北海道大学](https://www.hokudai.ac.jp/)的[凝聚态物理专业](https://www2.sci.hokudai.ac.jp/gs/dcmp)攻读博士前期（硕士）的二年级课程。
+我对凝聚态物理领域，尤其是磁性相关的各种现象抱有浓厚的兴趣。
+其中，我目前专注于磁性斯格明子晶格（Magnetic Skyrmion Lattice）的研究。
+磁性斯格明子最初是由英国物理学家Tony Skyrme在1960年代提出的一种非线性sigma模型的拓扑稳定结构。
+在凝聚态物理中，磁性斯格明子被视作磁性材料中特殊的拓扑场激发（topological field excitation），更严格地说，它们对应于场论中的局域拓扑解。
+斯格明子的形成通常需要材料中存在特定的相互作用机制，如Dzyaloshinskii–Moriya相互作用（DMI）、磁性阻挫效应（frustration）、晶格各向异性以及外加磁场等条件。
+目前，我的研究旨在探索是否存在其他特殊的相互作用机制，亦能促进磁性斯格明子的涌现。
+此外，我对组装及维护用于科学计算的高性能工作站也抱有极大的热情。高性能工作站对于开展大规模数值模拟不可或缺，我正在计划将多台工作站构建成小型的计算机集群，以进一步提高计算效率。
+（2025/03/09）
 
 
 NEWS
