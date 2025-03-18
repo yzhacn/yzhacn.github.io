@@ -35,7 +35,7 @@ NEWS
 ======
 * 2025.03.18 I gave an oral presentation entitled "Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems" at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
-  在日本物理学会春季大会（online）中，我以演讲的形式进行了题为“对于多轨道$f$电子系统中涌现出的方形磁性斯格明子晶格的平均场分析”的学术报告。
+  在["日本物理学会春季大会（视频会议）"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html)中，我以演讲的形式进行了题为“对于多轨道$f$电子系统中涌现出的方形磁性斯格明子晶格的平均场分析”的学术报告。
 
 * 2025.02.18 The preprint of my unpublished article titled "A square skyrmion lattice in multi-orbital $f$-electron systems" is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
