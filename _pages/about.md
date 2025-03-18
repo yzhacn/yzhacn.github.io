@@ -33,6 +33,10 @@ High-performance workstations are essential for large-scale parallel numerical s
 
 NEWS
 ======
+* 2025.03.18 I gave an oral presentation entitled "Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems" at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
+
+  在日本物理学会春季大会（online）中，我以演讲的形式进行了题为“对于多轨道$f$电子系统中涌现出的方形磁性斯格明子晶格的平均场分析”的学术报告。
+
 * 2025.02.18 The preprint of my unpublished article titled "A square skyrmion lattice in multi-orbital $f$-electron systems" is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
   我的尚未正式发表的论文手稿，题为：“多轨道$f$电子系统中的方形磁性斯格明子晶格”，现在可以在arXiv上查看。（[arXiv:2502.11765](https://arxiv.org/abs/2502.11765)）
@@ -54,7 +58,7 @@ Notes
 ======
 * 2024.10.17 I created a note entitled "From Classical Heisenberg Model to Spiral Magnetism", which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
 
-  我编写了一个note，题为“从古典海森堡模型到螺旋磁性”（日本語：『古典 Heisenberg 模型から螺旋磁性へ』。
+  我编写了一个note，题为“从古典海森堡模型到螺旋磁性”（日本語：『古典 Heisenberg 模型から螺旋磁性へ』）。
   目的是让从事螺旋磁性研究的研究者更好地理解如何推导出螺旋磁性产生的条件。目前有[中文版](https://yzhacn.github.io/files/20241017_spiral.pdf)和[日本語版](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)，很抱歉没有英文版。
 
 * 2024.10.17 I created a note entitled "One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume". The note is available in [the Chinese version](https://yzhacn.github.io/files/20241017_ising.pdf) only.
