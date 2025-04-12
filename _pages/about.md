@@ -18,10 +18,7 @@ My current research aims to explore whether other specific interaction mechanism
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
-（2025/03/09）
-
-
-<span style="color: green; text-shadow: 3px 3px 4px black;">绿色带阴影的字</span>
+（2025/04/12）
 
 NEWS
 ======
