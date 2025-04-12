@@ -22,11 +22,11 @@ High-performance workstations are essential for large-scale parallel numerical s
 
 NEWS
 ======
-* 2025.03.18 I gave an **oral presentation entitled** *"Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems"* at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
+* 2025.03.18 I gave an **oral presentation entitled** *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
-* 2025.02.18 The preprint of my unpublished article titled "A square skyrmion lattice in multi-orbital $f$-electron systems" is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
+* 2025.02.18 The **preprint** of my unpublished article titled *"A square skyrmion lattice in multi-orbital $f$-electron systems"* is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
-* 2025.02.16--2025.02.18 I gave a [poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation entitled "Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems" at ["Workshop on theory of cross correlations, multipoles, and
+* 2025.02.16--2025.02.18 I gave a **[poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation** entitled *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["Workshop on theory of cross correlations, multipoles, and
 computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 
 
@@ -36,6 +36,6 @@ computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532).
 
 Notes
 ======
-* 2024.10.17 I created a note entitled "From Classical Heisenberg Model to Spiral Magnetism", which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both [the Chinese version “从古典海森堡模型到螺旋磁性”](https://yzhacn.github.io/files/20241017_spiral.pdf) and [the Japanese version “古典 Heisenberg 模型から螺旋磁性へ”](https://yzhacn.github.io/files/20241017_spiral_ja.pdf), and I apologize that there is currently no English version.
+* 2024.10.17 I created a **note** entitled *"From Classical Heisenberg Model to Spiral Magnetism"*, which guides readers through using the Classical Heisenberg Model to determine the conditions under which spiral-magnetic configuration emerges. The note is available in both *[the Chinese version “从古典海森堡模型到螺旋磁性”](https://yzhacn.github.io/files/20241017_spiral.pdf)* and *[the Japanese version “古典 Heisenberg 模型から螺旋磁性へ”](https://yzhacn.github.io/files/20241017_spiral_ja.pdf)*, and I apologize that there is currently no English version.
 
-* 2024.10.17 I created a note entitled "One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume". The note is available in [the Chinese version “一维伊辛(Ising)模型: 相变，对称性破缺与定积热容的临界指数”](https://yzhacn.github.io/files/20241017_ising.pdf) only.
+* 2024.10.17 I created a **note** entitled *"One-Dimensional Ising Model: Phase Transition, Symmetry Breaking, and the Critical Exponent of Heat Capacity at Constant Volume"*. The note is available in *[the Chinese version “一维伊辛(Ising)模型: 相变，对称性破缺与定积热容的临界指数”](https://yzhacn.github.io/files/20241017_ising.pdf)* only.
