@@ -8,12 +8,12 @@ redirect_from:
 ---
 I am a second-year master’s student in the [Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/en/dcmp) at [Hokkaido University](https://www.global.hokudai.ac.jp/). (Sapporo city, Hokkaido prefecture, Japan) 
 
-I am strongly interested in condensed matter physics, particularly various magnetism-related phenomena. 
-Currently, I am focusing on the study of magnetic skyrmion lattices (SkLs). 
-Magnetic skyrmions, originally proposed by British physicist Tony Skyrme in the 1960s, are topologically stable structures arising in nonlinear sigma models. 
+I am strongly interested in **condensed matter physics**, particularly various **magnetism-related phenomena**. 
+Currently, I am focusing on the study of **magnetic skyrmion lattices (SkLs)**. 
+Magnetic skyrmions, originally proposed by British physicist **Tony Skyrme** in the 1960s, are **topologically stable structures** arising in nonlinear sigma models. 
 In condensed matter physics, magnetic skyrmions are considered special types of topological field excitations; more precisely, they correspond to localized topological solutions (topological solitons) in field theory.
 
-The formation of skyrmions typically requires specific interaction mechanisms in materials, such as the Dzyaloshinskii–Moriya interaction (DMI), magnetic frustration, magnetic anisotropy, and external magnetic fields, etc. 
+The formation of skyrmions typically requires specific interaction mechanisms in materials, such as the Dzyaloshinskii–Moriya interaction (DMI), magnetic frustration, magnetic anisotropy, and external magnetic fields etc. 
 My current research aims to explore whether other specific interaction mechanisms may also contribute to the emergence of magnetic skyrmions.
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
@@ -24,7 +24,7 @@ NEWS
 ======
 * 2025.03.18 I gave an **oral presentation entitled** *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
-* 2025.02.18 The **preprint** of my unpublished article titled *"A square skyrmion lattice in multi-orbital $f$-electron systems"* is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
+* 2025.02.18 The **preprint** of my unpublished article titled *"A square skyrmion lattice in multi-orbital f-electron systems"* is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
 * 2025.02.16--2025.02.18 I gave a **[poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation** entitled *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["Workshop on theory of cross correlations, multipoles, and
 computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
