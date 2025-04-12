@@ -20,6 +20,9 @@ In addition to physics, I am enthusiastic about assembling and maintaining high-
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
 （2025/03/09）
 
+
+<span style="color: green; text-shadow: 3px 3px 4px black;">绿色带阴影的字</span>
+
 NEWS
 ======
 * 2025.03.18 I gave an **oral presentation entitled** *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
