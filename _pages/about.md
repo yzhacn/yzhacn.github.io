@@ -22,7 +22,7 @@ High-performance workstations are essential for large-scale parallel numerical s
 
 NEWS
 ======
-* 2025.03.18 I gave an **oral presentation entitled** ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
+* 2025.03.18 I gave an **oral presentation** entitled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
 * 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
