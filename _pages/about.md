@@ -22,11 +22,11 @@ High-performance workstations are essential for large-scale parallel numerical s
 
 NEWS
 ======
-* 2025.03.18 I gave an **oral presentation entitled** *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
+* 2025.03.18 I gave an **oral presentation entitled** ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
-* 2025.02.18 The **preprint** of my unpublished article titled *"A square skyrmion lattice in multi-orbital f-electron systems"* is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
+* 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
-* 2025.02.16--2025.02.18 I gave a **[poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation** entitled *"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"* at ["Workshop on theory of cross correlations, multipoles, and
+* 2025.02.16--2025.02.18 I gave a **[poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation** entitled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["Workshop on theory of cross correlations, multipoles, and
 computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
 
 
