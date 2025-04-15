@@ -16,7 +16,7 @@ Education
 
 Work experience
 ======
-* 2025.2--2025.3: Research Assistant
+* 2025.2--2025.3: Research Assistant (RA)
   * Hokkaido University
   * Duties included:
     1. Mean-field calculation of skyrmion lattice
