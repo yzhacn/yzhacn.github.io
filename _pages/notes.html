@@ -1,1 +1,14 @@
+---
+title: "Notes"
+layout: archive
+permalink: /notes/
+author_profile: true
+---
 
+这里可以写一个简单的介绍，比如你记录笔记的目的。
+
+{% include base_path %}
+
+{% for post in site.notes %}
+  {% include archive-single.html %}
+{% endfor %}
