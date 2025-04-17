@@ -48,7 +48,13 @@ Presentations
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
-  
+
+Notes
+======
+  <ul>{% for post in site.notes reversed %}
+    {% include archive-single-talk-cv.html  %}
+  {% endfor %}</ul>
+
 
 Scholarships & Tuition Fee Waiver
 ======
