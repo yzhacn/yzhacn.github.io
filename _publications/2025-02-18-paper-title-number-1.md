@@ -19,7 +19,7 @@ degrees of freedom, e.g., Ce-based compounds. This contrasts with conventional
 other *f*-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
 compounds without orbital angular momentum.'
 date: 2025-02-17
-venue: 'arXiv (Articles listed here will be removed after official publication.)'
+venue: 'arXiv'
 paperurl: 'https://arxiv.org/pdf/2502.11765'
 citation: '"Y. Zha and S. Hayami, A square skyrmion lattice in multi-orbital $f$-electron systems (2025), arXiv:2502.11765 [cond-mat.str-el]."'
 ---
