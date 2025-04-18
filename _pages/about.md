@@ -24,9 +24,11 @@ NEWS
 ======
 
 ## 2025
+*2025.04.16(UTC+09:00) My article titled ***["Square skyrmion lattice in multiorbital f-electron systems"](https://journals.aps.org/prb/accepted/c007cOd3O791634e48c74163b02a644642763e7a5)*** has been accepted for publication in ***Physical Review B***. The version on ***arXiv*** will be updated to match the accepted version after the final publication.
+
 * 2025.03.18 I gave an **oral presentation** entitled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
-* 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
+* 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on ***arXiv***. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
 
 * 2025.02.16--2025.02.18 I gave a **[poster](https://yzhacn.github.io/images/20250217_yzha_asymmetry.pdf) presentation** entitled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["Workshop on theory of cross correlations, multipoles, and
 computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
