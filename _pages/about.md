@@ -22,6 +22,8 @@ High-performance workstations are essential for large-scale parallel numerical s
 
 NEWS
 ======
+
+## 2025
 * 2025.03.18 I gave an **oral presentation** entitled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
 
 * 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on arXiv. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
@@ -32,4 +34,5 @@ computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532).
 
 * 2025.02.15 I created my own personal academic website using [templete](https://github.com/academicpages/academicpages.github.io). You can refer to the manual written by [一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34) on the Chinese Q&A website [知乎 (Zhihu)](https://zhuanlan.zhihu.com/p/711554540).
 
+## 2024
 * 2024.09.20--2024.09.23 I attended ["Asymmetry Autumn School"](https://asymmetry.hiroshima-u.ac.jp/event/1097) as a student. @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan
