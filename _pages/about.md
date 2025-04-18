@@ -26,16 +26,16 @@ NEWS
 ## 2025
 * 2025.04.16 My article titled ***["Square skyrmion lattice in multiorbital f-electron systems"](https://journals.aps.org/prb/accepted/c007cOd3O791634e48c74163b02a644642763e7a5)*** has been accepted for publication in ***Physical Review B***. The version on ***arXiv*** will be updated to match the accepted version after the final publication. (UTC+09:00)
 
-* 2025.03.18 Gave an **oral presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at the ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online
+* 2025.03.18 Gave an **oral presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at the ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online (UTC+09:00)
 
-* 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on ***arXiv***. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765))
+* 2025.02.18 The **preprint** of my unpublished article titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** is available on ***arXiv***. ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765)) (UTC+09:00)
 
 * 2025.02.16--2025.02.18 Presented a **poster** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["Workshop on theory of cross correlations, multipoles, and
-computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan
+computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan (UTC+09:00)
 
 
-* 2025.02.15 Created my own personal academic website using a [templete](https://github.com/academicpages/academicpages.github.io). The setup process is based on a guide written by [一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34) on the Chinese Q&A website [知乎 (Zhihu)](https://zhuanlan.zhihu.com/p/711554540).
+* 2025.02.15 Created my own personal academic website using a [templete](https://github.com/academicpages/academicpages.github.io). The setup process is based on a guide written by [一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34) on the Chinese Q&A website [知乎 (Zhihu)](https://zhuanlan.zhihu.com/p/711554540). (UTC+09:00)
 
 
 ## 2024
-* 2024.09.20--2024.09.23 Attended ["Asymmetry Autumn School"](https://asymmetry.hiroshima-u.ac.jp/event/1097) as a student. @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan
+* 2024.09.20--2024.09.23 Attended ["Asymmetry Autumn School"](https://asymmetry.hiroshima-u.ac.jp/event/1097) as a student. @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan (UTC+09:00)
