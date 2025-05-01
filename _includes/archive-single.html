@@ -1,5 +1,12 @@
 {% include base_path %}
 
+{% if post.DOI %}
+  <p><strong>DOI:</strong> <a href="{{ post.DOI }}" target="_blank">{{ post.DOI }}</a></p>
+{% endif %}
+{% if post.arxivurl %}
+  <p><strong>arXiv:</strong> <a href="{{ post.arxivurl }}" target="_blank">{{ post.arxivurl }}</a></p>
+{% endif %}
+
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
 {% else %}
