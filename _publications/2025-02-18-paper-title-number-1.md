@@ -1,9 +1,9 @@
 ---
-title: "A square skyrmion lattice in multi-orbital *f*-electron systems"
+title: "Square skyrmion lattice in multiorbital *f*-electron systems"
 collection: publications
-category: arxiv
+category: Physical Review B
 permalink: /publication/2025-02-18-paper-title-number-1
-excerpt: 'Abstract: We report the emergence of a square-shaped skyrmion lattice in multi-orbital
+excerpt: 'Abstract: We report the emergence of a square-shaped skyrmion lattice in multiorbital
 *f*-electron systems with easy-axis magnetic anisotropy on a centrosymmetric
 square lattice. By performing mean-field calculations for an effective
 localized model consisting of two Kramers doublets, we construct the
@@ -12,14 +12,15 @@ Consequently, we find that a square-shaped skyrmion lattice with the skyrmion
 number of one appears in the intermediate-field region when the crystal field
 splitting between the two doublets is small. Furthermore, we identify another
 double-*Q* state with a nonzero net scalar chirality at zero- and low-field
-regions, which is attributed to the help of the multi-orbital degree of
+regions, which is attributed to the help of the multiorbital degree of
 freedom. Our results offer another route to search for skyrmion-hosting
-materials in centrosymmetric *f*-electron tetragonal systems with multi-orbital
+materials in centrosymmetric *f*-electron tetragonal systems with multiorbital
 degrees of freedom, e.g., Ce-based compounds. This contrasts with conventional
 other *f*-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
 compounds without orbital angular momentum.'
 date: 2025-02-17
-venue: 'arXiv'
-paperurl: 'https://arxiv.org/pdf/2502.11765'
-citation: '"Y. Zha and S. Hayami, A square skyrmion lattice in multi-orbital $f$-electron systems (2025), arXiv:2502.11765 [cond-mat.str-el]."'
+venue: 'Physical Review B'
+arxivurl: 'https://arxiv.org/pdf/2502.11765'
+DOI: 'https://doi.org/10.1103/PhysRevB.111.165155'
+citation: '"Y. Zha and S. Hayami, Square skyrmion lattice in multiorbital $f$-electron systems, Phys. Rev. B **111**, 165155 (2025)."'
 ---
