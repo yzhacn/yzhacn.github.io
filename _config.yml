@@ -85,6 +85,7 @@ publication_category:
     title: 'Conference Papers'
   arxiv:
     title: 'arXiv (Articles listed here will be removed after official publication.)'
+  papers: 'Published Papers'
 
 
 # Site Settings
