@@ -18,7 +18,7 @@ materials in centrosymmetric *f*-electron tetragonal systems with multiorbital
 degrees of freedom, e.g., Ce-based compounds. This contrasts with conventional
 other *f*-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
 compounds without orbital angular momentum.'
-date: 2025-02-17
+date: 2025-04-30
 venue: 'Physical Review B'
 DOI: 'https://doi.org/10.1103/PhysRevB.111.165155'
 arxivurl: 'https://arxiv.org/pdf/2502.11765'
