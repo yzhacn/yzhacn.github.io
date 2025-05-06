@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Welcome to Yan Zha (查言)'s homepage!"
+title: "Welcome to Yan Zha (中文：查言/日本語：査言)'s homepage!"
 author_profile: true
 redirect_from: 
   - /about/
