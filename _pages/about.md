@@ -24,7 +24,7 @@ NEWS
 ======
 
 ## 2025
-* 2025.04.30 Article titled ***["Square skyrmion lattice in multiorbital f-electron systems"](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.165155)*** has been published in ***Physical Review B*** online today. The version on ***arXiv*** has been updated to match the published version. (UTC+09:00)
+* 2025.04.30 The article titled ***["Square skyrmion lattice in multiorbital f-electron systems"](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.165155)*** has been published online in ***Physical Review B***. The version on ***arXiv*** has been updated to match the published version. (UTC+09:00)
 
 * 2025.03.18 Gave an **oral presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at the ["The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html). @Online (UTC+09:00)
 
