@@ -11,8 +11,10 @@ redirect_from:
 
 ## Education
 
+* **Ph.D.** in Department of Condensed Matter Physics, Graduate School of Science, **Hokkaido University**, 2026.4--2029.3 (expected)
 * **M.S.** in Department of Condensed Matter Physics, Graduate School of Science, **Hokkaido University**, 2024.4--2026.3 (expected)
 * **B.S.** in School of Science, **Yokohama City University**, 2020.4--2024.3
+
 
 ## Work experience
 
