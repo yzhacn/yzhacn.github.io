@@ -6,7 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-I am a second-year master’s student in the **[Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)** at **[Hokkaido University](https://www.global.hokudai.ac.jp/)**. (Sapporo city, Hokkaido prefecture, Japan) 
+I am an incoming Ph.D. student in the **[Department of Condensed Matter Physics](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)** at **[Hokkaido University](https://www.global.hokudai.ac.jp/)**. (Sapporo city, Hokkaido prefecture, Japan) 
 
 I am strongly interested in **condensed matter physics**, particularly various **magnetism-related phenomena**. 
 Currently, I am focusing on the study of **magnetic skyrmion lattices (SkLs)**. 
