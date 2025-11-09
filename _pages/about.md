@@ -23,12 +23,12 @@ High-performance workstations are essential for large-scale parallel numerical s
 NEWS
 ======
 ## 2025
-* 2025.09.19 Gave an **oral presentation** titled ***"Effects of Crystal Field and Momentum-Based Frustrated Interaction on Multiorbital Square Skyrmion Lattice"*** ([18pH2-8](https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/program08.html#j19aSK314)) at the "The Physical Society of Japan 2025 Annual Meeting"<sub>[url](https://www.jps.or.jp/english/)</sub>. @Hiroshima University, Higashihiroshima, Hiroshima, Japan (UTC+09:00)
+* 2025.09.19 Gave an **oral presentation** titled ***"Effects of Crystal Field and Momentum-Based Frustrated Interaction on Multiorbital Square Skyrmion Lattice"*** ([19aSK314-7](https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/program08.html#j19aSK314)) at the "The Physical Society of Japan 2025 Annual Meeting"<sub>[url](https://www.jps.or.jp/english/)</sub>. @Hiroshima University, Higashihiroshima, Hiroshima, Japan (UTC+09:00)
 
 
 * 2025.04.30 The article titled ***"Square skyrmion lattice in multiorbital f-electron systems"***<sub>[url](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.165155)</sub> has been published online in ***Physical Review B***. The version on ***arXiv*** has been updated to match the published version. (UTC+09:00)
 
-* 2025.03.18 Gave an **oral presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** ([19aSK314-7](https://onsite.gakkai-web.net/jps/jps_search/2025sp/data2/html/program08.html#j18pH2)) at the "The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"<sub>[url](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html)</sub>. @Online (UTC+09:00)
+* 2025.03.18 Gave an **oral presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** ([18pH2-8](https://onsite.gakkai-web.net/jps/jps_search/2025sp/data2/html/program08.html#j18pH2)) at the "The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"<sub>[url](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html)</sub>. @Online (UTC+09:00)
 
 * 2025.02.18 The **preprint** titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765)) is available on ***arXiv*** . (UTC+09:00)
 
