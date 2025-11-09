@@ -32,8 +32,8 @@ NEWS
 
 * 2025.02.18 The **preprint** titled ***"A square skyrmion lattice in multi-orbital f-electron systems"*** ([arXiv:2502.11765](https://arxiv.org/abs/2502.11765)) is available on ***arXiv*** . (UTC+09:00)
 
-* 2025.02.16--2025.02.18 Presented a **poster** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at ["Workshop on theory of cross correlations, multipoles, and
-computational material design"](https://asymmetry.hiroshima-u.ac.jp/event/2532). @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan (UTC+09:00)
+* 2025.02.16--2025.02.18 Gave a **poster presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital f-electron systems"*** at "Workshop on theory of cross correlations, multipoles, and
+computational material design"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/2532)</sub>. @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan (UTC+09:00)
 
 
 * 2025.02.15 Created my own personal academic website using a [templete](https://github.com/academicpages/academicpages.github.io). The setup process is based on a guide written by [一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34) on the Chinese Q&A website [知乎 (Zhihu)](https://zhuanlan.zhihu.com/p/711554540). (UTC+09:00)
