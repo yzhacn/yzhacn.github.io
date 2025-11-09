@@ -24,7 +24,7 @@ NEWS
 ======
 
 ## 2025
-* 2025.09.19 Gave an **oral presentation** titled ***"Effects of Crystal Field and Momentum-Based Frustrated Interaction on Multiorbital Square Skyrmion Lattice"*** ([18pH2-8](https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/program08.html#j19aSK314)) at the "The Physical Society of Japan 2025 Annual Meeting [(url)](https://www.jps.or.jp/english/)". @Hiroshima University, Higashihiroshima, Hiroshima, Japan (UTC+09:00)
+* 2025.09.19 Gave an **oral presentation** titled ***"Effects of Crystal Field and Momentum-Based Frustrated Interaction on Multiorbital Square Skyrmion Lattice"*** ([18pH2-8](https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/program08.html#j19aSK314)) at the "The Physical Society of Japan 2025 Annual Meeting ([homepage](https://www.jps.or.jp/english/))". @Hiroshima University, Higashihiroshima, Hiroshima, Japan (UTC+09:00)
 
 
 * 2025.04.30 The article titled ***["Square skyrmion lattice in multiorbital f-electron systems"](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.165155)*** has been published online in ***Physical Review B***. The version on ***arXiv*** has been updated to match the published version. (UTC+09:00)
