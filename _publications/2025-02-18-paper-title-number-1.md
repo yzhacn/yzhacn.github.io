@@ -1,5 +1,5 @@
 ---
-title: "Square skyrmion lattice in multiorbital *f*-electron systems"
+title: "Square skyrmion lattice in multiorbital $f$-electron systems"
 collection: publications
 category: papers
 permalink: /publication/2025-02-18-paper-title-number-1
