@@ -36,8 +36,8 @@ NEWS
 computational material design"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/2532)</sub>. @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan (UTC+09:00)
 
 
-* 2025.02.15 Created my own personal academic website using a [templete](https://github.com/academicpages/academicpages.github.io). The setup process is based on a guide written by [一只野生钢铁侠](https://www.zhihu.com/people/91-53-41-34) on the Chinese Q&A website [知乎 (Zhihu)](https://zhuanlan.zhihu.com/p/711554540). (UTC+09:00)
+* 2025.02.15 Created my own personal academic website using a template<sub>[url](https://github.com/academicpages/academicpages.github.io)</sub>. The setup process is based on a guide written by "一只野生钢铁侠"<sub>[url](https://www.zhihu.com/people/91-53-41-34)</sub> on the Chinese Q&A website 知乎 (Zhihu)<sub>[url](https://zhuanlan.zhihu.com/p/711554540)</sub>. (UTC+09:00)
 
 
 ## 2024
-* 2024.09.20--2024.09.23 Attended ["Asymmetry Autumn School"](https://asymmetry.hiroshima-u.ac.jp/event/1097) as a student. @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan (UTC+09:00)
+* 2024.09.20--2024.09.23 Attended "Asymmetry Autumn School"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/1097)</sub> as a student. @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan (UTC+09:00)
