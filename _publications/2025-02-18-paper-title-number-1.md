@@ -16,7 +16,7 @@ regions, which is attributed to the help of the multiorbital degree of
 freedom. Our results offer another route to search for skyrmion-hosting
 materials in centrosymmetric *f*-electron tetragonal systems with multiorbital
 degrees of freedom, e.g., Ce-based compounds. This contrasts with conventional
-other *f*-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
+other $f$-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
 compounds without orbital angular momentum.'
 date: 2025-04-30
 venue: 'Physical Review B'
