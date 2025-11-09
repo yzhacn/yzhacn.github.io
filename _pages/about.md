@@ -11,7 +11,7 @@ I am an incoming Ph.D. student in the **Department of Condensed Matter Physics**
 I am strongly interested in **condensed matter physics**, particularly various **magnetism-related phenomena**. 
 Currently, I am focusing on the study of **magnetic skyrmion lattices (SkLs)**. 
 Magnetic skyrmions, originally proposed by British physicist **Tony Skyrme** in the 1960s, are **topologically stable structures** arising in nonlinear sigma models. 
-In condensed matter physics, magnetic skyrmions are considered special types of topological field excitations; more precisely, they correspond to localized topological solutions (topological solitons) in field theory.
+In condensed matter physics, magnetic skyrmions are considered special types of topological field excitations; more precisely, they correspond to localized topological solutions in field theory.
 
 The formation of skyrmions typically requires specific interaction mechanisms in materials, such as the Dzyaloshinskii–Moriya interaction (DMI), magnetic frustration, magnetic anisotropy, and external magnetic fields etc. 
 My current research aims to explore whether other specific interaction mechanisms may also contribute to the emergence of magnetic skyrmions.
