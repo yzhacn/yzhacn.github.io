@@ -1,7 +1,7 @@
 ---
 title: "Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"
 collection: publications
-category: papers
+category: arxiv
 permalink: /publication/2025-11-11-paper-title-number-2
 excerpt: 'Abstract: Motivated by recent theoretical predictions of a square-shaped skyrmion lattice (S-SkL) in centrosymmetric tetragonal Ce-based magnets
 [Yan Zha and Satoru Hayami, Phys. Rev. B **111**, 165155 (2025)}], we perform a comprehensive theoretical investigation
