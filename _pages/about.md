@@ -31,7 +31,7 @@ NEWS
 
 * 2025.03.18 Gave an **oral presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems"*** ([18pH2-8](https://onsite.gakkai-web.net/jps/jps_search/2025sp/data2/html/program08.html#j18pH2)) at the "The Physical Society of Japan 2025 Spring Meeting Online Virtual Meeting"<sub>[url](https://www.jps.or.jp/english/meetings-and-awards/spring/spring-meeting.html)</sub>. @Online (UTC+09:00)
 
-* 2025.02.18 The **preprint** titled ***"A square skyrmion lattice in multi-orbital $f$-electron systems"*** ([arXiv:2502.11765  [cond-mat.str-el]](https://arxiv.org/abs/2502.11765)) is available on ***arXiv*** . (UTC+09:00)
+* 2025.02.18 The **preprint** titled ***"A square skyrmion lattice in multi-orbital $f$-electron systems"*** ([arXiv:2502.11765  [cond-mat.str-el]](https://arxiv.org/abs/2502.11765)) is available on ***arXiv***. (UTC+09:00)
 
 * 2025.02.16--2025.02.18 Gave a **poster presentation** titled ***"Mean-field analysis of a square skyrmion lattice in multi-orbital $f$-electron systems"*** at "Workshop on theory of cross correlations, multipoles, and
 computational material design"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/2532)</sub>. @Gotemba Tokinosumika, Gotemba, Shizuoka, Japan (UTC+09:00)
