@@ -18,12 +18,12 @@ My current research aims to explore whether other specific interaction mechanism
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
-（2025/09/19）
+（2025/09/19）     
 
 NEWS
 ======
 ## 2025
-* 2025.11.11 The **preprint** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"***([arXiv:2511.05896 [cond-mat.str-el]](https://arxiv.org/abs/2511.05896)) is available on ***arXiv***. (UTC+09:00)
+* 2025.11.11 The **preprint** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** ([arXiv:2511.05896 [cond-mat.str-el]](https://arxiv.org/abs/2511.05896)) is available on ***arXiv***. (UTC+09:00)
   
 * 2025.09.19 Gave an **oral presentation** titled ***"Effects of Crystal Field and Momentum-Based Frustrated Interaction on Multiorbital Square Skyrmion Lattice"*** ([19aSK314-7](https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/program08.html#j19aSK314)) at the "The Physical Society of Japan 2025 Annual Meeting"<sub>[url](https://www.jps.or.jp/english/)</sub>. @Hiroshima University, Higashihiroshima, Hiroshima, Japan (UTC+09:00)
 
