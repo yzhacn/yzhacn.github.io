@@ -25,4 +25,4 @@ arxivurl: 'https://arxiv.org/pdf/2502.11765'
 HUSCAP: 'https://eprints.lib.hokudai.ac.jp/dspace/handle/2115/95546'
 citation: 'Y. Zha and S. Hayami, Square skyrmion lattice in multiorbital $f$-electron systems, Phys. Rev. B \bf{111}, 165155 (2025).'
 ---
-[Skyrmion lattice](wechat_2025-08-07_211822_298.png)
+![Skyrmion lattice](wechat_2025-08-07_211822_298.png)
