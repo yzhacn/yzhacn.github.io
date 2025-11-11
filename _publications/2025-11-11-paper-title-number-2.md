@@ -20,5 +20,5 @@ arxivurl: 'https://arxiv.org/abs/2511.05896'
 citation: 'Y. S. Zha and S. Hayami, Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice (2025), arXiv:2511.05896 [cond-mat.str-el].'
 ---
 
-![Skyrmion lattice](figures/skl_structure.png)
+
 
