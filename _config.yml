@@ -84,7 +84,7 @@ publication_category:
   conferences:
     title: 'Conference Papers'
   arxiv:
-    title: 'arXiv (Articles listed here will be removed after official publication.)'
+    title: 'arXiv (Preprint articles listed here will be removed after official publication.)'
   papers: 
     title: 'Published Papers'
 
