@@ -20,7 +20,7 @@ other $f$-electron systems hosting skyrmion lattices, such as Gd- and Eu-based
 compounds without orbital angular momentum.'
 date: 2025-04-30
 venue: 'Physical Review B'
-DOI: 'https://doi.org/10.1103/PhysRevB.111.165155'
+DOI: '[10.1103/PhysRevB.111.165155](https://doi.org/10.1103/PhysRevB.111.165155)'
 arxivurl: 'https://arxiv.org/pdf/2502.11765'
 HUSCAP: 'https://eprints.lib.hokudai.ac.jp/dspace/handle/2115/95546'
 citation: 'Y. Zha and S. Hayami, Square skyrmion lattice in multiorbital $f$-electron systems, Phys. Rev. B \bf{111}, 165155 (2025).'
