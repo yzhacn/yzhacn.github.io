@@ -15,7 +15,7 @@ We also identify a plethora of multi-*Q* states, including magnetic bubble latti
 Our findings elucidate the microscopic mechanism responsible for the emergence of S-SkLs in Ce-based magnets and provide a route toward realizing skyrmion lattices in a broader class of *f*-electron materials beyond conventional Gd- and Eu-based systems lacking orbital angular momentum.'
 date: 2025-11-11
 venue: 'arXiv'
-DOI: 'https://doi.org/10.48550/arXiv.2511.05896'
+DOI: '10.48550/arXiv.2511.05896'
 arxivurl: 'https://arxiv.org/abs/2511.05896'
 citation: 'Y. S. Zha and S. Hayami, Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice (2025), arXiv:2511.05896 [cond-mat.str-el].'
 ---
