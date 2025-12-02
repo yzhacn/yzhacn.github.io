@@ -12,8 +12,8 @@ redirect_from:
 ## Education
 
 * **Ph.D.** Admitted to the Ph.D. Program in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**. Program start: 2026.4; expected graduation: 2029.3.
-* **M.S.** M.S. student in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**, 2024.4–present (expected graduation: 2026.3).
-* **B.S.** B.S. in Physics, School of Science, **Yokohama City University**, 2020.4–2024.3.
+* **M.S.** student in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**, 2024.4–present (expected graduation: 2026.3).
+* **B.S.** in Physics, School of Science, **Yokohama City University**, 2020.4–2024.3.
 
 
 ## Work experience
