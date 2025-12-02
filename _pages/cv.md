@@ -37,7 +37,7 @@ redirect_from:
 * **Sport**
   * Yokohama City University Table Tennis Club, 2021.9--2024.3
   * Yokohama City University Medical Table Tennis Club, 2022.8--2024.3
-* **Photograph**
+* **Photography**
   
 ## Publications
 
@@ -70,7 +70,3 @@ redirect_from:
   * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2022.4--2023.4
   * YCU Tuition Fee Reduction (1/2 of the amount, maximum), Yokohama City University, 2021.4--2022.3
   * YCU Tuition Fee Reduction (full amount, maximum), Yokohama City University, 2020.4--2021.3
-
-## Service and leadership
-
-* Updating...
