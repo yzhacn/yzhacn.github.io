@@ -23,7 +23,7 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Yan S. Zha<sup>en</sup> (查言<sup>cn</sup>/査言<sup>jp</sup>)"
+  name             : "Yan S. Zha"
   pronouns         :  "he/him/his"  
   bio              : "Master's Student at Hokkaido University"
   location         : "Sapporo, Hokkaido, Japan"
