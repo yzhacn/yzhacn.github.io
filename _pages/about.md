@@ -6,19 +6,14 @@ redirect_from:
   - /about/
   - /about.html
 ---
-I am an incoming Ph.D. student (M2) in the **Department of Condensed Matter Physics**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)</sub> at **Hokkaido University**<sub>[url](https://www.global.hokudai.ac.jp/)</sub>. (Sapporo city, Hokkaido prefecture, Japan) 
-
-I am strongly interested in **condensed matter physics**, particularly various **magnetism-related phenomena**. 
-Currently, I am focusing on the study of **magnetic skyrmion lattices (SkLs)**. 
-Magnetic skyrmions, originally proposed by British physicist **Tony Skyrme** in the 1960s, are **topologically stable structures** arising in nonlinear sigma models. 
-In condensed matter physics, magnetic skyrmions are considered special types of topological field excitations; more precisely, they correspond to localized topological solutions in field theory.
-
-The formation of skyrmions typically requires specific interaction mechanisms in materials, such as the Dzyaloshinskii–Moriya interaction (DMI), magnetic frustration, magnetic anisotropy, and external magnetic fields etc. 
-My current research aims to explore whether other specific interaction mechanisms may also contribute to the emergence of magnetic skyrmions.
-
+I am an incoming Ph.D. student (currently a second-year M.S. student) in the **Department of Condensed Matter Physics**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)</sub> at **Hokkaido University**<sub>[url](https://www.global.hokudai.ac.jp/)</sub>. (Sapporo city, Hokkaido prefecture, Japan) .
+My research is in **theoretical condensed matter physics**, with a particular focus on the formation mechanisms and stability of magnetic skyrmion lattices (SkLs) in multiorbital f-electron systems.
+Magnetic skyrmions are topologically nontrivial magnetic textures that can form thermodynamically stable, long-range-ordered crystal phases known as skyrmion lattices. 
+In my recent work, I have shown within a localized multiorbital model that a square-shaped skyrmion lattice (S-SkL) can be stabilized in centrosymmetric tetragonal f-eletron systems. 
+I am currently extending this framework to clarify how crystal-field effects, momentum-space frustrated exchange interactions, and anisotropic total-angular-momentum operators cooperate to stabilize or destabilize different skyrmion phases.
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
-（2025/09/19）     
+（2025/12/02）     
 
 NEWS
 ======
