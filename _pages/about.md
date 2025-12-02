@@ -9,7 +9,7 @@ redirect_from:
 I am an incoming Ph.D. student (currently a second-year M.S. student) in the **Department of Condensed Matter Physics**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)</sub> at **Hokkaido University**<sub>[url](https://www.global.hokudai.ac.jp/)</sub>. (Sapporo city, Hokkaido prefecture, Japan) .
 My research is in **theoretical condensed matter physics**, with a particular focus on the formation mechanisms and stability of magnetic skyrmion lattices (SkLs) in multiorbital f-electron systems.
 Magnetic skyrmions are topologically nontrivial magnetic textures that can form thermodynamically stable, long-range-ordered crystal phases known as skyrmion lattices. 
-In my recent work, I have shown within a localized multiorbital model that a square-shaped skyrmion lattice (S-SkL) can be stabilized in centrosymmetric tetragonal f-eletron systems. 
+In my recent work, I have shown within a localized multiorbital model that a **square-shaped skyrmion lattice (S-SkL)** can be stabilized in **centrosymmetric Ce-based tetragonal magnets**. 
 I am currently extending this framework to clarify how crystal-field effects, momentum-space frustrated exchange interactions, and anisotropic total-angular-momentum operators cooperate to stabilize or destabilize different skyrmion phases.
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
