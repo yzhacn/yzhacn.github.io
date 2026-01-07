@@ -19,7 +19,7 @@ NEWS
 ======
 
 ## 2026
-* 2026.01.07 Gave an **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** at the "Annual workshop in FY2025, Grant-in-Aid for Transformative Research Areas (A) "Asymmetric Quantum Matters""<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/3097)</sub>. @Nagoya Institute of Technology, Nagoya, Aichi, Japan (UTC+09:00)
+* 2026.01.07 Gave an **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** at the "Annual workshop in FY2025, Grant-in-Aid for Transformative Research Areas (A) Asymmetric Quantum Matters"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/3097)</sub>. @Nagoya Institute of Technology, Nagoya, Aichi, Japan (UTC+09:00)
 
 ## 2025
 * 2025.11.11 The **preprint** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** ([arXiv:2511.05896 [cond-mat.str-el]](https://arxiv.org/abs/2511.05896)) is available on ***arXiv***. (UTC+09:00)
