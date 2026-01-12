@@ -10,10 +10,12 @@ I am an incoming Ph.D. student (currently a second-year M.S. student) in the **D
 My research is in **theoretical condensed matter physics**, with a particular focus on the formation mechanisms and stability of **magnetic skyrmion lattices (SkLs)** in **multiorbital f-electron systems**.
 Magnetic skyrmions are topologically nontrivial magnetic textures that can form thermodynamically stable, long-range-ordered crystal phases known as skyrmion lattices. 
 In my recent work, I have shown within a localized multiorbital model that a **square-shaped skyrmion lattice (S-SkL)** can be stabilized in **centrosymmetric Ce-based tetragonal magnets**. 
-I am currently extending this framework to clarify how crystal-field effects, momentum-space frustrated exchange interactions, and magnetic anisotropy cooperate to stabilize or destabilize different skyrmion and other multi-*Q* phases.
+I am currently: 
+* Extending the framework to clarify the cooperation of crystal-field effects, frustrated exchange, and anisotropy in stabilizing skyrmion and multi-$Q$ phases (in collaboration with a research student).
+* Investigating S-SkL formation in itinerant magnets driven by the Fermi surface effect.
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
-（2025/12/02）     
+（2026/01/12）     
 
 NEWS
 ======
