@@ -13,7 +13,7 @@ In my recent work, I have shown within a localized multiorbital model that a **s
 I am currently: 
 
 * Extending the framework to clarify the cooperation of crystal-field effects, frustrated exchange, and anisotropy in stabilizing skyrmion and multi-$Q$ phases (in collaboration with a research student).
-* Investigating S-SkL formation in itinerant magnets driven by the Fermi surface effect.
+* Non-perturbatively investigating S-SkL formation in itinerant magnets driven by the Fermi surface effect.
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
