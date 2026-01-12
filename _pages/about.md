@@ -12,7 +12,7 @@ Magnetic skyrmions are topologically nontrivial magnetic textures that can form 
 In my recent work, I have shown within a localized multiorbital model that a **square-shaped skyrmion lattice (S-SkL)** can be stabilized in **centrosymmetric Ce-based tetragonal magnets**. 
 I am currently: 
 
-* Extending the framework to clarify the cooperation of crystal-field effects, frustrated exchange, and anisotropy in stabilizing skyrmion and multi-$Q$ phases (in collaboration with a research student).
+* Extending the framework to clarify the cooperation of crystal-field effects, frustrated exchange, and anisotropy in stabilizing skyrmion and multi-$Q$ phases.
 * Non-perturbatively investigating SkL formation in itinerant magnets driven by the Fermi surface effect.
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
