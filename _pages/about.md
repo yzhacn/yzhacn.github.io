@@ -9,7 +9,7 @@ redirect_from:
 I am an incoming Ph.D. student (currently a second-year M.S. student) in the **Department of Condensed Matter Physics**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)</sub> at **Hokkaido University**<sub>[url](https://www.global.hokudai.ac.jp/)</sub> (Sapporo city, Hokkaido prefecture, Japan).
 My research is in **theoretical condensed matter physics**, with a particular focus on the formation mechanisms and stability of **magnetic skyrmion lattices (SkLs)** in **multiorbital f-electron systems**.
 Magnetic skyrmions are topologically nontrivial magnetic textures that can form thermodynamically stable, long-range-ordered crystal phases known as skyrmion lattices. 
-In my recent works, PhysRevB.111.165155 and arXiv:2511.05896, I have shown within a localized multiorbital model that a **square-shaped skyrmion lattice (S-SkL)** can be stabilized in **centrosymmetric Ce-based tetragonal magnets**. 
+In our recent works, PhysRevB.111.165155 and arXiv:2511.05896, we have shown within a localized multiorbital model that a **square-shaped skyrmion lattice (S-SkL)** can be stabilized in **centrosymmetric Ce-based tetragonal magnets**. 
 I am currently: 
 
 * Extending the framework to clarify the cooperation of crystal-field effects, frustrated exchange, and anisotropy in stabilizing skyrmion and multi-$Q$ phases.
