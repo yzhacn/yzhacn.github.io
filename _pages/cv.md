@@ -57,15 +57,22 @@ redirect_from:
   {% endfor %}</ul>
 
 
-## Scholarships & Tuition Fee Waiver
+## Miscellaneous Experience
+
+* **Fellowships**
+  * April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University), 2026.04--2029.03
 
 * **Scholarships**
-  * JEES Scholarship, 40,000 yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.4--2023.3
+  * JEES Scholarship, 40,000 yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.04--2023.03
 
-* **Tuition Fee Waiver**
-  * HU Tuition Fee Waiver (1/4 of the full amount), Hokkaido University, 2025.4--2025.9
-  * HU Tuition Fee Waiver (full amount, maximum), Hokkaido University, 2024.10--2025.3
-  * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2023.4--2024.3
-  * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2022.4--2023.4
-  * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2021.4--2022.3
-  * YCU Tuition Fee Reduction (full amount, maximum), Yokohama City University, 2020.4--2021.3
+* **Tuition Fee Waivers**
+  * HU Tuition Fee Waiver (1/4 of the full amount), Hokkaido University, 2025.04--2025.09
+  * HU Tuition Fee Waiver (full amount, maximum), Hokkaido University, 2024.10--2025.03
+  * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2023.04--2024.03
+  * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2022.04--2023.04
+  * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2021.04--2022.03
+  * YCU Tuition Fee Reduction (full amount, maximum), Yokohama City University, 2020.04--2021.03
+
+* **Certifications**
+  Japanese-Language Proficiency Test N1 Level, Japan Educational Exchanges and Services (JEES).
+
