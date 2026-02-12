@@ -11,14 +11,14 @@ redirect_from:
 
 ## Education
 
-* Admitted to the **Ph.D. Program** in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**. Program start: 2026.4; expected graduation: 2029.3.
-* **M.S.** student in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**, 2024.4--present (expected graduation: 2026.3).
-* **B.S.** in Material Science, School of Science, **Yokohama City University**, 2020.4--2024.3.
+* Admitted to the **Ph.D. Program** in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**. Program start: 2026.04; expected graduation: 2029.03.
+* **M.S.** student in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**, 2024.04--present (expected graduation: 2026.03).
+* **B.S.** in Material Science, School of Science, **Yokohama City University**, 2020.04--2024.03.
 
 
 ## Work experience
 
-* **Research Assistant (RA)**, Hokkaido University, 2025.2–2025.3  
+* **Research Assistant (RA)**, Hokkaido University, 2025.02–2025.03  
   * Supervisor: Prof. Dr. S. Hayami  
   * Responsibilities:
     1. Conducted self-consistent mean-field calculations of skyrmion lattices.
@@ -34,8 +34,8 @@ redirect_from:
   * Japanese: Professional working proficiency (JLPT N1, 152/180; credential ID: N1A180545J)
   * English: Limited working proficiency (TOEIC Listening & Reading, total score 845)
 * **Sport**
-  * Yokohama City University Table Tennis Club, 2021.9--2024.3
-  * Yokohama City University Medical Table Tennis Club, 2022.8--2024.3
+  * Yokohama City University Table Tennis Club, 2021.09--2024.03
+  * Yokohama City University Medical Table Tennis Club, 2022.08--2024.03
 * **Photography**
   
 ## Publications
@@ -73,6 +73,4 @@ redirect_from:
   * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2021.04--2022.03
   * YCU Tuition Fee Reduction (full amount, maximum), Yokohama City University, 2020.04--2021.03
 
-* **Certifications**
-  Japanese-Language Proficiency Test N1 Level, Japan Educational Exchanges and Services (JEES).
 
