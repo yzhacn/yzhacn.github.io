@@ -60,7 +60,7 @@ redirect_from:
 ## Miscellaneous Experience
 
 * **Fellowships**
-  * April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University), 2026.04--2029.03
+  * April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University), Japan Science and Technology Agency (JST), 2026.04--2029.03
 
 * **Scholarships**
   * JEES Scholarship, 40,000 yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.04--2023.03
