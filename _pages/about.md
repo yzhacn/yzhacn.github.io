@@ -23,7 +23,7 @@ NEWS
 ======
 
 ## 2026
-* 2026.02.12 Selected for the **April 2026 Hokkaido University EXEX Doctoral Fellowship** (Support period: April 2026 - March 2029, 36 months). (UTC+09:00)
+* 2026.02.12 Selected for the **April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University)** (Support period: April 2026 - March 2029, 36 months). (UTC+09:00)
 
 * 2026.01.07 Gave an **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** at the "Annual workshop in FY2025, Grant-in-Aid for Transformative Research Areas (A) Asymmetric Quantum Matters"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/3097)</sub>. @Nagoya Institute of Technology, Nagoya, Aichi, Japan. (UTC+09:00)
 
