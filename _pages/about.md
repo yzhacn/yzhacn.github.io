@@ -25,7 +25,6 @@ NEWS
 ## 2026
 
 * 2026.03.03 Gave an **poster presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Centrosymmetric Multi-Orbital Electron Systems"*** at the "2nd Japan-Germany Workshop Correlated and Topological Quantum Materials"<sub>[url](https://ssp-ap.eng.hokudai.ac.jp/conf/Japan-Germany-2026/)</sub>.
-
 Collaborator Cong Guan (research student) gave an **poster presentation** titled ***"Mean-field Analysis of Square Skyrmion Lattice in Noncentrosymmetric 4f-Electron Single-Orbital Systems"*** at the same workshop. @Akira Suzuki Hall, Hokkaido University, Japan. (UTC+09:00)
 
 * 2026.02.12 Selected for the **April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University)**. Support period: April 2026 - March 2029, 36 months. (UTC+09:00)
