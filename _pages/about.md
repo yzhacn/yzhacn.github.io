@@ -6,7 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-I am an incoming Ph.D. student (currently a second-year M.S. student) in the **Department of Condensed Matter Physics**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)</sub> at **Hokkaido University**<sub>[url](https://www.global.hokudai.ac.jp/)</sub> (Sapporo city, Hokkaido prefecture, Japan).
+I am a first-year Ph.D. student in the **Department of Condensed Matter Physics**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/en/dcmp)</sub> at **Hokkaido University**<sub>[url](https://www.global.hokudai.ac.jp/)</sub> (Sapporo city, Hokkaido prefecture, Japan).
 My research is in **theoretical condensed matter physics**, with a particular focus on the formation mechanisms and stability of **magnetic skyrmion lattices (SkLs)** in **multiorbital f-electron systems**.
 Magnetic skyrmions are topologically nontrivial magnetic textures that can form thermodynamically stable, long-range-ordered crystal phases known as skyrmion lattices. 
 In our recent works, PhysRevB.111.165155 and arXiv:2511.05896, we have shown within a localized multiorbital model that a **square-shaped skyrmion lattice (S-SkL)** can be stabilized in **centrosymmetric Ce-based tetragonal magnets**. 
@@ -17,7 +17,7 @@ I am currently:
 
 In addition to physics, I am enthusiastic about assembling and maintaining high-performance workstations for scientific computing. 
 High-performance workstations are essential for large-scale parallel numerical simulations, and I am planning to build a small computing cluster by integrating multiple workstations to enhance computational efficiency.
-（2026/01/21）     
+（2026/04/01）     
 
 NEWS
 ======
