@@ -23,7 +23,7 @@ NEWS
 ======
 
 ## 2026
-* 2026.04.24 Gave an **oral presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Multi-Orbital
+* 2026.04.24 <span style="color: red;">**[Invited talk]**</span> Gave an **oral presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Multi-Orbital
 Electron Systems"*** (Abstract ID No : 30383, assigned Session:
 “Nonuniform Magnetic Textures: Vortices, Skyrmions and Hopﬁons”) at the "ICSM/ICQMT 2026"<sub>[url](https://icsmforever.org/)</sub>. @Liberty Lykia Hotel, Ölüdeniz-Fethiye, Türkiye. (UTC+03:00)
 
