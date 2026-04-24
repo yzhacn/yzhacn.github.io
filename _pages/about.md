@@ -23,13 +23,16 @@ NEWS
 ======
 
 ## 2026
+* 2026.04.24 Gave an **oral presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Multi-Orbital
+Electron Systems"*** (Abstract ID No : 30383, assigned Session:
+“Nonuniform Magnetic Textures: Vortices, Skyrmions and Hopﬁons”) at the "ICSM/ICQMT 2026"<sub>[url](https://icsmforever.org/)</sub>. @Liberty Lykia Hotel, Ölüdeniz-Fethiye, Türkiye. (UTC+03:00)
 
-* 2026.03.03 Gave an **poster presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Centrosymmetric Multi-Orbital Electron Systems"*** at the "2nd Japan-Germany Workshop Correlated and Topological Quantum Materials"<sub>[url](https://ssp-ap.eng.hokudai.ac.jp/conf/Japan-Germany-2026/)</sub>.
-Collaborator Cong Guan (research student) gave an **poster presentation** titled ***"Mean-field Analysis of Square Skyrmion Lattice in Noncentrosymmetric 4f-Electron Single-Orbital Systems"*** at the same workshop. @Akira Suzuki Hall, Hokkaido University, Japan. (UTC+09:00)
+* 2026.03.03 Gave a **poster presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Centrosymmetric Multi-Orbital Electron Systems"*** at the "2nd Japan-Germany Workshop Correlated and Topological Quantum Materials"<sub>[url](https://ssp-ap.eng.hokudai.ac.jp/conf/Japan-Germany-2026/)</sub>.
+Collaborator Cong Guan (research student) gave a **poster presentation** titled ***"Mean-field Analysis of Square Skyrmion Lattice in Noncentrosymmetric 4f-Electron Single-Orbital Systems"*** at the same workshop. @Akira Suzuki Hall, Hokkaido University, Japan. (UTC+09:00)
 
 * 2026.02.12 Selected for the **April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University)**. Support period: April 2026 - March 2029, 36 months. (UTC+09:00)
 
-* 2026.01.07 Gave an **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** at the "Annual workshop in FY2025, Grant-in-Aid for Transformative Research Areas (A) Asymmetric Quantum Matters"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/3097)</sub>. @Nagoya Institute of Technology, Nagoya, Aichi, Japan. (UTC+09:00)
+* 2026.01.07 Gave a **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** at the "Annual workshop in FY2025, Grant-in-Aid for Transformative Research Areas (A) Asymmetric Quantum Matters"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/3097)</sub>. @Nagoya Institute of Technology, Nagoya, Aichi, Japan. (UTC+09:00)
 
 ## 2025
 * 2025.11.11 The **preprint** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** ([arXiv:2511.05896 [cond-mat.str-el]](https://arxiv.org/abs/2511.05896)) is available on ***arXiv***. (UTC+09:00)
