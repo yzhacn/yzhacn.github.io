@@ -59,6 +59,8 @@ redirect_from:
 
 ## Miscellaneous Experience
 
+* **Awards** Distinguished Student Award (北海道大学理学院優秀研究奨励賞), Graduate School of Science, Hokkaido University (2026)
+
 * **Fellowships**
   * April 2026 Hokkaido University EXEX Doctoral Fellowship (JST SPRING program at Hokkaido University), Japan Science and Technology Agency (JST), 2026.04--2029.03
 
