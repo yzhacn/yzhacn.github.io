@@ -23,6 +23,8 @@ NEWS
 ======
 
 ## 2026
+* 2026.05.01 Selected for the **Distinguished Student Award (北海道大学理学院優秀研究奨励賞)** from the Graduate School of Science, Hokkaido University (2026). (UTC+09:00)
+
 * 2026.04.23 <span style="color: red;">**[Invited talk]**</span> Gave an **oral presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Multi-Orbital
 Electron Systems"*** (Abstract ID No: 30383, assigned Session:
 “Nonuniform Magnetic Textures: Vortices, Skyrmions and Hopﬁons”) at the "ICSM/ICQMT 2026"<sub>[url](https://icsmforever.org/)</sub>. @Liberty Lykia Hotel, Ölüdeniz-Fethiye, Türkiye. (UTC+03:00)
