@@ -7,7 +7,7 @@ excerpt: 'Abstract: Motivated by recent theoretical predictions of a square-shap
 date: 2026-05-15
 venue: 'Physical Review B'
 DOI: 'https://doi.org/10.1103/4sqm-xhw9'
-arxivurl: '[https://arxiv.org/pdf/2502.11765](https://arxiv.org/abs/2511.05896)'
+arxivurl: 'https://arxiv.org/abs/2511.05896'
 citation: 'Y. S. Zha and S. Hayami, Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice, Phys. Rev. B \bf{113}, 174415 (2026).'
 ---
 
