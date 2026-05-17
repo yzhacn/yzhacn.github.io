@@ -69,6 +69,7 @@ redirect_from:
   * JEES Scholarship, 40,000 yen/month for 2 years, Japan Educational Exchanges and Services (JEES), 2021.04--2023.03
 
 * **Tuition Fee Waivers**
+  * HU Tuition Fee Waiver (1/4 of the full amount), Hokkaido University, 2025.10--2026.03
   * HU Tuition Fee Waiver (1/4 of the full amount), Hokkaido University, 2025.04--2025.09
   * HU Tuition Fee Waiver (full amount, maximum), Hokkaido University, 2024.10--2025.03
   * YCU Tuition Fee Reduction (1/2 of the full amount, maximum), Yokohama City University, 2023.04--2024.03
