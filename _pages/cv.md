@@ -54,7 +54,7 @@ redirect_from:
 
 ## Notes
 
-  <ul>{% for post in site.notes reversed %}
+  <ul>{% assign sorted_notes = site.notes | sort: 'date' | reverse %}{% for post in sorted_notes %}
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
 

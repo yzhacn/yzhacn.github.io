@@ -6,6 +6,7 @@ author_profile: true
 ---
 {% include base_path %}
 
-{% for post in site.notes %}
+{% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+{% for post in sorted_notes %}
   {% include archive-single.html %}
 {% endfor %}
