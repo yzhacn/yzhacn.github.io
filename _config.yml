@@ -85,8 +85,17 @@ publication_category:
     title: 'Conference Papers'
   arxiv:
     title: 'arXiv (Preprint articles listed here will be removed after official publication.)'
-  papers: 
+  papers:
     title: 'Published Papers'
+
+# Talk Category - The following is the list of talk/presentation categories and their headings
+talk_category:
+  invited:
+    title: 'Invited Oral Presentations'
+  poster:
+    title: 'Poster Presentations'
+  oral:
+    title: 'Oral Presentations'
 
 
 # Site Settings

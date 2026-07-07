@@ -6,7 +6,8 @@ author_profile: true
 ---
 
 {% include base_path %}
-{% include group-by-array collection=site.posts field="categories" %}
+{% assign categorized_items = site.posts | concat: site.notes %}
+{% include group-by-array collection=categorized_items field="categories" %}
 
 {% for category in group_names %}
   {% assign posts = group_items[forloop.index0] %}

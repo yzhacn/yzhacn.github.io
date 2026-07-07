@@ -9,6 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
+<p><a href="{{ base_path }}/files/CV.pdf" class="btn btn--large" target="_blank" rel="noopener noreferrer"><i class="fa fa-download" aria-hidden="true"></i> Download CV (PDF)</a></p>
+
 ## Education
 
 * Ph.D. student in Condensed Matter Physics, Graduate School of Science, **Hokkaido University**. Expected graduation: 2029.03.

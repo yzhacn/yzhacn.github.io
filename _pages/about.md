@@ -39,7 +39,9 @@ Collaborator Cong Guan (research student) gave a **poster presentation** titled 
 
 * 2026.01.07 Gave a **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** at the "Annual workshop in FY2025, Grant-in-Aid for Transformative Research Areas (A) Asymmetric Quantum Matters"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/3097)</sub>. @Nagoya Institute of Technology, Nagoya, Aichi, Japan. (UTC+09:00)
 
-## 2025
+<details markdown="1">
+<summary style="cursor: pointer; font-weight: bold; font-size: 1.2em;">2025 (click to expand)</summary>
+
 * 2025.09.19 Gave an **oral presentation** titled ***"Effects of Crystal Field and Momentum-Based Frustrated Interaction on Multiorbital Square Skyrmion Lattice"*** ([19aSK314-7](https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/program08.html#j19aSK314)) at the "The Physical Society of Japan 2025 Annual Meeting"<sub>[url](https://www.jps.or.jp/english/)</sub>. @Hiroshima University, Higashihiroshima, Hiroshima, Japan. (UTC+09:00)
 
 * 2025.04.30 <span style="color: red;">**[Article]**</span> The article titled ***"Square skyrmion lattice in multiorbital $f$-electron systems"*** ([Phys. Rev. B 111, 165155](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.165155)) has been published online in ***Physical Review B***. The version on ***arXiv*** ([arXiv:2502.11765  [cond-mat.str-el]](https://arxiv.org/abs/2502.11765)) has been updated to match the published version. (UTC+09:00)
@@ -52,6 +54,11 @@ computational material design"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/eve
 
 * 2025.02.15 Created my own personal academic website using a template<sub>[url](https://github.com/academicpages/academicpages.github.io)</sub>. The setup process is based on a guide written by "一只野生钢铁侠"<sub>[url](https://www.zhihu.com/people/91-53-41-34)</sub> on the Chinese Q&A website 知乎 (Zhihu)<sub>[url](https://zhuanlan.zhihu.com/p/711554540)</sub>. (UTC+09:00)
 
+</details>
 
-## 2024
+<details markdown="1">
+<summary style="cursor: pointer; font-weight: bold; font-size: 1.2em;">2024 (click to expand)</summary>
+
 * 2024.09.20--2024.09.23 Attended "Asymmetry Autumn School"<sub>[url](https://asymmetry.hiroshima-u.ac.jp/event/1097)</sub> as a student. @National Taisetsu Youth Friendship Center, Biei, Hokkaido, Japan. (UTC+09:00)
+
+</details>
