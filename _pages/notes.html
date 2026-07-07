@@ -3,10 +3,18 @@ title: "Notes"
 layout: archive
 permalink: /notes/
 author_profile: true
+redirect_from:
+  - /categories/
 ---
 {% include base_path %}
 
 {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
-{% for post in sorted_notes %}
-  {% include archive-single.html %}
+{% include group-by-array collection=sorted_notes field="categories" %}
+
+{% for category in group_names %}
+  {% assign notes_in_category = group_items[forloop.index0] %}
+  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+  {% for post in notes_in_category %}
+    {% include archive-single.html %}
+  {% endfor %}
 {% endfor %}
