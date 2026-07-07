@@ -92,10 +92,10 @@ publication_category:
 talk_category:
   invited:
     title: 'Invited Oral Presentations'
-  poster:
-    title: 'Poster Presentations'
   oral:
     title: 'Oral Presentations'
+  poster:
+    title: 'Poster Presentations'
 
 
 # Site Settings
