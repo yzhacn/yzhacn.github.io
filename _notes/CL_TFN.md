@@ -1,7 +1,7 @@
 ---
 title: "Tensor Field Networks Rotation- and Translation-Equivariant Neural Networks for 3D Point Clouds: A structured, de-indexed reading note"
 date: 2026-07-07
-categories: ML
+categories: ["Machine Learning"]
 ---
 
  Created a **note** titled ***"Tensor Field Networks Rotation- and Translation-Equivariant Neural Networks for 3D Point Clouds: A structured, de-indexed reading note"***. Available in [https://github.com/yzhacn/condensed-matter-ML-notes/blob/main/CL_TFN/CL_TFN.pdf](https://github.com/yzhacn/condensed-matter-ML-notes/blob/main/CL_TFN/CL_TFN.pdf).
