@@ -4,4 +4,4 @@ date: 2026-07-07
 categories: ML
 ---
 
- Created a **note** titled ***"Tensor Field Networks Rotation- and Translation-Equivariant Neural Networks for 3D Point Clouds: A structured, de-indexed reading note"***, which guides readers through using the classical Heisenberg model to determine the conditions under which spiral magnetic configuration emerges. Available in https://github.com/yzhacn/condensed-matter-ML-notes/blob/main/CL_TFN/CL_TFN.pdf.
+ Created a **note** titled ***"Tensor Field Networks Rotation- and Translation-Equivariant Neural Networks for 3D Point Clouds: A structured, de-indexed reading note"***. Available in https://github.com/yzhacn/condensed-matter-ML-notes/blob/main/CL_TFN/CL_TFN.pdf.
