@@ -1,0 +1,30 @@
+{% include base_path %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+{% if post.DOI %}
+  {% if post.DOI contains "://" %}
+    {% assign paper_url = post.DOI %}
+  {% else %}
+    {% assign paper_url = "https://doi.org/" | append: post.DOI %}
+  {% endif %}
+{% elsif post.arxivurl %}
+  {% assign paper_url = post.arxivurl %}
+{% else %}
+  {% assign paper_url = base_path | append: post.url %}
+{% endif %}
+
+<div class="{{ include.type | default: "list" }}__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    <h2 class="archive__item-title" itemprop="headline">
+      <a href="{{ paper_url }}" target="_blank" rel="noopener noreferrer">{{ title }}</a>
+    </h2>
+    {% if post.venue %}
+      <p class="page__meta"><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+    {% endif %}
+  </article>
+</div>

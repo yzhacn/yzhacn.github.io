@@ -48,9 +48,22 @@ redirect_from:
   
 ## Presentations
 
+{% if site.talk_category %}
+  {% for category in site.talk_category %}
+    {% assign category_talks = site.talks | where: 'talk_category', category[0] | reverse %}
+    {% if category_talks.size > 0 %}
+### {{ category[1].title }}
+
+  <ul>{% for post in category_talks %}
+    {% include archive-single-talk-cv.html  %}
+  {% endfor %}</ul>
+    {% endif %}
+  {% endfor %}
+{% else %}
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
+{% endif %}
 
 ## Notes
 
