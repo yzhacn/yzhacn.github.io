@@ -9,7 +9,7 @@ klmtri2d_gc 两段代码出发（后者由我根据巨正则系综的
 三角晶格版本 klmtri2d_gc 改写，以满足巨正则系综），
 推导零温下的占据、 基态能量与局域有效场，
 并系统讲解 torch.einsum 的语义与张量缩并实现。
-本笔记由 Anthropic Claude 提供.tex模板，并且进行辅助创作。
+本笔记由 Anthropic Claude 提供 .tex 模板，并且进行辅助创作。
 推导部分由作者 Yan S. Zha 本人进行或确认。
 笔记可在 [https://github.com/yzhacn/condensed-matter-ML-notes/blob/main/CL_KLM_ED_einsum/CL_KLM_ED_einsum.pdf](https://github.com/yzhacn/condensed-matter-ML-notes/blob/main/CL_KLM_ED_einsum/CL_KLM_ED_einsum.pdf)  进行查看。
 
