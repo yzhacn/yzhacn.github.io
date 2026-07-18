@@ -1,7 +1,7 @@
 ---
 title: "Kondo Lattice Model 的精确对角化 - 本征值 · 本征能量 · 有效场 · einsum · square‑lattice KLM，正则与巨正则系综"
 date: 2026-07-11
-categories: ["Condensed Matter Physics"]
+categories: ["ECNN for Kondo Lattice Model"]
 ---
 
 本笔记从 Yu Miyazaki 的 ecnn4klm 代码库中的klmsq2d /
