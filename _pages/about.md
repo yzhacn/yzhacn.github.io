@@ -26,7 +26,7 @@ NEWS
 
 * 2026.05.15 <span style="color: red;">**[Article]**</span> The article titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** ([Phys. Rev. B 113, 174415](https://doi.org/10.1103/4sqm-xhw9)) has been published online in ***Physical Review B***. The version on ***arXiv*** ([arXiv:2511.05896  [cond-mat.str-el]](https://arxiv.org/abs/2511.05896)) has been updated to match the published version. (UTC+09:00)
   
-* 2026.05.01 Selected for the **Distinguished Student Award (北海道大学理学院優秀研究奨励賞)** from the Graduate School of Science, Hokkaido University (2026). (UTC+09:00)
+* 2026.05.01 Selected for the **Distinguished Student Award (北海道大学理学院優秀研究奨励賞)**<sub>[url](https://www2.sci.hokudai.ac.jp/gs/news/5525)</sub> from the Graduate School of Science, Hokkaido University (2026). (UTC+09:00)
 
 * 2026.04.23 <span style="color: red;">**[Invited talk]**</span> Gave an **oral presentation** titled ***"Formation Mechanisms of Square Skyrmion Lattices in Multi-Orbital
 Electron Systems"*** (Abstract ID No: 30383, assigned Session:

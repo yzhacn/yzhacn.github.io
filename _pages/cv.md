@@ -75,7 +75,7 @@ redirect_from:
 ## Miscellaneous Experience
 
 * **Awards**
-  * Distinguished Student Award (in Japanese: 北海道大学理学院優秀研究奨励賞), Graduate School of Science, Hokkaido University (2026)
+  * Distinguished Student Award (in Japanese: 北海道大学理学院優秀研究奨励賞)<sub>[url](https://www2.sci.hokudai.ac.jp/gs/news/5525)</sub>, Graduate School of Science, Hokkaido University (2026)
 
 * **Fundings**
   * JST SPRING (in Japanese: 次世代研究者挑戦的研究プログラム), Grant Number JPMJSP2119JST, 2026.04--2029.03   
