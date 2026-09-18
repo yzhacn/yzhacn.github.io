@@ -1,0 +1,18 @@
+# Add one entry per interactive note and put its standalone HTML under llm-for-fun/.
+# Standalone HTML must have no YAML front matter so Jekyll copies it unchanged.
+- title: "Helicity & Vorticity"
+  url: /llm-for-fun/helicity-vorticity/
+  category: Physics
+  date: 2026-09-18
+  description: "Explore how spin textures change with helicity, winding number, and core polarity. Compare Néel, Bloch, and antiskyrmion textures, and see how winding relates to the skyrmion number."
+  features:
+    - Adjustable spin textures
+    - Mathematical definitions
+    - Questions to try
+  languages:
+    - code: en
+      label: English
+    - code: zh-CN
+      label: 中文
+    - code: ja
+      label: 日本語

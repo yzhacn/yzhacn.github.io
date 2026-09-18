@@ -1,0 +1,63 @@
+---
+title: "LLM for Fun"
+layout: archive
+permalink: /llm-for-fun/
+author_profile: true
+excerpt: "Interactive notes and small experiments made with the help of large language models."
+---
+
+<style>
+  .llm-intro { max-width: 48em; margin-bottom: 1.7em; }
+  .llm-intro p { margin-bottom: .7em; }
+  .llm-intro__hint { color: #59636a; font-size: .85em; }
+  .llm-notes { display: grid; gap: 1.5em; margin: 1.5em 0 2em; }
+  .llm-note { overflow: hidden; border: 1px solid #e2e6e4; border-radius: 10px; background: #fff; }
+  .llm-note__banner { display: flex; align-items: center; justify-content: space-between; gap: 1em; flex-wrap: wrap; padding: 1em 1.3em; background: #edf4f1; border-bottom: 1px solid #dce7e1; }
+  .llm-note__category { color: #286e66; font-size: .7em; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+  .llm-note__format { color: #4c655d; font-size: .7em; }
+  .llm-note__body { padding: 1.3em; }
+  .llm-note__title { margin: 0 0 .5em; font-size: 1.3em; border: 0; }
+  .llm-note__title a { color: inherit; text-decoration: none; }
+  .llm-note__title a:hover { color: #26788e; text-decoration: underline; }
+  .llm-note__description { font-size: .86em; margin-bottom: 1em; line-height: 1.7; }
+  .llm-note__features { display: flex; flex-wrap: wrap; gap: .45em; list-style: none; margin: 0 0 1.3em; padding: 0; }
+  .llm-note__features li { margin: 0; padding: .2em .65em; border-radius: 4px; background: #f2f4f4; color: #566168; font-size: .67em; }
+  .llm-note__actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75em 1.4em; }
+  .llm-note__open { display: inline-block; padding: .65em 1em; border-radius: 5px; background: #26788e; color: #fff !important; text-decoration: none !important; font-size: .8em; font-weight: 600; }
+  .llm-note__open:hover { background: #1b5f72; }
+  .llm-note__languages { display: flex; gap: .9em; flex-wrap: wrap; font-size: .75em; }
+  .llm-note__updated { margin: 1em 0 0; color: #68757c; font-size: .65em; }
+  .llm-notes a:focus-visible { outline: 3px solid #26788e; outline-offset: 4px; }
+  @media (max-width: 480px) { .llm-note__body { padding: 1em; } .llm-note__actions { align-items: flex-start; flex-direction: column; } }
+</style>
+
+<div class="llm-intro">
+  <p>Interactive notes and small experiments made with the help of large language models. A place to turn ideas from reading and research into things you can explore.</p>
+  <p class="llm-intro__hint">Open a note, change the parameters, and follow what happens. Everything runs in your browser; no download or sign-in is needed.</p>
+</div>
+
+<div class="llm-notes">
+  {% assign notes = site.data.llm_for_fun | sort: 'date' | reverse %}
+  {% for note in notes %}
+  <article class="llm-note">
+    <div class="llm-note__banner">
+      <span class="llm-note__category">{{ note.category | escape }}</span>
+      <span class="llm-note__format">Interactive note</span>
+    </div>
+    <div class="llm-note__body">
+      <h2 class="llm-note__title"><a href="{{ note.url | relative_url }}">{{ note.title | escape }}</a></h2>
+      <p class="llm-note__description">{{ note.description | escape }}</p>
+      <ul class="llm-note__features" aria-label="Note features">
+        {% for feature in note.features %}<li>{{ feature | escape }}</li>{% endfor %}
+      </ul>
+      <div class="llm-note__actions">
+        <a class="llm-note__open" href="{{ note.url | relative_url }}">Open interactive note <span aria-hidden="true">→</span></a>
+        <nav class="llm-note__languages" aria-label="Choose a language for {{ note.title | escape }}">
+          {% for language in note.languages %}<a href="{{ note.url | relative_url }}?lang={{ language.code | uri_escape }}" lang="{{ language.code }}" hreflang="{{ language.code }}">{{ language.label | escape }}</a>{% endfor %}
+        </nav>
+      </div>
+      <p class="llm-note__updated">Updated <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: '%B %-d, %Y' }}</time></p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
