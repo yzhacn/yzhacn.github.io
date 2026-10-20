@@ -23,6 +23,7 @@ NEWS
 ======
 
 ## 2026
+* 2026.10.01 Gave an **poster presentation** titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** (Th-3FS-42) at the "SCES 2026"<sub>[url](https://smartconf.jp/content/sces2026/)</sub>. @Toyama International Conference Center, Toyama, Japan. (UTC+09:00)
 
 * 2026.05.15 <span style="color: red;">**[Article]**</span> The article titled ***"Effects of crystal field and momentum-based frustrated exchange interactions on multiorbital square skyrmion lattice"*** ([Phys. Rev. B 113, 174415](https://doi.org/10.1103/4sqm-xhw9)) has been published online in ***Physical Review B***. The version on ***arXiv*** ([arXiv:2511.05896  [cond-mat.str-el]](https://arxiv.org/abs/2511.05896)) has been updated to match the published version. (UTC+09:00)
   
