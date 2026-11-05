@@ -163,7 +163,7 @@
     return rgb(colorAt(theta,[0,Math.PI],colors.angle));
   }
   function directionsFigure(unit) {
-    const {ctx,canvas}=figure(tr("实空间自旋方向","実空間のスピン方向","Spin directions in real space")), nx=unit.length, ny=unit[0].length;
+    const {ctx,canvas}=figure(tr("实空间自旋方向","実空間のスピン配置","Spin directions in real space")), nx=unit.length, ny=unit[0].length;
     const {left,top,side}=plot, cell=side/nx;
     for (let x=0;x<nx;x++) for(let y=0;y<ny;y++) {
       const [sx,sy,sz]=unit[x][y], cx=left+(x+.5)*cell, cy=top+(ny-y-.5)*side/ny;
@@ -172,12 +172,12 @@
     }
     axes(ctx,[-.5,nx-.5,-.5,ny-.5],ticks(nx-1),ticks(ny-1),"x / a","y / a");
     colorbar(ctx,[0,Math.PI],colors.angle,"θᵢ",true);
-    footer(ctx,tr("箭头给出面内分量；颜色为 θᵢ = arccos(Sᵢᶻ)。","矢印は面内成分、色は θᵢ = arccos(Sᵢᶻ) を示す。","Arrows show the in-plane components. Color gives θᵢ = arccos(Sᵢᶻ)."),left);
+    footer(ctx,tr("箭头给出面内分量；颜色为 θᵢ = arccos(Sᵢᶻ)。","矢印はスピンの面内成分を、色は z 軸からの傾き θᵢ = arccos(Sᵢᶻ) を表す。","Arrows show the in-plane components. Color gives θᵢ = arccos(Sᵢᶻ)."),left);
     return canvas;
   }
   // Orthographic axes at the same elev/azim as the four plot_render.py views.
   function sphereFigure(unit,elevation,azimuth) {
-    const {ctx,canvas}=figure(tr("单位球面上的自旋方向","単位球面上のスピン方向","Spin directions on the unit sphere")), cx=298,cy=309,r=185;
+    const {ctx,canvas}=figure(tr("单位球面上的自旋方向","単位球面上で見たスピンの向き","Spin directions on the unit sphere")), cx=298,cy=309,r=185;
     const el=elevation*Math.PI/180, az=azimuth*Math.PI/180;
     const ca=Math.cos(az), sa=Math.sin(az), ce=Math.cos(el), se=Math.sin(el);
     function project(x,y,z) {
@@ -210,7 +210,7 @@
     return canvas;
   }
   function spectrumFigure(levels) {
-    const {ctx,canvas}=figure(tr("固定构型的电子谱","固定スピン配置の電子スペクトル","Electronic spectrum of the frozen configuration")), left=90,top=100,width=548,height=390;
+    const {ctx,canvas}=figure(tr("固定构型的电子谱","スピン配置を固定したときの電子スペクトル","Electronic spectrum of the frozen configuration")), left=90,top=100,width=548,height=390;
     if (!levels.length || !Array.from(levels).every((n,i)=>Number.isFinite(n)&&(i===0||n>=levels[i-1]))) {
       throw new Error("绘图需要有限、已排序的单粒子能级。");
     }
@@ -236,11 +236,11 @@
       ctx.fillStyle=value<0?"#3974aa":"#dc8a31";
       ctx.beginPath();ctx.arc(px(i+1),py(value),1.8,0,2*Math.PI);ctx.fill();
     });
-    text(ctx,tr("● 占据 λ < 0","● 占有 λ < 0","● Occupied λ < 0"),left,73,17,"left","#3974aa");
-    text(ctx,tr("● 未占据 λ ≥ 0","● 非占有 λ ≥ 0","● Empty λ ≥ 0"),left+180,73,17,"left","#b36b1b");
-    text(ctx,tr("单粒子能级编号（按 λ 升序）","一粒子準位の番号（λ の昇順）","Single-particle level index (ascending λ)"),left+width/2,top+height+56,17,"center");
+    text(ctx,tr("● 占据 λ < 0","● 占有準位（λ < 0）","● Occupied λ < 0"),left,73,17,"left","#3974aa");
+    text(ctx,tr("● 未占据 λ ≥ 0","● 非占有準位（λ ≥ 0）","● Empty λ ≥ 0"),left+180,73,17,"left","#b36b1b");
+    text(ctx,tr("单粒子能级编号（按 λ 升序）","一粒子準位の番号（λ が小さい順）","Single-particle level index (ascending λ)"),left+width/2,top+height+56,17,"center");
     ctx.save(); ctx.translate(22,top+height/2);ctx.rotate(-Math.PI/2);text(ctx,"λ = ε − μ",0,0,18,"center");ctx.restore();
-    footer(ctx,tr("电子谱取自该构型的固定 μ 计算；H 和 A 仅进入经典自旋项。","この配置の固定 μ での電子スペクトル。H と A は古典スピン項のみに入る。","Spectrum at fixed μ for this configuration. H and A enter only the classical spin terms."),left);
+    footer(ctx,tr("电子谱取自该构型的固定 μ 计算；H 和 A 仅进入经典自旋项。","化学ポテンシャル μ を固定して求めた電子スペクトル。H と A は古典スピンのエネルギーにのみ寄与する。","Spectrum at fixed μ for this configuration. H and A enter only the classical spin terms."),left);
     return canvas;
   }
   function render(result) {
@@ -252,7 +252,7 @@
     ["x","y","z"].forEach((axis,k)=>{
       add("spin_"+axis,mapFigure(tr("自旋分量 S","スピン成分 S","Spin component S")+axis,unit.map(row=>row.map(s=>s[k])),"S"+axis));
     });
-    add("spin_length",mapFigure(tr("局部自旋模长","局所スピンの長さ","Local spin length"),lengths,"|Sᵢ|","length"));
+    add("spin_length",mapFigure(tr("局部自旋模长","各格子点でのスピンの長さ","Local spin length"),lengths,"|Sᵢ|","length"));
     add("spin_directions",directionsFigure(unit));
     for(const [name,el,az] of [["unit_sphere",24,-55],["unit_sphere_side2",24,65],
                               ["unit_sphere_side3",24,185],["unit_sphere_top",90,-90]]) {
@@ -260,17 +260,17 @@
     }
     const sfLabels={x:"Sˣˣ(q)",y:"Sʸʸ(q)",z:"Sᶻᶻ(q)",xy:"Sˣˣ(q) + Sʸʸ(q)",total:"S(q)"};
     for(const [component,label] of Object.entries(sfLabels)) {
-      add("structure_factor_"+component,mapFigure(tr("结构因子 ","構造因子 ","Structure factor ")+label,structure[component],"|FFT|² / N",
-          "positive","reciprocal",structure,tr("图中权重取 |Σᵢ Sᵢᵅ exp(−iq·rᵢ)|²/N，组合分量为对应分量之和。","強度は |Σᵢ Sᵢᵅ exp(−iq·rᵢ)|²/N。複合成分は対応する成分の和。","Intensity is |Σᵢ Sᵢᵅ exp(−iq·rᵢ)|²/N. Combined channels sum the corresponding components.")));
+      add("structure_factor_"+component,mapFigure(tr("结构因子 ","スピン構造因子 ","Structure factor ")+label,structure[component],"|FFT|² / N",
+          "positive","reciprocal",structure,tr("图中权重取 |Σᵢ Sᵢᵅ exp(−iq·rᵢ)|²/N，组合分量为对应分量之和。","各成分の強度は |Σᵢ Sᵢᵅ exp(−iq·rᵢ)|²/N。面内成分は x と y の和、全成分は x、y、z の和を示す。","Intensity is |Σᵢ Sᵢᵅ exp(−iq·rᵢ)|²/N. Combined channels sum the corresponding components.")));
     }
-    add("local_chirality",mapFigure(tr("四邻居标量手性","四近接サイトのスカラー・カイラリティ","Four-neighbor scalar chirality"),chirality_map,"χᵢ"));
+    add("local_chirality",mapFigure(tr("四邻居标量手性","最近接4サイトから求めたスカラースピンカイラリティ","Four-neighbor scalar chirality"),chirality_map,"χᵢ"));
     const s=result.scalars, valid=result.topology_diagnostics.Q_valid;
-    const chargeText=tr("每晶格平移原胞 Q：","格子並進単位胞当たりの Q：","Q per lattice translation cell: ")+
-      (valid?fmt(s.Q_per_magnetic_cell):fmt(null))+"   "+tr("每连续相位原胞 Q：","連続位相単位胞当たりの Q：","Q per continuous phase cell: ")+
+    const chargeText=tr("每晶格平移原胞 Q：","磁気単位胞当たりの Q：","Q per lattice translation cell: ")+
+      (valid?fmt(s.Q_per_magnetic_cell):fmt(null))+"   "+tr("每连续相位原胞 Q：","位相の周期で定まる単位胞当たりの Q：","Q per continuous phase cell: ")+
       (s.n_phase_cells>0?(valid?fmt(s.Q_per_phase_cell):fmt(null)):tr("不适用","該当なし","N/A"))+
       (valid&&s.n_phase_cells>0&&s.Q_per_phase_cell_is_integer===false?tr("（非整数）","（非整数）"," (noninteger)"):"");
     const density=valid?topology_map:spin.map(row=>row.map(()=>null));
-    add("topological_charge_density",mapFigure(tr("每格方的几何荷","プラケットごとの幾何学的電荷","Geometric charge per plaquette"),density,tr("Q / 格方","Q / プラケット","Q / plaquette"),"signed","plaquettes",null,chargeText));
+    add("topological_charge_density",mapFigure(tr("每格方的几何荷","各プラケットのトポロジカル電荷","Geometric charge per plaquette"),density,tr("Q / 格方","Q / プラケット","Q / plaquette"),"signed","plaquettes",null,chargeText));
     add("electronic_spectrum",spectrumFigure(result.spectrum.lambda));
     add("field_z",mapFigure(tr("有效场 z 分量","有効場の z 成分","Effective field: z component"),B_total.map(row=>row.map(b=>b[2])),"B_z [E₀]"));
     add("field_norm",mapFigure(tr("有效场模长","有効場の大きさ","Effective field magnitude"),B_total.map(row=>row.map(b=>Math.hypot(...b))),"|B| [E₀]","positive"));
