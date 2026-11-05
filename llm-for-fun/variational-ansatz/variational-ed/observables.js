@@ -25,6 +25,13 @@
     });
   }
 
+  function spinGeometry(L,spin) {
+    const s=vectorGrid(L,spin,true);
+    const lengths=matrix(L,(x,y)=>Math.hypot(...s[x][y]));
+    const directions=matrix(L,(x,y)=>s[x][y].map(v=>v/lengths[x][y]));
+    return {s,lengths,directions};
+  }
+
   function validateWaves(L, qn) {
     if (!Array.isArray(qn) || qn.length > 2) throw new Error("需给出零、一或两支基础波矢。");
     for (let i=0; i<qn.length; i++) {
@@ -131,12 +138,16 @@
       return {angle:2*Math.atan2(num,den), bad:singular||antipodal||branch};
     }
     const mask=matrix(L,()=>false);
+    let invalidA=0, invalidB=0, pos=0, neg=0;
     let map=matrix(L,(x,y)=>{
       const a=directions[x][y], b=directions[(x+1)%L][y];
       const c=directions[(x+1)%L][(y+1)%L], e=directions[x][(y+1)%L];
       const abc=triangle(a,b,c), acd=triangle(a,c,e);
       const abd=triangle(a,b,e), bcd=triangle(b,c,e);
       const qa=(abc.angle+acd.angle)/(4*Math.PI), qb=(abd.angle+bcd.angle)/(4*Math.PI);
+      invalidA+=Number(abc.bad)+Number(acd.bad);
+      invalidB+=Number(abd.bad)+Number(bcd.bad);
+      pos+=Math.max(0,qa); neg+=Math.min(0,qa);
       const split=qa-qb, badSplit=Math.abs(split)>SPLIT_TOL;
       d.Q_A+=qa; d.Q_B+=qb; d.Q_split+=split;
       d.Q_bad_plaquettes+=Number(badSplit);
@@ -148,7 +159,14 @@
     d.Q=0.5*(d.Q_A+d.Q_B);
     d.Q_valid=d.Q_ambiguous_plaquettes===0;
     if (!d.Q_valid) map=matrix(L,()=>null);
-    return {diagnostics:d, mask, map};
+    const preview={A:invalidA?NaN:d.Q_A, B:invalidB?NaN:d.Q_B,
+      pos:invalidA?NaN:pos, neg:invalidA?NaN:neg, invalidA,invalidB,
+      ambiguousPlaquettes:d.Q_bad_plaquettes,valid:d.Q_valid};
+    return {diagnostics:d,mask,map,preview};
+  }
+
+  function previewCharge(L,spin) {
+    return topology(L,spinGeometry(L,spin).directions).preview;
   }
 
   function magneticPeriod(L,s) {
@@ -206,10 +224,8 @@
   }
 
   function calculate(L, spin, qn) {
-    const s=vectorGrid(L,spin,true), N=L*L;
+    const {s,lengths,directions}=spinGeometry(L,spin), N=L*L;
     validateWaves(L,qn);
-    const lengths=matrix(L,(x,y)=>Math.hypot(...s[x][y]));
-    const directions=matrix(L,(x,y)=>s[x][y].map(v=>v/lengths[x][y]));
     const theta=matrix(L,(x,y)=>Math.acos(Math.max(-1,Math.min(1,directions[x][y][2]))));
     const {structure,q_vectors,q_values,q_values_per_site}=structureFactors(L,s,qn);
     const chi=chiralityMap(L,s);
@@ -244,25 +260,37 @@
   function fields(L, spin, B_el, H, A) {
     const s=vectorGrid(L,spin,true), el=vectorGrid(L,B_el,false), N=L*L;
     if (!Number.isFinite(H)||!Number.isFinite(A)) throw new Error("H 和 A 必须为有限值。");
-    let sumZ=0,sumZ2=0,sumTorque=0,sumTorque2=0,sumField2=0,torqueMax=0,fieldMax=0;
+    let sumZ=0, zMax=0, torqueMax=0, fieldMax=0;
     const torque=matrix(L,()=>0);
     const total=matrix(L,(x,y)=>{
       const [sx,sy,sz]=s[x][y], [bx,by,bzEl]=el[x][y];
-      const bz=bzEl+H+2*A*sz;
+      const anisotropy=A*sz;
+      const bz=bzEl+H+2*anisotropy;
       const b=Math.hypot(bx,by,bz);
       const t=Math.hypot(sy*bz-sz*by,sz*bx-sx*bz,sx*by-sy*bx);
       torque[x][y]=t;
-      sumZ+=sz; sumZ2+=sz*sz;
-      sumTorque+=t; sumTorque2+=t*t; torqueMax=Math.max(torqueMax,t);
-      sumField2+=b*b; fieldMax=Math.max(fieldMax,b);
+      sumZ+=sz; zMax=Math.max(zMax,Math.abs(sz));
+      torqueMax=Math.max(torqueMax,t); fieldMax=Math.max(fieldMax,b);
       return [bx,by,bz];
     });
-    const scalars={Kz_per_site:sumZ2/N,torque_rms:Math.sqrt(sumTorque2/N),torque_max:torqueMax,
-      torque_mean:sumTorque/N,field_rms:Math.sqrt(sumField2/N),field_max:fieldMax};
-    const E_Z=-H*sumZ, E_A=-A*sumZ2;
+    // Accumulate dimensionless ratios to keep squared finite fields and
+    // torques from underflowing or overflowing before the lattice average.
+    let torqueSum=0, torqueSquares=0, fieldSquares=0, zSquares=0;
+    for (let x=0; x<L; x++) for (let y=0; y<L; y++) {
+      const relativeTorque=torque[x][y]/(torqueMax || 1);
+      const relativeField=Math.hypot(...total[x][y])/(fieldMax || 1);
+      zSquares+=(s[x][y][2]/(zMax || 1))**2;
+      torqueSum+=relativeTorque; torqueSquares+=relativeTorque**2; fieldSquares+=relativeField**2;
+    }
+    const zNorm=zMax*Math.sqrt(zSquares);  // ||Sz|| over the full torus.
+    const scalars={Kz_per_site:zNorm*zNorm/N,torque_rms:torqueMax*Math.sqrt(torqueSquares/N),torque_max:torqueMax,
+      torque_mean:torqueMax*(torqueSum/N),field_rms:fieldMax*Math.sqrt(fieldSquares/N),field_max:fieldMax};
+    // Multiply A by one factor of ||Sz|| first: AΣSz² can be representable
+    // even when each individual Sz² rounds to zero.
+    const E_Z=-H*sumZ, E_A=-(A*zNorm)*zNorm;
     if (![E_Z,E_A,...Object.values(scalars)].every(Number.isFinite)) throw new Error("经典能量、有效场或力矩超出数值范围。");
     return {scalars,arrays:{B_el:el,B_total:total,torque_norm:torque},E_Z,E_A};
   }
 
-  globalThis.VariationalObservables=Object.freeze({calculate,fields});
+  globalThis.VariationalObservables=Object.freeze({calculate,fields,previewCharge});
 })();

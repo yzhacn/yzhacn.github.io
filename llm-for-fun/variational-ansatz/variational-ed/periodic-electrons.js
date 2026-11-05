@@ -31,8 +31,8 @@
     A.fill(0);
     for (let x = 0; x < px; x++) for (let y = 0; y < py; y++) {
       const up = 2 * (x * py + y), down = up + 1, s = 3 * (x * L + y);
-      A[at(up,up)] += -p.mu - p.J * spin[s+2] / 2;
-      A[at(down,down)] += -p.mu + p.J * spin[s+2] / 2;
+      A[at(up,up)] += -p.J * spin[s+2] / 2;
+      A[at(down,down)] += p.J * spin[s+2] / 2;
       A[at(up,down)] += -p.J * spin[s] / 2; A[at(up,down)+1] += p.J * spin[s+1] / 2;
       A[at(down,up)] += -p.J * spin[s] / 2; A[at(down,up)+1] -= p.J * spin[s+1] / 2;
       for (const [dx, dy, t] of bonds) {
@@ -59,11 +59,13 @@
     const eigenvalues = new Float64Array(2 * L * L), cellField = new Float64Array(3 * px * py);
     for (let ix = 0; ix < Kx; ix++) for (let iy = 0; iy < Ky; iy++) {
       buildBlock(A, spin, L, px, py, 2*Math.PI*ix/Kx, 2*Math.PI*iy/Ky, electronic);
-      const {lambda, vectors} = await solver.diagonalizeHermitian(A, n);
-      eigenvalues.set(lambda, n * (ix * Ky + iy));
+      const {lambda:epsilon, vectors} = await solver.diagonalizeHermitian(A, n);
+      eigenvalues.set(epsilon, n * (ix * Ky + iy));
       // The full normalized wave has a 1/sqrt(sectors) prefactor.
       // Discard these provisional sums if the global occupation is unresolved.
-      for (let level = 0; level < n && lambda[level] < 0; level++) {
+      // A fully occupied sector contributes zero local spin at every site.
+      if (epsilon[n-1] < electronic.mu) continue;
+      for (let level = 0; level < n && epsilon[level] < electronic.mu; level++) {
         for (let site = 0; site < px * py; site++) {
           const u = 2 * (level * n + 2 * site);
           const ur = vectors[u], ui = vectors[u+1], dr = vectors[u+2], di = vectors[u+3];
@@ -74,19 +76,14 @@
       }
     }
     eigenvalues.sort();
-    const diag = solver.occupation(eigenvalues);
-    let omega = 0;
-    for (let j = 0; j < diag.n_occupied; j++) omega += eigenvalues[j];
+    const el = solver.occupiedSpectrum(eigenvalues, L, electronic);
     const field = new Float64Array(3 * L * L);
     for (let x = 0; x < L; x++) for (let y = 0; y < L; y++) {
       const source = 3 * ((x % px) * py + y % py);
       for (let a = 0; a < 3; a++) field[3*(x*L+y)+a] = cellField[source+a] / sectors;
     }
-    const energy = omega + electronic.mu * diag.n_occupied;
-    if (!Number.isFinite(energy) || !field.every(Number.isFinite)) throw Error("电子能量或有效场超出双精度范围。");
-    return {spectrum:{lambda:eigenvalues, epsilon:eigenvalues.map(v=>v+electronic.mu),
-      occupied:Uint8Array.from(eigenvalues, v=>Number(v<0))}, B_el:field, Omega_el:omega,
-      E_el:energy, N_e:diag.n_occupied, occupation_diagnostics:diag,
+    if (!field.every(Number.isFinite)) throw Error("电子能量或有效场超出双精度范围。");
+    return {...el, B_el:field,
       implementation:{method:"finite-torus Bloch sectors", cell, k_grid:[Kx,Ky],
         eigensolver:"Eigen 3.4.0 SelfAdjointEigenSolver complex128", wasm_sha256:self.VariationalEigenSHA256}};
   }

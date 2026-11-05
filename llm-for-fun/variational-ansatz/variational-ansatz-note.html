@@ -452,6 +452,7 @@ E = Ω + μNₑ</div>
 
 <script src="variational-note-text.js"></script>
 <script src="variational-note-i18n.js"></script>
+<script src="variational-ed/observables.js"></script>
 <script>
 (function () {
   "use strict";
@@ -462,6 +463,7 @@ E = Ω + μNₑ</div>
     zeroQ: ["当前接口不接受零波矢或与零等价的倒格矢。", "q = 0 と、それに等価な逆格子ベクトルは指定できません。", "A wavevector equal to zero modulo a reciprocal lattice vector is not allowed."],
     repeatedQ: ["两支波在周期格子上等于 ±q；重复检查也包括 SkX2 的和差波。", "二つの波数ベクトルが、格子上で符号を除いて一致します。SkX2 では q₁ + q₂ と q₁ − q₂ もこの判定に含めます。", "Two wavevectors coincide up to sign on the periodic lattice. For SkX2 this check also includes their sum and difference."],
     badL: ["本页支持整数格子尺寸 4 ≤ L ≤ 36。", "格子サイズ L は 4 以上 36 以下の整数にしてください。", "The lattice size L must be an integer between 4 and 36."],
+    badShape: ["{0} 的名称或维度与所选构型不匹配。", "選択したスピン配置と {0} の名前または次元が一致しません。", "The name or dimensions of {0} do not match the selected configuration."],
     nonfinite: ["所有参数必须为有限数。", "すべてのパラメーターに有限の数値を入力してください。", "All parameters must be finite numbers."],
     coneDomain: ["锥态要求 |Mz| ≤ 1。", "円錐らせんでは |Mz| ≤ 1 としてください。", "Conical spins require |Mz| ≤ 1."],
     vcDomain: ["VC 要求 |b| ≤ 1。", "渦結晶（VC）では |b| ≤ 1 としてください。", "The vortex crystal requires |b| ≤ 1."],
@@ -587,7 +589,9 @@ E = Ω + μNₑ</div>
     if (kind === "skx2_product") {
       if (!(P.a>0)) return "skxAmplitude";
       var q1=P.qn[0],q2=P.qn[1];
-      if (q1[0]*q2[0]+q1[1]*q2[1]!==0 || q1[0]*q1[0]+q1[1]*q1[1]!==q2[0]*q2[0]+q2[1]*q2[1]) return "squareQ";
+      // On a square lattice the only equal-length perpendicular vectors
+      // are the two quarter turns. Avoid products of large integer windings.
+      if (!((q2[0]===-q1[1] && q2[1]===q1[0]) || (q2[0]===q1[1] && q2[1]===-q1[0]))) return "squareQ";
       return waveError([q1,q2,[q1[0]+q2[0],q1[1]+q2[1]],[q1[0]-q2[0],q1[1]-q2[1]]]);
     }
     return "";
@@ -599,17 +603,34 @@ E = Ω + μNₑ</div>
     if (!Number.isInteger(N) || N<2) reason="sampleSize";
     if(reason) return {S:null,bad:true,reason:labText(reason),errorKey:reason};
     var f=family(), qn=P.qn, S=new Float64Array(N*N*3), scale=1, waves=[];
+    // A common positive rescaling leaves S unchanged. Keep all raw fields
+    // and the relative zero-norm threshold representable before normalizing.
+    var offsetZ=0, coefficients, skxDivisor;
+    // Keep lattice phases resolvable even when an imported phase is many turns.
+    // sin/cos reduce the original double in radians before atan2 selects one turn.
+    const principalAngle=angle=>Math.abs(angle)<=2*Math.PI ? angle : Math.atan2(Math.sin(angle),Math.cos(angle));
+    const theta=P.theta.map(principalAngle);
     if(f==="multiq" || f==="proper_screw") {
       var ap=f==="multiq"?P.a_perp:[1], az=f==="multiq"?P.a_z:[P.az];
       var psi=f==="multiq"?P.psi:[P.psi], ga=f==="multiq"?P.gamma:[Math.PI/2];
-      scale=Math.abs(f==="multiq"?P.Mz:P.m0);
+      offsetZ=f==="multiq"?P.Mz:P.m0;
+      const divisor=Math.max(...ap.map(Math.abs),...az.map(Math.abs),Math.abs(offsetZ)) || 1;
+      offsetZ/=divisor;
+      scale=Math.abs(offsetZ);
       qn.forEach(function(q,k){
         var qx=2*Math.PI*q[0]/L,qy=2*Math.PI*q[1]/L,nn=Math.hypot(qx,qy),cg=Math.cos(ga[k]),sg=Math.sin(ga[k]);
-        waves.push({ex:(cg*qx-sg*qy)/nn,ey:(cg*qy+sg*qx)/nn,ap:ap[k],az:az[k],psi:psi[k]});
-        scale+=Math.abs(ap[k])+Math.abs(az[k]);
+        const inPlane=ap[k]/divisor,outOfPlane=az[k]/divisor;
+        waves.push({ex:(cg*qx-sg*qy)/nn,ey:(cg*qy+sg*qx)/nn,ap:inPlane,az:outOfPlane,psi:principalAngle(psi[k])});
+        scale+=Math.abs(inPlane)+Math.abs(outOfPlane);
       });
-    } else if(f==="gen2q") scale=P.c.reduce(function(a,b){return a+Math.abs(b);},0);
-    else if(f==="skx2_product") scale=2+P.a;
+    } else if(f==="gen2q") {
+      const divisor=Math.max(...P.c.map(Math.abs)) || 1;
+      coefficients=P.c.map(c=>c/divisor);
+      scale=coefficients.reduce((sum,c)=>sum+Math.abs(c),0);
+    } else if(f==="skx2_product") {
+      skxDivisor=Math.max(1,P.a);
+      scale=2/skxDivisor+P.a/skxDivisor;
+    }
     var tolerance=32*Number.EPSILON*scale;
     for(var i=0;i<N;i++) for(var j=0;j<N;j++) {
       // Reduce integer windings before sin/cos so periodic copies have
@@ -619,28 +640,28 @@ E = Ω + μNₑ</div>
         return 2*Math.PI*turns/N;
       }), raw=[0,0,0];
       if(f==="multiq" || f==="proper_screw") {
-        raw[2]=f==="multiq"?P.Mz:P.m0;
+        raw[2]=offsetZ;
         waves.forEach(function(w,k) {
-          var phi = phase[k] + P.theta[k];
+          var phi = phase[k] + theta[k];
           var amplitude = w.ap * Math.sin(phi + w.psi);
           raw[0] += w.ex * amplitude;
           raw[1] += w.ey * amplitude;
           raw[2] -= w.az * Math.cos(phi);
         });
       } else if(f==="skx2_product") {
-        var p1=phase[0]+P.theta[0],p2=phase[1]+P.theta[1];
-        raw=[Math.sin(p1),Math.sin(p2),P.a*Math.cos(p1)*Math.cos(p2)];
+        var p1=phase[0]+theta[0],p2=phase[1]+theta[1];
+        raw=[Math.sin(p1)/skxDivisor,Math.sin(p2)/skxDivisor,(P.a/skxDivisor)*Math.cos(p1)*Math.cos(p2)];
       } else if(f==="gen2q") {
         // c、theta 均为 (6,)；前三项属 q1，后三项属 q2。
         for(var k=0;k<3;k++) {
-          raw[k] = P.c[k] * Math.cos(phase[0] + P.theta[k]);
-          raw[k] += P.c[k+3] * Math.cos(phase[1] + P.theta[k+3]);
+          raw[k] = coefficients[k] * Math.cos(phase[0] + theta[k]);
+          raw[k] += coefficients[k+3] * Math.cos(phase[1] + theta[k+3]);
         }
       } else if(f==="conical") {
-        var phi=phase[0]+P.theta[0],amp=Math.sqrt(1-P.Mz*P.Mz);
+        var phi=phase[0]+theta[0],amp=Math.sqrt(1-P.Mz*P.Mz);
         raw=[amp*Math.cos(phi),amp*Math.sin(phi),P.Mz];
       } else if(f==="vc") {
-        var p1=phase[0]+P.theta[0],p2=phase[1]+P.theta[1],c=Math.cos(p2),amp=Math.sqrt(1-P.b*P.b+P.b*P.b*c*c);
+        var p1=phase[0]+theta[0],p2=phase[1]+theta[1],c=Math.cos(p2),amp=Math.sqrt(1-P.b*P.b+P.b*P.b*c*c);
         raw=[amp*Math.cos(p1),amp*Math.sin(p1),P.b*Math.sin(p2)];
       }
       // 与 normalize_spin 一致，零模检查之后才逐点归一化。
@@ -654,43 +675,9 @@ E = Ω + μNₑ</div>
     return {S:S,bad:false};
   }
 
-  // ── Berg–Lüscher 晶格几何荷：单位自旋，面积单位 sr，Q 无量纲 ──
-  // 负实轴附近及近反极点的三角形无法可靠选分支；共面且 den>0 是合法零面积。
-  var BL_TOLERANCE = 1e-10;
-  function dot(S, a, b) { return S[a] * S[b] + S[a + 1] * S[b + 1] + S[a + 2] * S[b + 2]; }
-  function omega(S, a, b, c) {
-    var cx = S[b + 1] * S[c + 2] - S[b + 2] * S[c + 1];
-    var cy = S[b + 2] * S[c] - S[b] * S[c + 2];
-    var cz = S[b] * S[c + 1] - S[b + 1] * S[c];
-    var num = S[a] * cx + S[a + 1] * cy + S[a + 2] * cz;
-    var ab = dot(S, a, b), bc = dot(S, b, c), ca = dot(S, c, a);
-    var den = 1 + ab + bc + ca;
-    if (!Number.isFinite(num) || !Number.isFinite(den)
-        || Math.min(1 + ab, 1 + bc, 1 + ca) <= BL_TOLERANCE
-        || (Math.abs(num) <= BL_TOLERANCE && den <= BL_TOLERANCE)) return NaN;
-    return 2 * Math.atan2(num, den);
-  }
-  // A/B 分别固定一种对角线。pos/neg 为 A 的格方几何荷正/负部分和。
-  // 总 Q 相同也可能存在相互抵消的局部剖分差，故另记 ambiguousPlaquettes。
+  // The preview and ED use the same two-diagonal plaquette diagnostic.
   function charge(S) {
-    var N = Math.sqrt(S.length / 3);
-    var QA = 0, QB = 0, pos = 0, neg = 0, invalidA = 0, invalidB = 0, ambiguousPlaquettes = 0;
-    var f = 1 / (4 * Math.PI);
-    for (var i = 0; i < N; i++) for (var j = 0; j < N; j++) {
-      var i1 = (i + 1) % N, j1 = (j + 1) % N;
-      var s1 = (i * N + j) * 3, s2 = (i1 * N + j) * 3, s3 = (i1 * N + j1) * 3, s4 = (i * N + j1) * 3;
-      var a1 = omega(S, s1, s2, s3), a2 = omega(S, s1, s3, s4);
-      var b1 = omega(S, s1, s2, s4), b2 = omega(S, s2, s3, s4);
-      invalidA += Number(!Number.isFinite(a1)) + Number(!Number.isFinite(a2));
-      invalidB += Number(!Number.isFinite(b1)) + Number(!Number.isFinite(b2));
-      var rhoA = (a1 + a2) * f, rhoB = (b1 + b2) * f;
-      if (Number.isFinite(rhoA)) { QA += rhoA; pos += Math.max(0, rhoA); neg += Math.min(0, rhoA); }
-      if (Number.isFinite(rhoB)) QB += rhoB;
-      if (Number.isFinite(rhoA) && Number.isFinite(rhoB) && Math.abs(rhoA - rhoB) > 1e-7) ambiguousPlaquettes++;
-    }
-    return { A: invalidA ? NaN : QA, B: invalidB ? NaN : QB,
-             pos: invalidA ? NaN : pos, neg: invalidA ? NaN : neg,
-             invalidA: invalidA, invalidB: invalidB, ambiguousPlaquettes: ambiguousPlaquettes };
+    return window.VariationalObservables.previewCharge(Math.sqrt(S.length/3),S);
   }
 
   // ── 结构因子（可分离 DFT）───────────────────────────────
@@ -926,7 +913,9 @@ E = Ω + μNₑ</div>
     var flat = flatness(S);
     var coplanar = flat < 1e-6;
     var regular = Q.invalidA === 0 && Q.invalidB === 0;
-    var sameTotal = regular && Math.abs(Q.A - Q.B) < 1e-6;
+    // Local ambiguity alone determines charge validity, just as in ED.
+    // For ambiguous configurations also report whether the raw sums differ.
+    var sameTotal = regular && (Q.valid || Math.abs(Q.A - Q.B) < 1e-6);
     var ratio = pol.hi > 1e-9 ? pol.lo / pol.hi : 0;
 
     drawReal(S); drawSF(F); drawBars();
@@ -1003,17 +992,46 @@ E = Ω + μNₑ</div>
     var id="ansatz-"+key+(index===null?"":"-"+index)+(component===undefined?"":"-"+component);
     var caption=document.createElement("label");caption.htmlFor=id;caption.textContent=label;
     var number=document.createElement("input"),range=document.createElement("input");
-    number.type="number";number.id=id;number.step=String(step);number.setAttribute("aria-label",labText("valueInput",label));
+    number.type="number";number.id=id;number.step=key==="qn"?"1":"any";number.setAttribute("aria-label",labText("valueInput",label));
     range.type="range";range.min=lo;range.max=hi;range.step=step;range.setAttribute("aria-label",labText("slider",label));
     function read(){var x=index===null?P[key]:component===undefined?P[key][index]:P[key][index][component];return angle?x/Math.PI:x;}
-    function assign(x){x=angle?x*Math.PI:x;if(index===null)P[key]=x;else if(component===undefined)P[key][index]=x;else P[key][index][component]=x;}
-    number.value=Number.isFinite(read()) ? String(Number(read().toPrecision(12))) : "";range.value=read();
-    function input(source){var x=source.value===""?NaN:Number(source.value);assign(x);if(source===range)number.value=String(Number(x.toPrecision(12)));else if(Number.isFinite(x))range.value=x;changed();}
+    function assign(x){
+      // Angles are entered in units of π. Reduce in these units before converting
+      // to radians so even an exact, very large even integer still gives phase 0.
+      if(angle) x=(Math.abs(x)>2 ? x%2 : x)*Math.PI;
+      if(index===null)P[key]=x;else if(component===undefined)P[key][index]=x;else P[key][index][component]=x;
+    }
+    function showSlider(x){
+      range.disabled=!Number.isFinite(x);
+      if(range.disabled)return;
+      range.min=Math.min(lo,x);range.max=Math.max(hi,x);range.value=x;
+    }
+    // Use the full round-trip representation. Rounding an integer winding for
+    // display can change its residue modulo L when the user copies it back.
+    number.value=Number.isFinite(read()) ? String(read()) : "";showSlider(read());
+    function input(source){
+      var x=source.valueAsNumber;
+      assign(x);
+      if(source===range)number.value=String(x);
+      else showSlider(read());
+      changed();
+    }
+    number.addEventListener("change",function(){
+      if(angle && Math.abs(number.valueAsNumber)>2)number.value=String(read());
+    });
     number.addEventListener("input",function(){input(number);});range.addEventListener("input",function(){input(range);});
     box.appendChild(caption);box.appendChild(number);box.appendChild(range);fs.appendChild(box);
   }
   function renderControls() {
-    document.getElementById("ansatz-family").value=kind;document.getElementById("ansatz-size").value=L;
+    document.getElementById("ansatz-family").value=kind;
+    const sizeSelect=document.getElementById("ansatz-size");
+    const previousCustom=sizeSelect.querySelector("[data-imported-size]");
+    if(previousCustom && Number(previousCustom.value)!==L) previousCustom.remove();
+    if(!Array.from(sizeSelect.options).some(opt=>Number(opt.value)===L)) {
+      const option=new Option(String(L),String(L));
+      option.dataset.importedSize="";sizeSelect.add(option);
+    }
+    sizeSelect.value=L;
     document.getElementById("family-description").textContent=labText(kind);
     document.getElementById("ansatz-parameters").replaceChildren();
     var qbox=fieldset(labText("qnTitle"));
@@ -1042,15 +1060,49 @@ E = Ω + μNₑ</div>
   document.getElementById("ansatz-size").addEventListener("change",function(e){L=Number(e.target.value);prepareDFT();renderControls();changed();});
   document.getElementById("reset").addEventListener("click",function(){P=defaults(kind);renderControls();changed();});
   document.getElementById("refine").addEventListener("click",refineCharge);
+  function setRequest(request) {
+    if(!request || !["multiq","proper_screw","skx2_product","gen2q","conical","vc"].includes(request.family))
+      throw new Error(labText("unknownFamily"));
+    if(!Number.isInteger(request.L) || request.L<4 || request.L>36) throw new Error(labText("badL"));
+    const input=request.parameters;
+    if(!input || typeof input!=="object" || !Array.isArray(input.qn)) throw new Error(labText("badQN"));
+    const nextKind=request.family==="multiq" ? (input.qn.length===1 ? "single" : "double") : request.family;
+    const template=defaults(nextKind);
+    if(input.qn.length!==template.qn.length) throw new Error(labText("badShape","qn"));
+    if(Object.keys(input).length!==Object.keys(template).length) throw new Error(labText("badShape","parameters"));
+    const parameters={};
+    // Validate the complete [nQ,2] winding table and family-specific vector
+    // dimensions before changing the lattice, control panel or current result.
+    for(const [name,example] of Object.entries(template)) {
+      if(!Object.hasOwn(input,name)) throw new Error(labText("badShape",name));
+      const value=input[name];
+      if(name==="qn") {
+        parameters.qn=Array.from(value,row=>{
+          if(!Array.isArray(row) || row.length!==2 || !Array.from(row).every(Number.isSafeInteger))
+            throw new Error(labText("badQN"));
+          return row.slice();
+        });
+      } else if(Array.isArray(example)) {
+        let entries=Array.isArray(value) ? Array.from(value) : [value];
+        // spin_generator accepts a shared scalar for all multiq waves.
+        if(request.family==="multiq" && entries.length===1) entries=Array(example.length).fill(entries[0]);
+        if(entries.length!==example.length) throw new Error(labText("badShape",name));
+        if(!entries.every(Number.isFinite)) throw new Error(labText("nonfinite"));
+        parameters[name]=entries;
+      } else {
+        if(!Number.isFinite(value)) throw new Error(labText("nonfinite"));
+        parameters[name]=value;
+      }
+    }
+    // A well-formed but physically degenerate ansatz can be displayed and
+    // corrected. The normal validation/ED gate prevents using it as a spin.
+    L=request.L;kind=nextKind;P=parameters;prepareDFT();renderControls();changed();
+  }
   window.variationalLab={
     getRequest:getRequest,
     getSpin:function(){var r=build();if(r.bad)throw new Error(r.reason);return Array.from(r.S);},
     validate:function(){var r=build();return r.bad?r.reason:"";},
-    setRequest:function(request){
-      if(!request || !["multiq","proper_screw","skx2_product","gen2q","conical","vc"].includes(request.family))throw new Error(labText("unknownFamily"));
-      kind=request.family==="multiq"?(request.parameters.qn.length===1?"single":"double"):request.family;
-      L=request.L;P=copy(request.parameters);prepareDFT();renderControls();changed();
-    }
+    setRequest:setRequest
   };
 
   var mq = window.matchMedia("(prefers-color-scheme: dark)");

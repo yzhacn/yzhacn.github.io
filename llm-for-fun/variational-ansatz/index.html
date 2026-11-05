@@ -696,6 +696,305 @@ window.VariationalNoteText = Object.freeze({
 
 </script>
 <script>
+/* Square-lattice frozen-spin observables, matching tools/fixedq_variational/observables.py.
+ * Input: flat spin or field indexed by 3*(x*L+y)+component; a=1, periodic x,y.
+ * Returned maps are ordinary arrays in [x][y] order. Undefined physical values
+ * are null, keeping a true zero distinct from an invalid or absent measurement.
+ */
+(() => {
+  "use strict";
+  const TAU = 2 * Math.PI;
+  const SPLIT_TOL = 1e-3, SINGULAR_TOL = 1e-10, PERIOD_TOL = 1e-8;
+  const COMPONENTS = ["x", "y", "z", "xy", "total"];
+  const Q_NAMES = ["Q1", "Q2", "Q1minusQ2", "Q1plusQ2"];
+  const mod = (n, L) => ((n % L) + L) % L;
+  const matrix = (L, value) =>
+    Array.from({length:L}, (_, x) => Array.from({length:L}, (_, y) => value(x,y)));
+
+  function vectorGrid(L, flat, unit) {
+    if (!Number.isSafeInteger(L) || L < 1 || !flat || flat.length !== 3*L*L)
+      throw new Error("自旋或场需要 L×L×3 个分量。");
+    return matrix(L, (x,y) => {
+      const i = 3*(x*L+y), v = [flat[i], flat[i+1], flat[i+2]];
+      if (!v.every(Number.isFinite)) throw new Error("自旋或场含非有限分量。");
+      if (unit && Math.abs(Math.hypot(...v)-1) > 1e-10)
+        throw new Error("自旋模长与 1 的最大允许偏差为 1e−10。");
+      return v;
+    });
+  }
+
+  function spinGeometry(L,spin) {
+    const s=vectorGrid(L,spin,true);
+    const lengths=matrix(L,(x,y)=>Math.hypot(...s[x][y]));
+    const directions=matrix(L,(x,y)=>s[x][y].map(v=>v/lengths[x][y]));
+    return {s,lengths,directions};
+  }
+
+  function validateWaves(L, qn) {
+    if (!Array.isArray(qn) || qn.length > 2) throw new Error("需给出零、一或两支基础波矢。");
+    for (let i=0; i<qn.length; i++) {
+      const q = qn[i];
+      if (!Array.isArray(q) || q.length!==2 || !q.every(Number.isSafeInteger))
+        throw new Error("每支波矢必须是两个整数。");
+      if (q.every(n=>mod(n,L)===0)) throw new Error("基础波矢不能等价于零。");
+      for (let j=0; j<i; j++) {
+        if ([1,-1].some(sign=>q.every((n,k)=>mod(n,L)===mod(sign*qn[j][k],L))))
+          throw new Error("两支基础波矢在周期格子上不能相同或反向相同。");
+      }
+    }
+  }
+
+  // Direct, separable DFT on the full L×L grid. No power-of-two assumption.
+  // Maps use Sᵅ(q)=|Σ Sᵅ exp(−iq·r)|²/N; the q-table divides by N again.
+  function structureFactors(L, s, qn) {
+    const N = L*L, middle = Math.floor(L/2);
+    const cos = matrix(L,(k,r)=>Math.cos(TAU*k*r/L));
+    const sin = matrix(L,(k,r)=>-Math.sin(TAU*k*r/L));
+    const axis = Array.from({length:L},(_,i)=>TAU*(i-middle)/L);
+    const structure = {qx:axis, qy:axis.slice()};
+    for (const component of COMPONENTS) structure[component] = matrix(L,()=>0);
+    for (let alpha=0; alpha<3; alpha++) {
+      const alongY = matrix(L, (x,ky) => {
+        let re=0, im=0;
+        for (let y=0; y<L; y++) {
+          re += s[x][y][alpha]*cos[ky][y];
+          im += s[x][y][alpha]*sin[ky][y];
+        }
+        return [re, im];
+      });
+      for (let kx=0; kx<L; kx++) for (let ky=0; ky<L; ky++) {
+        let re=0, im=0;
+        for (let x=0; x<L; x++) {
+          const [ry,iy] = alongY[x][ky];
+          re += cos[kx][x]*ry - sin[kx][x]*iy;
+          im += cos[kx][x]*iy + sin[kx][x]*ry;
+        }
+        const ix = mod(kx+middle,L), iy = mod(ky+middle,L);
+        const power = (re*re+im*im)/N;
+        structure[COMPONENTS[alpha]][ix][iy] = power;
+        if (alpha<2) structure.xy[ix][iy] += power;
+        structure.total[ix][iy] += power;
+      }
+    }
+    const waves = [qn[0] || null, qn[1] || null, null, null];
+    if (qn.length===2) {
+      waves[2] = qn[0].map((n,i)=>n-qn[1][i]);
+      waves[3] = qn[0].map((n,i)=>n+qn[1][i]);
+      if (!waves[2].every(Number.isSafeInteger) || !waves[3].every(Number.isSafeInteger))
+        throw new Error("组合波矢超出可精确表示的整数范围。");
+    }
+    const q_vectors={}, q_values={}, q_values_per_site={};
+    for (let j=0; j<Q_NAMES.length; j++) {
+      const key=Q_NAMES[j], q=waves[j];
+      q_vectors[key] = q ? {
+        qn:q.slice(), radians:q.map(n=>TAU*n/L),
+        wrapped_radians:q.map(n=>TAU*(mod(mod(n,L)+middle,L)-middle)/L)
+      } : null;
+      q_values[key]={}; q_values_per_site[key]={};
+      for (const c of COMPONENTS) {
+        const v = q ? structure[c][mod(mod(q[0],L)+middle,L)][mod(mod(q[1],L)+middle,L)] : null;
+        q_values[key][c]=v;
+        q_values_per_site[key][c]=v===null ? null : v/N;
+      }
+    }
+    return {structure, q_vectors, q_values, q_values_per_site};
+  }
+
+  const dot = (a,b) => a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  const triple = (a,b,c) => a[0]*(b[1]*c[2]-b[2]*c[1]) +
+    a[1]*(b[2]*c[0]-b[0]*c[2]) + a[2]*(b[0]*c[1]-b[1]*c[0]);
+
+  function chiralityMap(L,s) {
+    return matrix(L,(x,y)=>{
+      let chi=0;
+      for (const dx of [-1,1]) for (const dy of [-1,1])
+        chi += 0.5*dx*dy*triple(s[x][y],s[mod(x+dx,L)][y],s[x][mod(y+dy,L)]);
+      return chi;
+    });
+  }
+
+  // Square plaquettes A,B,C,D run counterclockwise from site (x,y).
+  // AC and BD diagonals give separate sums. Local splits, antipodal edges and
+  // branches are tested before the geometric charge can be interpreted.
+  function topology(L, directions) {
+    const d = {Q_local_tol:SPLIT_TOL, Q_singular_tol:SINGULAR_TOL,
+      Q_singular_triangles:0, Q_antipodal_triangles:0, Q_branch_triangles:0,
+      Q_A:0, Q_B:0, Q_split:0, Q_local_split_max:0, Q_bad_plaquettes:0,
+      Q_ambiguous_plaquettes:0,
+      topology_convention:"repository_mean_of_AC_and_BD_triangulations_when_valid",
+      topology_map_convention:"mean_of_q_A_and_q_B_per_plaquette",
+      validity_scope:"geometric_diagnostic_at_recorded_tolerances_not_stability_or_continuum_proof"};
+    function triangle(a,b,c) {
+      const ab=dot(a,b), bc=dot(b,c), ca=dot(c,a);
+      const num=triple(a,b,c), den=1+ab+bc+ca;
+      const singular=Math.hypot(num,den)<=SINGULAR_TOL;
+      const antipodal=Math.min(1+ab,1+bc,1+ca)<=SINGULAR_TOL;
+      const branch=Math.abs(num)<=SINGULAR_TOL && den<0;
+      d.Q_singular_triangles+=Number(singular);
+      d.Q_antipodal_triangles+=Number(antipodal);
+      d.Q_branch_triangles+=Number(branch);
+      return {angle:2*Math.atan2(num,den), bad:singular||antipodal||branch};
+    }
+    const mask=matrix(L,()=>false);
+    let invalidA=0, invalidB=0, pos=0, neg=0;
+    let map=matrix(L,(x,y)=>{
+      const a=directions[x][y], b=directions[(x+1)%L][y];
+      const c=directions[(x+1)%L][(y+1)%L], e=directions[x][(y+1)%L];
+      const abc=triangle(a,b,c), acd=triangle(a,c,e);
+      const abd=triangle(a,b,e), bcd=triangle(b,c,e);
+      const qa=(abc.angle+acd.angle)/(4*Math.PI), qb=(abd.angle+bcd.angle)/(4*Math.PI);
+      invalidA+=Number(abc.bad)+Number(acd.bad);
+      invalidB+=Number(abd.bad)+Number(bcd.bad);
+      pos+=Math.max(0,qa); neg+=Math.min(0,qa);
+      const split=qa-qb, badSplit=Math.abs(split)>SPLIT_TOL;
+      d.Q_A+=qa; d.Q_B+=qb; d.Q_split+=split;
+      d.Q_bad_plaquettes+=Number(badSplit);
+      d.Q_local_split_max=Math.max(d.Q_local_split_max,Math.abs(split));
+      mask[x][y]=badSplit||abc.bad||acd.bad||abd.bad||bcd.bad;
+      d.Q_ambiguous_plaquettes+=Number(mask[x][y]);
+      return 0.5*(qa+qb);
+    });
+    d.Q=0.5*(d.Q_A+d.Q_B);
+    d.Q_valid=d.Q_ambiguous_plaquettes===0;
+    if (!d.Q_valid) map=matrix(L,()=>null);
+    const preview={A:invalidA?NaN:d.Q_A, B:invalidB?NaN:d.Q_B,
+      pos:invalidA?NaN:pos, neg:invalidA?NaN:neg, invalidA,invalidB,
+      ambiguousPlaquettes:d.Q_bad_plaquettes,valid:d.Q_valid};
+    return {diagnostics:d,mask,map,preview};
+  }
+
+  function previewCharge(L,spin) {
+    return topology(L,spinGeometry(L,spin).directions).preview;
+  }
+
+  function magneticPeriod(L,s) {
+    const accepted=[], present=matrix(L,()=>false);
+    let maxAcceptedError=0;
+    for (let dx=0; dx<L; dx++) for (let dy=0; dy<L; dy++) {
+      let error=0;
+      for (let x=0; x<L && error<=PERIOD_TOL; x++) for (let y=0; y<L; y++) {
+        const a=s[x][y], b=s[(x+dx)%L][(y+dy)%L];
+        error=Math.max(error, Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]));
+        if (error>PERIOD_TOL) break;
+      }
+      if (error<=PERIOD_TOL) {
+        accepted.push([dx,dy]); present[dx][dy]=true;
+        maxAcceptedError=Math.max(maxAcceptedError,error);
+      }
+    }
+    const count=accepted.length;
+    const closed=accepted.every(([x,y])=>accepted.every(([dx,dy])=>present[(x+dx)%L][(y+dy)%L]));
+    const valid=count>0 && closed && (L*L)%count===0;
+    return {magnetic_period_valid:valid,
+      magnetic_period_reason:valid?"translation_subgroup_verified":"approximate_translations_not_closed",
+      period_tol:PERIOD_TOL, max_accepted_translation_error:maxAcceptedError,
+      accepted_translations:accepted, n_magnetic_cells:valid?count:null, primitive_sites:valid?L*L/count:null};
+  }
+
+  function cellCharges(L, qn, d, period) {
+    const tol=Math.max(1e-8,L*L*128*Number.EPSILON);
+    period.cell_charge_integer_tol=tol;
+    const Q=d.Q_valid ? d.Q : null;
+    let latticeQ=null;
+    if (d.Q_valid && period.magnetic_period_valid) {
+      const proposed=Q/period.n_magnetic_cells;
+      if (Math.abs(proposed-Math.round(proposed))<=tol) latticeQ=proposed;
+    }
+    period.Q_per_magnetic_cell_valid=latticeQ!==null;
+    period.cell_charge_reason=latticeQ!==null?"ok":
+      (d.Q_valid && period.magnetic_period_valid?"magnetic_cell_charge_not_integer":"topology_or_period_invalid");
+    // Rows are the *specified* integer wavevectors, without BZ folding.
+    let phaseCells=null;
+    if (qn.length===2) {
+      const [[a,b],[c,e]]=qn;
+      const det=BigInt(a)*BigInt(e)-BigInt(b)*BigInt(c);
+      if (det!==0n) {
+        phaseCells=Number(det<0n?-det:det);
+        if (!Number.isSafeInteger(phaseCells)) throw new Error("相位原胞数超出可精确表示的整数范围。");
+      }
+    }
+    const phaseQ=Q!==null && phaseCells!==null ? Q/phaseCells : null;
+    const err=phaseQ===null ? null : Math.abs(phaseQ-Math.round(phaseQ));
+    return {Q_total:Q, Q_per_magnetic_cell:latticeQ, abs_Q_per_magnetic_cell:latticeQ===null?null:Math.abs(latticeQ),
+      primitive_sites:period.primitive_sites, n_magnetic_cells:period.n_magnetic_cells,
+      n_phase_cells:phaseCells, Q_per_phase_cell:phaseQ, Q_per_phase_cell_integer_error:err,
+      Q_per_phase_cell_is_integer:err===null?null:err<=tol};
+  }
+
+  function calculate(L, spin, qn) {
+    const {s,lengths,directions}=spinGeometry(L,spin), N=L*L;
+    validateWaves(L,qn);
+    const theta=matrix(L,(x,y)=>Math.acos(Math.max(-1,Math.min(1,directions[x][y][2]))));
+    const {structure,q_vectors,q_values,q_values_per_site}=structureFactors(L,s,qn);
+    const chi=chiralityMap(L,s);
+    const top=topology(L,directions), period=magneticPeriod(L,s);
+    const Q=cellCharges(L,qn,top.diagnostics,period);
+    const M=[0,0,0];
+    let sumChi=0, sumAbsChi=0, sumLength=0, sumSquareLength=0, sumPower=0;
+    for (let x=0; x<L; x++) for (let y=0; y<L; y++) {
+      for (let k=0;k<3;k++) M[k]+=s[x][y][k];
+      sumChi+=chi[x][y]; sumAbsChi+=Math.abs(chi[x][y]);
+      sumLength+=lengths[x][y]; sumSquareLength+=lengths[x][y]**2;
+      sumPower+=structure.total[x][y];
+    }
+    const [Mx,My,Mz]=M.map(v=>v/N), middle=Math.floor(L/2);
+    const scalars={Mx,My,Mz,M_norm:Math.hypot(Mx,My,Mz),M_xy:Math.hypot(Mx,My),
+      mean_moment_length:sumLength/N,rms_moment_length:Math.sqrt(sumSquareLength/N),
+      chi_mean:sumChi/N,chi_abs_mean:Math.abs(sumChi/N),chi_mean_abs:sumAbsChi/N,
+      S_sum_per_site:sumPower/N,S_zero_per_site:structure.total[middle][middle]/N,...Q};
+    return {scalars,base_qn:qn.map(q=>q.slice()),q_vectors,q_values,q_values_per_site,
+      topology_diagnostics:top.diagnostics, magnetic_period:period,
+      arrays:{spin:s,structure,chirality_map:chi,topology_map:top.map,topology_ambiguity_mask:top.mask,
+        moment_length:lengths,unit_directions:directions,theta},
+      conventions:{chirality:"half_sum_dx_dy_dxdy_S_dot_cross_four_neighbors",
+        chi_abs_mean:"abs(mean(chi_i))",chi_mean_abs:"mean(abs(chi_i))",
+        Q_per_magnetic_cell:"sampled Q_total / number of verified lattice translation cells",
+        Q_per_phase_cell:"sampled Q_total / abs(det(base_qn)); valid two independent waves and lattice Q",
+        structure_factor:"abs_DFT_squared_over_N; full shifted grid includes q=0",
+        q_values_per_site:"abs_DFT_squared_over_N_squared",q_labels:"candidate-specific; missing Q is undefined",
+        axes:"real and reciprocal arrays [x][y]",boundary:"periodic in both lattice axes",spin_units:"dimensionless_unit_vector"}};
+  }
+
+  function fields(L, spin, B_el, H, A) {
+    const s=vectorGrid(L,spin,true), el=vectorGrid(L,B_el,false), N=L*L;
+    if (!Number.isFinite(H)||!Number.isFinite(A)) throw new Error("H 和 A 必须为有限值。");
+    let sumZ=0, zMax=0, torqueMax=0, fieldMax=0;
+    const torque=matrix(L,()=>0);
+    const total=matrix(L,(x,y)=>{
+      const [sx,sy,sz]=s[x][y], [bx,by,bzEl]=el[x][y];
+      const anisotropy=A*sz;
+      const bz=bzEl+H+2*anisotropy;
+      const b=Math.hypot(bx,by,bz);
+      const t=Math.hypot(sy*bz-sz*by,sz*bx-sx*bz,sx*by-sy*bx);
+      torque[x][y]=t;
+      sumZ+=sz; zMax=Math.max(zMax,Math.abs(sz));
+      torqueMax=Math.max(torqueMax,t); fieldMax=Math.max(fieldMax,b);
+      return [bx,by,bz];
+    });
+    // Accumulate dimensionless ratios to keep squared finite fields and
+    // torques from underflowing or overflowing before the lattice average.
+    let torqueSum=0, torqueSquares=0, fieldSquares=0, zSquares=0;
+    for (let x=0; x<L; x++) for (let y=0; y<L; y++) {
+      const relativeTorque=torque[x][y]/(torqueMax || 1);
+      const relativeField=Math.hypot(...total[x][y])/(fieldMax || 1);
+      zSquares+=(s[x][y][2]/(zMax || 1))**2;
+      torqueSum+=relativeTorque; torqueSquares+=relativeTorque**2; fieldSquares+=relativeField**2;
+    }
+    const zNorm=zMax*Math.sqrt(zSquares);  // ||Sz|| over the full torus.
+    const scalars={Kz_per_site:zNorm*zNorm/N,torque_rms:torqueMax*Math.sqrt(torqueSquares/N),torque_max:torqueMax,
+      torque_mean:torqueMax*(torqueSum/N),field_rms:fieldMax*Math.sqrt(fieldSquares/N),field_max:fieldMax};
+    // Multiply A by one factor of ||Sz|| first: AΣSz² can be representable
+    // even when each individual Sz² rounds to zero.
+    const E_Z=-H*sumZ, E_A=-(A*zNorm)*zNorm;
+    if (![E_Z,E_A,...Object.values(scalars)].every(Number.isFinite)) throw new Error("经典能量、有效场或力矩超出数值范围。");
+    return {scalars,arrays:{B_el:el,B_total:total,torque_norm:torque},E_Z,E_A};
+  }
+
+  globalThis.VariationalObservables=Object.freeze({calculate,fields,previewCharge});
+})();
+
+</script>
+<script>
 (function () {
   "use strict";
 
@@ -705,6 +1004,7 @@ window.VariationalNoteText = Object.freeze({
     zeroQ: ["当前接口不接受零波矢或与零等价的倒格矢。", "q = 0 と、それに等価な逆格子ベクトルは指定できません。", "A wavevector equal to zero modulo a reciprocal lattice vector is not allowed."],
     repeatedQ: ["两支波在周期格子上等于 ±q；重复检查也包括 SkX2 的和差波。", "二つの波数ベクトルが、格子上で符号を除いて一致します。SkX2 では q₁ + q₂ と q₁ − q₂ もこの判定に含めます。", "Two wavevectors coincide up to sign on the periodic lattice. For SkX2 this check also includes their sum and difference."],
     badL: ["本页支持整数格子尺寸 4 ≤ L ≤ 36。", "格子サイズ L は 4 以上 36 以下の整数にしてください。", "The lattice size L must be an integer between 4 and 36."],
+    badShape: ["{0} 的名称或维度与所选构型不匹配。", "選択したスピン配置と {0} の名前または次元が一致しません。", "The name or dimensions of {0} do not match the selected configuration."],
     nonfinite: ["所有参数必须为有限数。", "すべてのパラメーターに有限の数値を入力してください。", "All parameters must be finite numbers."],
     coneDomain: ["锥态要求 |Mz| ≤ 1。", "円錐らせんでは |Mz| ≤ 1 としてください。", "Conical spins require |Mz| ≤ 1."],
     vcDomain: ["VC 要求 |b| ≤ 1。", "渦結晶（VC）では |b| ≤ 1 としてください。", "The vortex crystal requires |b| ≤ 1."],
@@ -830,7 +1130,9 @@ window.VariationalNoteText = Object.freeze({
     if (kind === "skx2_product") {
       if (!(P.a>0)) return "skxAmplitude";
       var q1=P.qn[0],q2=P.qn[1];
-      if (q1[0]*q2[0]+q1[1]*q2[1]!==0 || q1[0]*q1[0]+q1[1]*q1[1]!==q2[0]*q2[0]+q2[1]*q2[1]) return "squareQ";
+      // On a square lattice the only equal-length perpendicular vectors
+      // are the two quarter turns. Avoid products of large integer windings.
+      if (!((q2[0]===-q1[1] && q2[1]===q1[0]) || (q2[0]===q1[1] && q2[1]===-q1[0]))) return "squareQ";
       return waveError([q1,q2,[q1[0]+q2[0],q1[1]+q2[1]],[q1[0]-q2[0],q1[1]-q2[1]]]);
     }
     return "";
@@ -842,17 +1144,34 @@ window.VariationalNoteText = Object.freeze({
     if (!Number.isInteger(N) || N<2) reason="sampleSize";
     if(reason) return {S:null,bad:true,reason:labText(reason),errorKey:reason};
     var f=family(), qn=P.qn, S=new Float64Array(N*N*3), scale=1, waves=[];
+    // A common positive rescaling leaves S unchanged. Keep all raw fields
+    // and the relative zero-norm threshold representable before normalizing.
+    var offsetZ=0, coefficients, skxDivisor;
+    // Keep lattice phases resolvable even when an imported phase is many turns.
+    // sin/cos reduce the original double in radians before atan2 selects one turn.
+    const principalAngle=angle=>Math.abs(angle)<=2*Math.PI ? angle : Math.atan2(Math.sin(angle),Math.cos(angle));
+    const theta=P.theta.map(principalAngle);
     if(f==="multiq" || f==="proper_screw") {
       var ap=f==="multiq"?P.a_perp:[1], az=f==="multiq"?P.a_z:[P.az];
       var psi=f==="multiq"?P.psi:[P.psi], ga=f==="multiq"?P.gamma:[Math.PI/2];
-      scale=Math.abs(f==="multiq"?P.Mz:P.m0);
+      offsetZ=f==="multiq"?P.Mz:P.m0;
+      const divisor=Math.max(...ap.map(Math.abs),...az.map(Math.abs),Math.abs(offsetZ)) || 1;
+      offsetZ/=divisor;
+      scale=Math.abs(offsetZ);
       qn.forEach(function(q,k){
         var qx=2*Math.PI*q[0]/L,qy=2*Math.PI*q[1]/L,nn=Math.hypot(qx,qy),cg=Math.cos(ga[k]),sg=Math.sin(ga[k]);
-        waves.push({ex:(cg*qx-sg*qy)/nn,ey:(cg*qy+sg*qx)/nn,ap:ap[k],az:az[k],psi:psi[k]});
-        scale+=Math.abs(ap[k])+Math.abs(az[k]);
+        const inPlane=ap[k]/divisor,outOfPlane=az[k]/divisor;
+        waves.push({ex:(cg*qx-sg*qy)/nn,ey:(cg*qy+sg*qx)/nn,ap:inPlane,az:outOfPlane,psi:principalAngle(psi[k])});
+        scale+=Math.abs(inPlane)+Math.abs(outOfPlane);
       });
-    } else if(f==="gen2q") scale=P.c.reduce(function(a,b){return a+Math.abs(b);},0);
-    else if(f==="skx2_product") scale=2+P.a;
+    } else if(f==="gen2q") {
+      const divisor=Math.max(...P.c.map(Math.abs)) || 1;
+      coefficients=P.c.map(c=>c/divisor);
+      scale=coefficients.reduce((sum,c)=>sum+Math.abs(c),0);
+    } else if(f==="skx2_product") {
+      skxDivisor=Math.max(1,P.a);
+      scale=2/skxDivisor+P.a/skxDivisor;
+    }
     var tolerance=32*Number.EPSILON*scale;
     for(var i=0;i<N;i++) for(var j=0;j<N;j++) {
       // Reduce integer windings before sin/cos so periodic copies have
@@ -862,28 +1181,28 @@ window.VariationalNoteText = Object.freeze({
         return 2*Math.PI*turns/N;
       }), raw=[0,0,0];
       if(f==="multiq" || f==="proper_screw") {
-        raw[2]=f==="multiq"?P.Mz:P.m0;
+        raw[2]=offsetZ;
         waves.forEach(function(w,k) {
-          var phi = phase[k] + P.theta[k];
+          var phi = phase[k] + theta[k];
           var amplitude = w.ap * Math.sin(phi + w.psi);
           raw[0] += w.ex * amplitude;
           raw[1] += w.ey * amplitude;
           raw[2] -= w.az * Math.cos(phi);
         });
       } else if(f==="skx2_product") {
-        var p1=phase[0]+P.theta[0],p2=phase[1]+P.theta[1];
-        raw=[Math.sin(p1),Math.sin(p2),P.a*Math.cos(p1)*Math.cos(p2)];
+        var p1=phase[0]+theta[0],p2=phase[1]+theta[1];
+        raw=[Math.sin(p1)/skxDivisor,Math.sin(p2)/skxDivisor,(P.a/skxDivisor)*Math.cos(p1)*Math.cos(p2)];
       } else if(f==="gen2q") {
         // c、theta 均为 (6,)；前三项属 q1，后三项属 q2。
         for(var k=0;k<3;k++) {
-          raw[k] = P.c[k] * Math.cos(phase[0] + P.theta[k]);
-          raw[k] += P.c[k+3] * Math.cos(phase[1] + P.theta[k+3]);
+          raw[k] = coefficients[k] * Math.cos(phase[0] + theta[k]);
+          raw[k] += coefficients[k+3] * Math.cos(phase[1] + theta[k+3]);
         }
       } else if(f==="conical") {
-        var phi=phase[0]+P.theta[0],amp=Math.sqrt(1-P.Mz*P.Mz);
+        var phi=phase[0]+theta[0],amp=Math.sqrt(1-P.Mz*P.Mz);
         raw=[amp*Math.cos(phi),amp*Math.sin(phi),P.Mz];
       } else if(f==="vc") {
-        var p1=phase[0]+P.theta[0],p2=phase[1]+P.theta[1],c=Math.cos(p2),amp=Math.sqrt(1-P.b*P.b+P.b*P.b*c*c);
+        var p1=phase[0]+theta[0],p2=phase[1]+theta[1],c=Math.cos(p2),amp=Math.sqrt(1-P.b*P.b+P.b*P.b*c*c);
         raw=[amp*Math.cos(p1),amp*Math.sin(p1),P.b*Math.sin(p2)];
       }
       // 与 normalize_spin 一致，零模检查之后才逐点归一化。
@@ -897,43 +1216,9 @@ window.VariationalNoteText = Object.freeze({
     return {S:S,bad:false};
   }
 
-  // ── Berg–Lüscher 晶格几何荷：单位自旋，面积单位 sr，Q 无量纲 ──
-  // 负实轴附近及近反极点的三角形无法可靠选分支；共面且 den>0 是合法零面积。
-  var BL_TOLERANCE = 1e-10;
-  function dot(S, a, b) { return S[a] * S[b] + S[a + 1] * S[b + 1] + S[a + 2] * S[b + 2]; }
-  function omega(S, a, b, c) {
-    var cx = S[b + 1] * S[c + 2] - S[b + 2] * S[c + 1];
-    var cy = S[b + 2] * S[c] - S[b] * S[c + 2];
-    var cz = S[b] * S[c + 1] - S[b + 1] * S[c];
-    var num = S[a] * cx + S[a + 1] * cy + S[a + 2] * cz;
-    var ab = dot(S, a, b), bc = dot(S, b, c), ca = dot(S, c, a);
-    var den = 1 + ab + bc + ca;
-    if (!Number.isFinite(num) || !Number.isFinite(den)
-        || Math.min(1 + ab, 1 + bc, 1 + ca) <= BL_TOLERANCE
-        || (Math.abs(num) <= BL_TOLERANCE && den <= BL_TOLERANCE)) return NaN;
-    return 2 * Math.atan2(num, den);
-  }
-  // A/B 分别固定一种对角线。pos/neg 为 A 的格方几何荷正/负部分和。
-  // 总 Q 相同也可能存在相互抵消的局部剖分差，故另记 ambiguousPlaquettes。
+  // The preview and ED use the same two-diagonal plaquette diagnostic.
   function charge(S) {
-    var N = Math.sqrt(S.length / 3);
-    var QA = 0, QB = 0, pos = 0, neg = 0, invalidA = 0, invalidB = 0, ambiguousPlaquettes = 0;
-    var f = 1 / (4 * Math.PI);
-    for (var i = 0; i < N; i++) for (var j = 0; j < N; j++) {
-      var i1 = (i + 1) % N, j1 = (j + 1) % N;
-      var s1 = (i * N + j) * 3, s2 = (i1 * N + j) * 3, s3 = (i1 * N + j1) * 3, s4 = (i * N + j1) * 3;
-      var a1 = omega(S, s1, s2, s3), a2 = omega(S, s1, s3, s4);
-      var b1 = omega(S, s1, s2, s4), b2 = omega(S, s2, s3, s4);
-      invalidA += Number(!Number.isFinite(a1)) + Number(!Number.isFinite(a2));
-      invalidB += Number(!Number.isFinite(b1)) + Number(!Number.isFinite(b2));
-      var rhoA = (a1 + a2) * f, rhoB = (b1 + b2) * f;
-      if (Number.isFinite(rhoA)) { QA += rhoA; pos += Math.max(0, rhoA); neg += Math.min(0, rhoA); }
-      if (Number.isFinite(rhoB)) QB += rhoB;
-      if (Number.isFinite(rhoA) && Number.isFinite(rhoB) && Math.abs(rhoA - rhoB) > 1e-7) ambiguousPlaquettes++;
-    }
-    return { A: invalidA ? NaN : QA, B: invalidB ? NaN : QB,
-             pos: invalidA ? NaN : pos, neg: invalidA ? NaN : neg,
-             invalidA: invalidA, invalidB: invalidB, ambiguousPlaquettes: ambiguousPlaquettes };
+    return window.VariationalObservables.previewCharge(Math.sqrt(S.length/3),S);
   }
 
   // ── 结构因子（可分离 DFT）───────────────────────────────
@@ -1169,7 +1454,9 @@ window.VariationalNoteText = Object.freeze({
     var flat = flatness(S);
     var coplanar = flat < 1e-6;
     var regular = Q.invalidA === 0 && Q.invalidB === 0;
-    var sameTotal = regular && Math.abs(Q.A - Q.B) < 1e-6;
+    // Local ambiguity alone determines charge validity, just as in ED.
+    // For ambiguous configurations also report whether the raw sums differ.
+    var sameTotal = regular && (Q.valid || Math.abs(Q.A - Q.B) < 1e-6);
     var ratio = pol.hi > 1e-9 ? pol.lo / pol.hi : 0;
 
     drawReal(S); drawSF(F); drawBars();
@@ -1246,17 +1533,46 @@ window.VariationalNoteText = Object.freeze({
     var id="ansatz-"+key+(index===null?"":"-"+index)+(component===undefined?"":"-"+component);
     var caption=document.createElement("label");caption.htmlFor=id;caption.textContent=label;
     var number=document.createElement("input"),range=document.createElement("input");
-    number.type="number";number.id=id;number.step=String(step);number.setAttribute("aria-label",labText("valueInput",label));
+    number.type="number";number.id=id;number.step=key==="qn"?"1":"any";number.setAttribute("aria-label",labText("valueInput",label));
     range.type="range";range.min=lo;range.max=hi;range.step=step;range.setAttribute("aria-label",labText("slider",label));
     function read(){var x=index===null?P[key]:component===undefined?P[key][index]:P[key][index][component];return angle?x/Math.PI:x;}
-    function assign(x){x=angle?x*Math.PI:x;if(index===null)P[key]=x;else if(component===undefined)P[key][index]=x;else P[key][index][component]=x;}
-    number.value=Number.isFinite(read()) ? String(Number(read().toPrecision(12))) : "";range.value=read();
-    function input(source){var x=source.value===""?NaN:Number(source.value);assign(x);if(source===range)number.value=String(Number(x.toPrecision(12)));else if(Number.isFinite(x))range.value=x;changed();}
+    function assign(x){
+      // Angles are entered in units of π. Reduce in these units before converting
+      // to radians so even an exact, very large even integer still gives phase 0.
+      if(angle) x=(Math.abs(x)>2 ? x%2 : x)*Math.PI;
+      if(index===null)P[key]=x;else if(component===undefined)P[key][index]=x;else P[key][index][component]=x;
+    }
+    function showSlider(x){
+      range.disabled=!Number.isFinite(x);
+      if(range.disabled)return;
+      range.min=Math.min(lo,x);range.max=Math.max(hi,x);range.value=x;
+    }
+    // Use the full round-trip representation. Rounding an integer winding for
+    // display can change its residue modulo L when the user copies it back.
+    number.value=Number.isFinite(read()) ? String(read()) : "";showSlider(read());
+    function input(source){
+      var x=source.valueAsNumber;
+      assign(x);
+      if(source===range)number.value=String(x);
+      else showSlider(read());
+      changed();
+    }
+    number.addEventListener("change",function(){
+      if(angle && Math.abs(number.valueAsNumber)>2)number.value=String(read());
+    });
     number.addEventListener("input",function(){input(number);});range.addEventListener("input",function(){input(range);});
     box.appendChild(caption);box.appendChild(number);box.appendChild(range);fs.appendChild(box);
   }
   function renderControls() {
-    document.getElementById("ansatz-family").value=kind;document.getElementById("ansatz-size").value=L;
+    document.getElementById("ansatz-family").value=kind;
+    const sizeSelect=document.getElementById("ansatz-size");
+    const previousCustom=sizeSelect.querySelector("[data-imported-size]");
+    if(previousCustom && Number(previousCustom.value)!==L) previousCustom.remove();
+    if(!Array.from(sizeSelect.options).some(opt=>Number(opt.value)===L)) {
+      const option=new Option(String(L),String(L));
+      option.dataset.importedSize="";sizeSelect.add(option);
+    }
+    sizeSelect.value=L;
     document.getElementById("family-description").textContent=labText(kind);
     document.getElementById("ansatz-parameters").replaceChildren();
     var qbox=fieldset(labText("qnTitle"));
@@ -1285,15 +1601,49 @@ window.VariationalNoteText = Object.freeze({
   document.getElementById("ansatz-size").addEventListener("change",function(e){L=Number(e.target.value);prepareDFT();renderControls();changed();});
   document.getElementById("reset").addEventListener("click",function(){P=defaults(kind);renderControls();changed();});
   document.getElementById("refine").addEventListener("click",refineCharge);
+  function setRequest(request) {
+    if(!request || !["multiq","proper_screw","skx2_product","gen2q","conical","vc"].includes(request.family))
+      throw new Error(labText("unknownFamily"));
+    if(!Number.isInteger(request.L) || request.L<4 || request.L>36) throw new Error(labText("badL"));
+    const input=request.parameters;
+    if(!input || typeof input!=="object" || !Array.isArray(input.qn)) throw new Error(labText("badQN"));
+    const nextKind=request.family==="multiq" ? (input.qn.length===1 ? "single" : "double") : request.family;
+    const template=defaults(nextKind);
+    if(input.qn.length!==template.qn.length) throw new Error(labText("badShape","qn"));
+    if(Object.keys(input).length!==Object.keys(template).length) throw new Error(labText("badShape","parameters"));
+    const parameters={};
+    // Validate the complete [nQ,2] winding table and family-specific vector
+    // dimensions before changing the lattice, control panel or current result.
+    for(const [name,example] of Object.entries(template)) {
+      if(!Object.hasOwn(input,name)) throw new Error(labText("badShape",name));
+      const value=input[name];
+      if(name==="qn") {
+        parameters.qn=Array.from(value,row=>{
+          if(!Array.isArray(row) || row.length!==2 || !Array.from(row).every(Number.isSafeInteger))
+            throw new Error(labText("badQN"));
+          return row.slice();
+        });
+      } else if(Array.isArray(example)) {
+        let entries=Array.isArray(value) ? Array.from(value) : [value];
+        // spin_generator accepts a shared scalar for all multiq waves.
+        if(request.family==="multiq" && entries.length===1) entries=Array(example.length).fill(entries[0]);
+        if(entries.length!==example.length) throw new Error(labText("badShape",name));
+        if(!entries.every(Number.isFinite)) throw new Error(labText("nonfinite"));
+        parameters[name]=entries;
+      } else {
+        if(!Number.isFinite(value)) throw new Error(labText("nonfinite"));
+        parameters[name]=value;
+      }
+    }
+    // A well-formed but physically degenerate ansatz can be displayed and
+    // corrected. The normal validation/ED gate prevents using it as a spin.
+    L=request.L;kind=nextKind;P=parameters;prepareDFT();renderControls();changed();
+  }
   window.variationalLab={
     getRequest:getRequest,
     getSpin:function(){var r=build();if(r.bad)throw new Error(r.reason);return Array.from(r.S);},
     validate:function(){var r=build();return r.bad?r.reason:"";},
-    setRequest:function(request){
-      if(!request || !["multiq","proper_screw","skx2_product","gen2q","conical","vc"].includes(request.family))throw new Error(labText("unknownFamily"));
-      kind=request.family==="multiq"?(request.parameters.qn.length===1?"single":"double"):request.family;
-      L=request.L;P=copy(request.parameters);prepareDFT();renderControls();changed();
-    }
+    setRequest:setRequest
   };
 
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -1382,7 +1732,10 @@ window.VariationalNoteText = Object.freeze({
   }
   function colorAt(value, range, ramp) {
     if (!Number.isFinite(value) || !range) return missing;
-    return ramp[Math.round(255*clamp((value-range[0])/(range[1]-range[0]),0,1))];
+    // Signed maps have symmetric limits. Form the fraction before adding
+    // the offset so that a finite field never needs the full width 2|max B|.
+    const fraction = range[0] < 0 ? (1+value/range[1])/2 : value/range[1];
+    return ramp[Math.round(255*clamp(fraction,0,1))];
   }
   function colorbar(ctx, range, ramp, label, angle=false) {
     const x=553, y=88, height=411, width=16;
@@ -1525,11 +1878,19 @@ window.VariationalNoteText = Object.freeze({
     if (!levels.length || !Array.from(levels).every((n,i)=>Number.isFinite(n)&&(i===0||n>=levels[i-1]))) {
       throw new Error("绘图需要有限、已排序的单粒子能级。");
     }
-    const low=Math.min(0,levels[0]),high=Math.max(0,levels[levels.length-1]),pad=.06*(high-low||1);
-    const yMin=low-pad, yMax=high+pad;
-    const px=i=>left+width*(i-1)/Math.max(1,levels.length-1),py=y=>top+height*(yMax-y)/(yMax-yMin);
+    const low=Math.min(0,levels[0]), high=Math.max(0,levels[levels.length-1]);
+    // Work in units of the largest |λ| on the ordinate. Even when each λ
+    // is finite, multiplying its distance from a tick by a pixel height
+    // or computing high-low in energy units can overflow.
+    const scale=Math.max(-low,high) || 1;
+    const lower=low/scale, upper=high/scale, pad=.06*(upper-lower || 1);
+    const yMin=lower-pad, yMax=upper+pad;
+    const px=i=>left+width*(i-1)/Math.max(1,levels.length-1);
+    const py=y=>top+height*((yMax-y/scale)/(yMax-yMin));
     for(let i=0;i<=4;i++) {
-      const tick=yMin+(yMax-yMin)*i/4;
+      // Convex interpolation stays inside the representable energy range.
+      const fraction=i/4, tick=(1-fraction)*low+fraction*high;
+      if(low===high && i>0) break;
       line(ctx,left,py(tick),left+width,py(tick),"#dce3eb");
       text(ctx,fmt(tick),left-9,py(tick),14,"right",muted);
     }
@@ -1595,13 +1956,15 @@ window.VariationalNoteText = Object.freeze({
 <script type="text/plain" id="ed-third-party-notices">
 # Browser electronic eigensolver
 
-`electron-solver.js` builds the complex128 periodic-square KLM Hamiltonian, diagonalizes it and evaluates the occupied-state field. `eigen-kernel.js` contains the WebAssembly program as base64 so the Worker can initialize it without fetching a binary. It uses standard WebAssembly SIMD and has no imported functions, shared memory, threads, network or filesystem dependencies. Numerical results record the SHA-256 of the kernel. The Python reference is `src/ecnn4klm/util/exact.py::klmsq2d_gc`.
+`electron-solver.js` builds the complex128 periodic-square KLM Hamiltonian, diagonalizes it and evaluates the occupied-state field. `eigen-kernel.js` contains the WebAssembly program as base64 so the Worker can initialize it without fetching a binary. It uses standard WebAssembly SIMD and has no imported functions, shared memory, threads, network or filesystem dependencies. Numerical results record the SHA-256 of the kernel. The dense Python reference is `tools/variational_note_server.py::note_electrons`. It uses `src/ecnn4klm/util/exact.py::square_hamiltonian`, the same matrix builder as `klmsq2d_gc`, with μ set to zero during matrix construction.
 
 The only C++ wrapper is `eigen-wrapper.cpp`. Its column-major complex matrix stores two adjacent doubles per entry. Eigen's `SelfAdjointEigenSolver` reduces a Hermitian matrix to tridiagonal form and computes both sorted eigenvalues and normalized eigenvectors. The JavaScript field is obtained by summing the three Pauli-matrix expectations over the occupied columns.
 
+Both electronic paths diagonalize the physical Hamiltonian H₀ and retain its levels ε. They compute λ = ε − μ to determine occupation and the grand potential. Summing occupied ε gives the electronic energy directly, so a large chemical potential cannot erase the physical spectrum through cancellation. For the lattice sizes exposed in the note, a filled band has energy Tr H₀ = 0 and its spin field vanishes. The zero-temperature boundary screen uses 8 × (2L²) × machine epsilon × max(max|λ|, max|ε|, |μ|), including the absolute scales used in diagonalization and subtraction.
+
 `periodic-electrons.js` derives rectangular periods from the specified integer wavevectors and verifies that the proposed tile repeats exactly in the submitted spin array. A matching tile is solved at every allowed twist on the finite torus. All sectors contribute to the sorted spectrum and to the occupied-state field, whose local expectations carry a factor of one over the number of tiles. The zero-temperature resolution check uses the complete spectrum and the full dimension (2L²). Other textures use the original dense solver.
 
-Run `python -B tools/export_variational_note_site.py <new-directory>` from the repository root to produce a standalone `index.html`. The executable modules, styles and third-party notices are embedded for both GitHub Pages and local offline use. The adjacent sources and checksum list support inspection and rebuilding.
+The published `index.html` embeds the executable modules, styles and third-party notices for both GitHub Pages and local offline use. The adjacent sources and checksum list support inspection and rebuilding.
 
 To rebuild, download and extract [unmodified Eigen 3.4.0 source](https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz) (tar.gz SHA-256 `8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72`). Use [Zig 0.13.0](https://ziglang.org/download/) as the WASI C++ compiler and linker. The original Windows build used the `ziglang-0.13.0-py3-none-win_amd64.whl` distribution from [PyPI](https://pypi.org/project/ziglang/0.13.0/) (SHA-256 `b64b2aa936ebbfeecfbb2611df331a5474edebe1246b98c2f56d6ae4d58b71fc`). With these directories available, from the repository root run:
 
@@ -3153,9 +3516,9 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     for (let x=0; x<L; x++) for (let y=0; y<L; y++) {
       const site=x*L+y, up=2*site, down=up+1;
       const sx=spin[3*site], sy=spin[3*site+1], sz=spin[3*site+2];
-      // −J/2 S·σ − µ: fill onsite entries before adding periodic image bonds.
-      A[entry(up,up)] += -p.mu-p.J*sz/2;
-      A[entry(down,down)] += -p.mu+p.J*sz/2;
+      // H₀ has the physical levels ε. Subtract μ only after diagonalization.
+      A[entry(up,up)] += -p.J*sz/2;
+      A[entry(down,down)] += p.J*sz/2;
       A[entry(up,down)] += -p.J*sx/2; A[entry(up,down)+1] += p.J*sy/2;
       A[entry(down,up)] += -p.J*sx/2; A[entry(down,up)+1] += -p.J*sy/2;
       for (const [t,bonds] of shells) {
@@ -3172,16 +3535,16 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     }
   }
 
-  function occupation(lambda) {
-    let maxAbs=0, minAbs=Infinity, nOccupied=0;
+  function occupation(lambda, energyScale=0) {
+    let maxAbs=energyScale, minAbs=Infinity, nOccupied=0;
     for (let j=0;j<lambda.length;j++) {
       const e=lambda[j];
       if (!Number.isFinite(e) || (j>0 && e<lambda[j-1])) throw Error('电子本征值非有限或顺序不正确');
       maxAbs=Math.max(maxAbs,Math.abs(e)); minAbs=Math.min(minAbs,Math.abs(e));
       if (e<0) nOccupied++;
     }
-    // Same occupation resolution rule as exact._occupation_diagnostics. The
-    // threshold screens unresolved zero levels. It is not a broadening.
+    // Match the resolution screen of exact._occupation_diagnostics, extended
+    // to include the scale of H₀ and μ because ε−μ is evaluated after ED.
     const delta=8*lambda.length*Number.EPSILON*maxAbs;
     const unresolved=lambda.reduce((count,e)=>count+(Math.abs(e)<=delta ? 1 : 0),0);
     const diag={sample:0,resolved:unresolved===0,occupation_policy:'lambda<0',
@@ -3195,6 +3558,27 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
       throw error;
     }
     return diag;
+  }
+
+  function occupiedSpectrum(epsilon, L, p) {
+    const lambda=epsilon.map(e=>e-p.mu);
+    let scale=Math.abs(p.mu);
+    for (const e of epsilon) scale=Math.max(scale,Math.abs(e));
+    const diag=occupation(lambda, scale), N_e=diag.n_occupied;
+    let E_el=0, Omega_el=0;
+    for (let i=0; i<N_e; i++) {
+      E_el+=epsilon[i];
+      Omega_el+=lambda[i];
+    }
+    // A full band has E_el = Tr H₀. For L≥3 none of the four hopping
+    // shells has a self-image, and the onsite spin coupling is traceless.
+    if (N_e===epsilon.length && L>=3) {
+      E_el=0;
+      Omega_el=-p.mu*N_e;
+    }
+    if (!Number.isFinite(E_el) || !Number.isFinite(Omega_el)) throw Error('电子能量或有效场超出双精度范围。');
+    return {spectrum:{lambda, epsilon, occupied:Uint8Array.from(lambda,e=>Number(e<0))},
+      E_el, Omega_el, N_e, occupation_diagnostics:diag};
   }
 
   // Fill and consume the dense matrix in WASM memory so the L=36 reference
@@ -3211,9 +3595,9 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
       const info=wasm.ed_diagonalize(n,matrix,levels);
       if (info!==0) throw Error(`厄米矩阵本征求解未收敛 (Eigen status ${info})`);
       // The solver may grow WASM memory: reacquire views after the call.
-      const lambda=new Float64Array(wasm.memory.buffer,levels,n).slice();
+      const eigenvalues=new Float64Array(wasm.memory.buffer,levels,n).slice();
       const vectors=new Float64Array(wasm.memory.buffer,matrix,2*n*n);
-      return consume(lambda,vectors);
+      return consume(eigenvalues,vectors);
     } catch (error) {
       // An abort may leave the allocator inconsistent. A later click starts a
       // fresh instance instead of using memory owned by an interrupted solve.
@@ -3229,7 +3613,7 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     if (!Number.isInteger(n) || n<1 || n>2*36*36 || A.length!==2*n*n) {
       throw Error('厄米矩阵需要有限的复数数组（实虚交错，按列排列）');
     }
-    return withEigenvectors(n, M=>M.set(A), (lambda,V)=>({lambda,vectors:V.slice()}));
+    return withEigenvectors(n, M=>M.set(A), (eigenvalues,V)=>({lambda:eigenvalues,vectors:V.slice()}));
   }
 
   async function evaluateElectrons(spin,L,p) {
@@ -3243,12 +3627,12 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     for (const key of ['t1','t2','t3','t4','J','mu']) {
       if (!Number.isFinite(p[key])) throw Error(`电子参数 ${key} 必须是有限数`);
     }
-    return withEigenvectors(n,A=>buildHamiltonian(A,spin,L,p),(lambda,vectors)=>{
-      const diag=occupation(lambda), N_e=diag.n_occupied;
-      let Omega_el=0;
+    return withEigenvectors(n,A=>buildHamiltonian(A,spin,L,p),(epsilon,vectors)=>{
+      const el=occupiedSpectrum(epsilon, L, p);
       const B_el=new Float64Array(3*N);
-      for (let k=0;k<N_e;k++) {
-        Omega_el+=lambda[k];
+      // A filled spin doublet has density matrix I and zero Pauli trace.
+      const partialCount=el.N_e===n ? 0 : el.N_e;
+      for (let k=0;k<partialCount;k++) {
         // Each column is one occupied eigenvector. At site i the two amplitudes
         // u,d contribute (J Re(u* d), J Im(u* d), J (|u|²−|d|²)/2).
         for (let i=0,j=2*n*k;i<N;i++,j+=4) {
@@ -3258,14 +3642,12 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
           B_el[3*i+2]+=(p.J/2)*(ur*ur+ui*ui-dr*dr-di*di);
         }
       }
-      const E_el=Omega_el+p.mu*N_e;
-      if (!Number.isFinite(E_el) || !B_el.every(Number.isFinite)) throw Error('电子能量或有效场非有限');
-      return {spectrum:{lambda,epsilon:lambda.map(e=>e+p.mu),occupied:Uint8Array.from(lambda,e=>Number(e<0))},
-        B_el,Omega_el,E_el,N_e,occupation_diagnostics:diag,
+      if (!B_el.every(Number.isFinite)) throw Error('电子能量或有效场非有限');
+      return {...el, B_el,
         implementation:`Eigen 3.4.0 SelfAdjointEigenSolver, complex128, WASM SHA-256 ${global.VariationalEigenSHA256}`};
     });
   }
-  global.VariationalElectrons={evaluateElectrons,diagonalizeHermitian,occupation};
+  global.VariationalElectrons={evaluateElectrons,diagonalizeHermitian,occupation,occupiedSpectrum};
 })(globalThis);
 
 ;
@@ -3302,8 +3684,8 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     A.fill(0);
     for (let x = 0; x < px; x++) for (let y = 0; y < py; y++) {
       const up = 2 * (x * py + y), down = up + 1, s = 3 * (x * L + y);
-      A[at(up,up)] += -p.mu - p.J * spin[s+2] / 2;
-      A[at(down,down)] += -p.mu + p.J * spin[s+2] / 2;
+      A[at(up,up)] += -p.J * spin[s+2] / 2;
+      A[at(down,down)] += p.J * spin[s+2] / 2;
       A[at(up,down)] += -p.J * spin[s] / 2; A[at(up,down)+1] += p.J * spin[s+1] / 2;
       A[at(down,up)] += -p.J * spin[s] / 2; A[at(down,up)+1] -= p.J * spin[s+1] / 2;
       for (const [dx, dy, t] of bonds) {
@@ -3330,11 +3712,13 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     const eigenvalues = new Float64Array(2 * L * L), cellField = new Float64Array(3 * px * py);
     for (let ix = 0; ix < Kx; ix++) for (let iy = 0; iy < Ky; iy++) {
       buildBlock(A, spin, L, px, py, 2*Math.PI*ix/Kx, 2*Math.PI*iy/Ky, electronic);
-      const {lambda, vectors} = await solver.diagonalizeHermitian(A, n);
-      eigenvalues.set(lambda, n * (ix * Ky + iy));
+      const {lambda:epsilon, vectors} = await solver.diagonalizeHermitian(A, n);
+      eigenvalues.set(epsilon, n * (ix * Ky + iy));
       // The full normalized wave has a 1/sqrt(sectors) prefactor.
       // Discard these provisional sums if the global occupation is unresolved.
-      for (let level = 0; level < n && lambda[level] < 0; level++) {
+      // A fully occupied sector contributes zero local spin at every site.
+      if (epsilon[n-1] < electronic.mu) continue;
+      for (let level = 0; level < n && epsilon[level] < electronic.mu; level++) {
         for (let site = 0; site < px * py; site++) {
           const u = 2 * (level * n + 2 * site);
           const ur = vectors[u], ui = vectors[u+1], dr = vectors[u+2], di = vectors[u+3];
@@ -3345,19 +3729,14 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
       }
     }
     eigenvalues.sort();
-    const diag = solver.occupation(eigenvalues);
-    let omega = 0;
-    for (let j = 0; j < diag.n_occupied; j++) omega += eigenvalues[j];
+    const el = solver.occupiedSpectrum(eigenvalues, L, electronic);
     const field = new Float64Array(3 * L * L);
     for (let x = 0; x < L; x++) for (let y = 0; y < L; y++) {
       const source = 3 * ((x % px) * py + y % py);
       for (let a = 0; a < 3; a++) field[3*(x*L+y)+a] = cellField[source+a] / sectors;
     }
-    const energy = omega + electronic.mu * diag.n_occupied;
-    if (!Number.isFinite(energy) || !field.every(Number.isFinite)) throw Error("电子能量或有效场超出双精度范围。");
-    return {spectrum:{lambda:eigenvalues, epsilon:eigenvalues.map(v=>v+electronic.mu),
-      occupied:Uint8Array.from(eigenvalues, v=>Number(v<0))}, B_el:field, Omega_el:omega,
-      E_el:energy, N_e:diag.n_occupied, occupation_diagnostics:diag,
+    if (!field.every(Number.isFinite)) throw Error("电子能量或有效场超出双精度范围。");
+    return {...el, B_el:field,
       implementation:{method:"finite-torus Bloch sectors", cell, k_grid:[Kx,Ky],
         eigensolver:"Eigen 3.4.0 SelfAdjointEigenSolver complex128", wasm_sha256:self.VariationalEigenSHA256}};
   }
@@ -3390,6 +3769,13 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
         throw new Error("自旋模长与 1 的最大允许偏差为 1e−10。");
       return v;
     });
+  }
+
+  function spinGeometry(L,spin) {
+    const s=vectorGrid(L,spin,true);
+    const lengths=matrix(L,(x,y)=>Math.hypot(...s[x][y]));
+    const directions=matrix(L,(x,y)=>s[x][y].map(v=>v/lengths[x][y]));
+    return {s,lengths,directions};
   }
 
   function validateWaves(L, qn) {
@@ -3498,12 +3884,16 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
       return {angle:2*Math.atan2(num,den), bad:singular||antipodal||branch};
     }
     const mask=matrix(L,()=>false);
+    let invalidA=0, invalidB=0, pos=0, neg=0;
     let map=matrix(L,(x,y)=>{
       const a=directions[x][y], b=directions[(x+1)%L][y];
       const c=directions[(x+1)%L][(y+1)%L], e=directions[x][(y+1)%L];
       const abc=triangle(a,b,c), acd=triangle(a,c,e);
       const abd=triangle(a,b,e), bcd=triangle(b,c,e);
       const qa=(abc.angle+acd.angle)/(4*Math.PI), qb=(abd.angle+bcd.angle)/(4*Math.PI);
+      invalidA+=Number(abc.bad)+Number(acd.bad);
+      invalidB+=Number(abd.bad)+Number(bcd.bad);
+      pos+=Math.max(0,qa); neg+=Math.min(0,qa);
       const split=qa-qb, badSplit=Math.abs(split)>SPLIT_TOL;
       d.Q_A+=qa; d.Q_B+=qb; d.Q_split+=split;
       d.Q_bad_plaquettes+=Number(badSplit);
@@ -3515,7 +3905,14 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
     d.Q=0.5*(d.Q_A+d.Q_B);
     d.Q_valid=d.Q_ambiguous_plaquettes===0;
     if (!d.Q_valid) map=matrix(L,()=>null);
-    return {diagnostics:d, mask, map};
+    const preview={A:invalidA?NaN:d.Q_A, B:invalidB?NaN:d.Q_B,
+      pos:invalidA?NaN:pos, neg:invalidA?NaN:neg, invalidA,invalidB,
+      ambiguousPlaquettes:d.Q_bad_plaquettes,valid:d.Q_valid};
+    return {diagnostics:d,mask,map,preview};
+  }
+
+  function previewCharge(L,spin) {
+    return topology(L,spinGeometry(L,spin).directions).preview;
   }
 
   function magneticPeriod(L,s) {
@@ -3573,10 +3970,8 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
   }
 
   function calculate(L, spin, qn) {
-    const s=vectorGrid(L,spin,true), N=L*L;
+    const {s,lengths,directions}=spinGeometry(L,spin), N=L*L;
     validateWaves(L,qn);
-    const lengths=matrix(L,(x,y)=>Math.hypot(...s[x][y]));
-    const directions=matrix(L,(x,y)=>s[x][y].map(v=>v/lengths[x][y]));
     const theta=matrix(L,(x,y)=>Math.acos(Math.max(-1,Math.min(1,directions[x][y][2]))));
     const {structure,q_vectors,q_values,q_values_per_site}=structureFactors(L,s,qn);
     const chi=chiralityMap(L,s);
@@ -3611,27 +4006,39 @@ globalThis.VariationalEigenBase64="AGFzbQEAAAABlQETYAAAYAF/AX9gA39/fwF/YAJ/fwF/Y
   function fields(L, spin, B_el, H, A) {
     const s=vectorGrid(L,spin,true), el=vectorGrid(L,B_el,false), N=L*L;
     if (!Number.isFinite(H)||!Number.isFinite(A)) throw new Error("H 和 A 必须为有限值。");
-    let sumZ=0,sumZ2=0,sumTorque=0,sumTorque2=0,sumField2=0,torqueMax=0,fieldMax=0;
+    let sumZ=0, zMax=0, torqueMax=0, fieldMax=0;
     const torque=matrix(L,()=>0);
     const total=matrix(L,(x,y)=>{
       const [sx,sy,sz]=s[x][y], [bx,by,bzEl]=el[x][y];
-      const bz=bzEl+H+2*A*sz;
+      const anisotropy=A*sz;
+      const bz=bzEl+H+2*anisotropy;
       const b=Math.hypot(bx,by,bz);
       const t=Math.hypot(sy*bz-sz*by,sz*bx-sx*bz,sx*by-sy*bx);
       torque[x][y]=t;
-      sumZ+=sz; sumZ2+=sz*sz;
-      sumTorque+=t; sumTorque2+=t*t; torqueMax=Math.max(torqueMax,t);
-      sumField2+=b*b; fieldMax=Math.max(fieldMax,b);
+      sumZ+=sz; zMax=Math.max(zMax,Math.abs(sz));
+      torqueMax=Math.max(torqueMax,t); fieldMax=Math.max(fieldMax,b);
       return [bx,by,bz];
     });
-    const scalars={Kz_per_site:sumZ2/N,torque_rms:Math.sqrt(sumTorque2/N),torque_max:torqueMax,
-      torque_mean:sumTorque/N,field_rms:Math.sqrt(sumField2/N),field_max:fieldMax};
-    const E_Z=-H*sumZ, E_A=-A*sumZ2;
+    // Accumulate dimensionless ratios to keep squared finite fields and
+    // torques from underflowing or overflowing before the lattice average.
+    let torqueSum=0, torqueSquares=0, fieldSquares=0, zSquares=0;
+    for (let x=0; x<L; x++) for (let y=0; y<L; y++) {
+      const relativeTorque=torque[x][y]/(torqueMax || 1);
+      const relativeField=Math.hypot(...total[x][y])/(fieldMax || 1);
+      zSquares+=(s[x][y][2]/(zMax || 1))**2;
+      torqueSum+=relativeTorque; torqueSquares+=relativeTorque**2; fieldSquares+=relativeField**2;
+    }
+    const zNorm=zMax*Math.sqrt(zSquares);  // ||Sz|| over the full torus.
+    const scalars={Kz_per_site:zNorm*zNorm/N,torque_rms:torqueMax*Math.sqrt(torqueSquares/N),torque_max:torqueMax,
+      torque_mean:torqueMax*(torqueSum/N),field_rms:fieldMax*Math.sqrt(fieldSquares/N),field_max:fieldMax};
+    // Multiply A by one factor of ||Sz|| first: AΣSz² can be representable
+    // even when each individual Sz² rounds to zero.
+    const E_Z=-H*sumZ, E_A=-(A*zNorm)*zNorm;
     if (![E_Z,E_A,...Object.values(scalars)].every(Number.isFinite)) throw new Error("经典能量、有效场或力矩超出数值范围。");
     return {scalars,arrays:{B_el:el,B_total:total,torque_norm:torque},E_Z,E_A};
   }
 
-  globalThis.VariationalObservables=Object.freeze({calculate,fields});
+  globalThis.VariationalObservables=Object.freeze({calculate,fields,previewCharge});
 })();
 
 ;

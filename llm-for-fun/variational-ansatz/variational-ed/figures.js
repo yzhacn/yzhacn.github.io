@@ -71,7 +71,10 @@
   }
   function colorAt(value, range, ramp) {
     if (!Number.isFinite(value) || !range) return missing;
-    return ramp[Math.round(255*clamp((value-range[0])/(range[1]-range[0]),0,1))];
+    // Signed maps have symmetric limits. Form the fraction before adding
+    // the offset so that a finite field never needs the full width 2|max B|.
+    const fraction = range[0] < 0 ? (1+value/range[1])/2 : value/range[1];
+    return ramp[Math.round(255*clamp(fraction,0,1))];
   }
   function colorbar(ctx, range, ramp, label, angle=false) {
     const x=553, y=88, height=411, width=16;
@@ -214,11 +217,19 @@
     if (!levels.length || !Array.from(levels).every((n,i)=>Number.isFinite(n)&&(i===0||n>=levels[i-1]))) {
       throw new Error("绘图需要有限、已排序的单粒子能级。");
     }
-    const low=Math.min(0,levels[0]),high=Math.max(0,levels[levels.length-1]),pad=.06*(high-low||1);
-    const yMin=low-pad, yMax=high+pad;
-    const px=i=>left+width*(i-1)/Math.max(1,levels.length-1),py=y=>top+height*(yMax-y)/(yMax-yMin);
+    const low=Math.min(0,levels[0]), high=Math.max(0,levels[levels.length-1]);
+    // Work in units of the largest |λ| on the ordinate. Even when each λ
+    // is finite, multiplying its distance from a tick by a pixel height
+    // or computing high-low in energy units can overflow.
+    const scale=Math.max(-low,high) || 1;
+    const lower=low/scale, upper=high/scale, pad=.06*(upper-lower || 1);
+    const yMin=lower-pad, yMax=upper+pad;
+    const px=i=>left+width*(i-1)/Math.max(1,levels.length-1);
+    const py=y=>top+height*((yMax-y/scale)/(yMax-yMin));
     for(let i=0;i<=4;i++) {
-      const tick=yMin+(yMax-yMin)*i/4;
+      // Convex interpolation stays inside the representable energy range.
+      const fraction=i/4, tick=(1-fraction)*low+fraction*high;
+      if(low===high && i>0) break;
       line(ctx,left,py(tick),left+width,py(tick),"#dce3eb");
       text(ctx,fmt(tick),left-9,py(tick),14,"right",muted);
     }
