@@ -16,3 +16,20 @@
       label: 中文
     - code: ja
       label: 日本語
+
+- title: "Variational Spin Textures on the Square Lattice"
+  url: /llm-for-fun/variational-ansatz/
+  category: Physics
+  date: 2026-11-05
+  description: "Adjust a spin texture, examine its symmetry and topological charge, and calculate its zero-temperature energy and electronic spectrum in your browser."
+  features:
+    - Interactive spin textures
+    - Ansatz equations and symmetries
+    - Browser exact diagonalization
+  languages:
+    - code: en
+      label: English
+    - code: zh-CN
+      label: 中文
+    - code: ja
+      label: 日本語
