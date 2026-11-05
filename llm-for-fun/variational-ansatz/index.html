@@ -335,7 +335,7 @@
           <canvas id="sf" width="440" height="440"></canvas>
           <canvas id="cb-sf" class="cbar" width="440" height="12"></canvas>
           <div class="ticks"><span>|S(q)|²/max = 0</span><span>0.5</span><span>1</span></div>
-          <p class="cap" data-i18n="preview.sfCaption">虚线方框 = 第一布里渊区 |q₁|, |q₂| ≤ π；方框外是周期复制像。q = 0 已置零。色标按 (v/max)<sup>0.32</sup> 压缩；近均匀态的非零频谱低于显示阈值时整图留白。</p>
+          <p class="cap" data-i18n="preview.sfCaption">虚线框为第一布里渊区 |q₁|, |q₂| ≤ π，框外为周期重复。预览隐藏 q=0 分量，色标采用 (v/max)<sup>0.32</sup>。当所有 q≠0 分量的谱权重之和不超过全谱权重的 10⁻¹² 时，图中不显示谱强度。</p>
         </div>
       </div>
       <dl class="readouts">
@@ -460,7 +460,7 @@
         <label><span data-i18n="ed.t4">t₄ · 距离 √5</span><input id="ed-t4" type="number" step="any" required></label>
         <label><span data-i18n="ed.mu">μ · 化学势</span><input id="ed-mu" type="number" step="any" required></label>
         <label><span data-i18n="ed.J">J · Hund 耦合</span><input id="ed-J" type="number" step="any" required></label>
-        <label><span data-i18n="ed.H">H · 沿 +z 的磁场</span><input id="ed-H" type="number" step="any" required></label>
+        <label><span data-i18n="ed.H">H · 磁场的 z 分量</span><input id="ed-H" type="number" step="any" required></label>
         <label><span data-i18n="ed.A">A · 单离子各向异性</span><input id="ed-A" type="number" step="any" required></label>
       </div>
       <div class="ed-actions">
@@ -472,10 +472,10 @@
     <p id="ed-status" class="ed-status" aria-live="polite"></p>
     <details>
       <summary data-i18n="ed.conventions">能量约定</summary>
-      <p class="ed-small" data-i18n="ed.occupation">T=0，电子占据 λ=ε−μ&lt;0 的能级。固定 μ 时比较 Ω，每格点量除以 N=L²。</p>
+      <p class="ed-small" data-i18n="ed.occupation">T=0 时，电子占据 λ=ε−μ&lt;0 的能级。固定 μ 时，用巨势 Ω 比较构型。总量除以格点数 N=L² 得到每格点量。</p>
       <div class="ed-code">Ω = Σ<sub>λ&lt;0</sub> λ − H Σᵢ S<sub>i</sub><sup>z</sup> − A Σᵢ (S<sub>i</sub><sup>z</sup>)²
 E = Ω + μNₑ</div>
-      <p class="ed-small" data-i18n="ed.solver">若自旋逐格点严格重复，程序计算有限环面上全部允许的 Bloch 扇区。否则直接对角化整格矩阵，耗时随格子和设备而变。</p>
+      <p class="ed-small" data-i18n="ed.solver">程序根据输入波矢寻找沿格轴的较小矩形胞。若该胞逐点重复后与整格自旋完全一致，就对角化有限环面的全部 Bloch 扇区；否则直接对角化整格矩阵。</p>
     </details>
     <div id="ed-result" hidden></div>
   </div>
@@ -525,9 +525,9 @@ window.VariationalNoteText = Object.freeze({
     "Structure factor |S(q)|² · extended Brillouin zone"
   ],
   "preview.sfCaption": [
-    "虚线框为第一布里渊区 |q₁|, |q₂| ≤ π，框外为周期复制像。预览将 q=0 置零，色标采用 (v/max)<sup>0.32</sup>。近均匀态的非零波矢谱权重低于显示阈值时，图中留白。",
-    "破線で囲んだ領域が第1ブリルアンゾーン |q₁|, |q₂| ≤ π です。枠の外には同じ分布が周期的に繰り返されます。図では q=0 の成分を除き、強度を (v/max)<sup>0.32</sup> で色の濃さに換算しています。一様状態に近く、q≠0 の成分の強度が表示のしきい値を下回るときは、何も表示されません。",
-    "The dashed square marks the first Brillouin zone, |q₁|, |q₂| ≤ π. Outside it, the pattern repeats periodically. The preview sets q=0 to zero and scales color as (v/max)<sup>0.32</sup>. A nearly uniform state gives a blank map when all finite-q intensities fall below the display threshold."
+    "虚线框为第一布里渊区 |q₁|, |q₂| ≤ π，框外为周期重复。预览隐藏 q=0 分量，色标采用 (v/max)<sup>0.32</sup>。当所有 q≠0 分量的谱权重之和不超过全谱权重的 10⁻¹² 时，图中不显示谱强度。",
+    "破線で囲んだ領域が第1ブリルアンゾーン |q₁|, |q₂| ≤ π です。枠の外では同じ分布が周期的に繰り返されます。図では q=0 の成分を除き、強度を (v/max)<sup>0.32</sup> で色の濃さに換算します。q≠0 の全成分の強度の和が全波数での強度の和の 10⁻¹² 倍以下なら、強度分布は表示しません。",
+    "The dashed square marks the first Brillouin zone, |q₁|, |q₂| ≤ π. The pattern repeats outside it. The preview hides q=0 and scales color as (v/max)<sup>0.32</sup>. It shows no intensity when the summed weight at q≠0 is at most 10⁻¹² of the total weight over all q."
   ],
   "preview.charge": ["晶格几何荷 Q_A / Q_B", "格子上のトポロジカル電荷 Q_A / Q_B", "Lattice geometric charge Q_A / Q_B"],
   "preview.magnetization": ["平均磁化 ⟨S_z⟩", "磁化の z 成分 ⟨S_z⟩", "Mean magnetization ⟨S_z⟩"],
@@ -626,21 +626,21 @@ window.VariationalNoteText = Object.freeze({
   "ed.t4": ["t₄ · 距离 √5", "t₄（距離 √5 のホッピング）", "t₄ · distance √5"],
   "ed.mu": ["μ · 化学势", "μ（化学ポテンシャル）", "μ · chemical potential"],
   "ed.J": ["J · Hund 耦合", "J（フント結合）", "J · Hund coupling"],
-  "ed.H": ["H · 沿 +z 的磁场", "H（+z 方向の磁場）", "H · field along +z"],
+  "ed.H": ["H · 磁场的 z 分量", "H（磁場の z 成分）", "H · z component of the magnetic field"],
   "ed.A": ["A · 单离子各向异性", "A（単イオン異方性）", "A · single-ion anisotropy"],
   "ed.calculate": ["计算当前构型", "この配置のエネルギーを計算", "Calculate this configuration"],
   "ed.download": ["导出本次数值 JSON", "計算結果を JSON 形式で保存", "Export numerical results (JSON)"],
   "ed.stop": ["停止计算", "計算を停止", "Stop calculation"],
   "ed.conventions": ["能量约定", "エネルギーの定義", "Energy conventions"],
   "ed.occupation": [
-    "T=0，电子占据 λ=ε−μ&lt;0 的能级。固定 μ 时比较巨势 Ω，每格点量除以 N=L²。",
-    "T=0 では、電子は λ=ε−μ&lt;0 を満たす準位を占有します。μ を固定してスピン配置を比較するときは、グランドポテンシャル Ω を用います。格子点あたりの値は、系全体の値を格子点数 N=L² で割ったものです。",
-    "At T=0 the occupied levels satisfy λ=ε−μ&lt;0. At fixed μ, compare the grand potential Ω. Divide totals by N=L² for per-site values."
+    "T=0 时，电子占据 λ=ε−μ&lt;0 的能级。固定 μ 时，用巨势 Ω 比较构型。总量除以格点数 N=L² 得到每格点量。",
+    "T=0 では、電子は λ=ε−μ&lt;0 の準位を占有します。μ を固定してスピン配置を比較するときは、グランドポテンシャル Ω を用います。格子点あたりの値は、系全体の値を格子点数 N=L² で割って求めます。",
+    "At T=0 the occupied levels satisfy λ=ε−μ&lt;0. At fixed μ, compare configurations using the grand potential Ω. Divide each total by the number of sites N=L² to obtain its per-site value."
   ],
   "ed.solver": [
-    "若自旋在格点上严格周期性重复，程序计算有限环面上全部允许的 Bloch 扇区。否则直接对角化整格矩阵，耗时随格子和设备而变。",
-    "小さな単位胞を周期的に並べてスピン配置を厳密に再現できる場合は、有限格子の周期境界条件で許されるすべてのブロッホ波数について、ハミルトニアンを対角化します。それ以外の場合は、格子全体のハミルトニアンをそのまま対角化します。計算時間は格子サイズと端末の性能によって変わります。",
-    "If the spins repeat exactly on the lattice, the calculation includes every Bloch sector allowed on the finite torus. Otherwise it diagonalizes the full lattice matrix. Runtime depends on the lattice size and the device."
+    "程序根据输入波矢寻找沿格轴的较小矩形胞。若该胞逐点重复后与整格自旋完全一致，就对角化有限环面的全部 Bloch 扇区；否则直接对角化整格矩阵。",
+    "入力した波数ベクトルから、格子軸に沿った小さな長方形の単位胞を求めます。その単位胞を繰り返して各格子点のスピンが厳密に再現される場合は、周期境界条件で許されるすべてのブロッホ波数について対角化します。それ以外は格子全体を対角化します。",
+    "The input wavevectors determine a candidate rectangular cell aligned with the lattice axes. If this cell is smaller than the lattice and its repetitions match every spin exactly, the solver diagonalizes all Bloch sectors allowed on the finite torus. Otherwise it diagonalizes the full lattice Hamiltonian."
   ]
 });
 
@@ -1010,7 +1010,7 @@ window.VariationalNoteText = Object.freeze({
     vcDomain: ["VC 要求 |b| ≤ 1。", "渦結晶（VC）では |b| ≤ 1 としてください。", "The vortex crystal requires |b| ≤ 1."],
     screwDomain: ["proper-screw 要求 q 与 −q 模倒格矢后不同。", "プロパースクリューでは、格子上で q と −q が異なる波数を表す必要があります。", "A proper screw requires q and −q to be distinct modulo reciprocal lattice vectors."],
     skxAmplitude: ["SkX2 乘积谐波要求 a > 0。", "SkX2 では積の項の振幅を a > 0 としてください。", "The SkX2 product harmonic requires a > 0."],
-    squareQ: ["SkX2 的两支物理波矢须正交等长。可用下方按钮将 q₂ 设为 (−n₁ᵧ, n₁ₓ)。", "SkX2 の二つの波数ベクトルは、長さが等しく、互いに直交する必要があります。下のボタンで q₂ の整数成分を (−n₁ᵧ, n₁ₓ) に設定できます。", "The two physical SkX2 wavevectors must be orthogonal and have equal length. Use the button below to set q₂ to (−n₁ᵧ, n₁ₓ)."],
+    squareQ: ["SkX2 的两个物理波矢须正交且等长。在方格上，这对应于整数向量 n₂ = ±(−n₁ᵧ, n₁ₓ)。按钮选取正号。", "SkX2 の二つの波数ベクトルは、互いに直交し、長さが等しい必要があります。正方格子では、この条件は整数ベクトルで n₂ = ±(−n₁ᵧ, n₁ₓ) と書けます。ボタンを押すと正号が選ばれます。", "The two physical SkX2 wavevectors must be perpendicular and equal in length. On the square lattice this requires the integer vectors to satisfy n₂ = ±(−n₁ᵧ, n₁ₓ). The button selects the plus sign."],
     sampleSize: ["每边取样点数必须是至少为 2 的整数。", "各軸のサンプリング点数には 2 以上の整数を指定してください。", "The number of samples on each axis must be an integer of at least 2."],
     zeroSpin: ["采样点的原始模长为零或低于数值分辨率，无法归一化（Python: DegenerateSpinError）。", "サンプリング点で規格化前のスピンの長さがゼロか、数値精度の範囲でゼロと区別できないため、規格化できません（Python: DegenerateSpinError）。", "A sampled raw spin has zero or numerically unresolved length and cannot be normalized (Python: DegenerateSpinError)."],
     unknownFamily: ["未知构型族。", "この種類のスピン配置には対応していません。", "Unknown spin family."],
@@ -1025,8 +1025,8 @@ window.VariationalNoteText = Object.freeze({
     invalid: ["构型无效", "無効なスピン配置", "Invalid spin configuration"],
     splitTotals: ["总荷依赖剖分", "格子全体の Q は分割の仕方によって異なる", "The total charge depends on the triangulation"],
     splitLocal: ["总荷相同；{0} 个格方的局部荷不同", "格子全体の Q は一致。{0} 個のプラケットで Q への寄与が異なる", "Equal totals; local charges differ on {0} plaquettes"],
-    splitsAgree: ["两种剖分一致；仍需检查采样", "二通りの分割で結果が一致。より細かい格子でも確認してください", "Both triangulations agree; check the sampling density"],
-    noInPlane: ["面内分量为零", "面内成分はゼロ", "Zero in-plane component"],
+    splitsAgree: ["两种剖分在数值容差内一致；仍需检查采样", "二通りの分割は数値誤差の許容範囲内で一致します。より細かい格子でも確認してください", "Both triangulations agree within numerical tolerance. Check the sampling density."],
+    noInPlane: ["面内信号过弱，无法显示轴比", "面内成分が小さいため、軸比を表示できません", "The in-plane signal is too weak to display the axis ratio"],
     isotropic: ["面内二阶矩近各向同性", "面内の二次モーメントはほぼ等方的", "Nearly isotropic in-plane second moment"],
     rankOne: ["面内二阶矩近秩 1", "面内の二次モーメントはほぼランク 1", "Nearly rank-one in-plane second moment"],
     anisotropic: ["面内二阶矩各向异性", "面内の二次モーメントは異方的", "Anisotropic in-plane second moment"],
@@ -1037,9 +1037,9 @@ window.VariationalNoteText = Object.freeze({
       "<strong>一部の三角形で立体角の枝が定まらないか、ほぼ反平行なスピンの対があります。</strong> このような三角形を含む分割では Q を定義できません。位相やサンプリング間隔を変え、規格化前の連続スピン場に零点があるのか、格子点間の補間に起因するのかを確認してください。",
       "<strong>Some triangles have an ambiguous solid-angle branch or nearly antipodal spins.</strong> Q is undefined for the affected triangulation. Vary the phase or refine the sampling to distinguish a zero of the analytic texture from a lattice interpolation ambiguity."],
     splitVerdict: [
-      "<strong>球面插值依赖剖分。</strong> {0}。每种剖分各有一个晶格几何荷，请用加密检查其收敛性。",
-      "<strong>球面上での補間は三角形への分割の仕方に依存します。</strong> {0}。分割ごとに格子上のトポロジカル電荷 Q を求め、サンプリング点を増やしたときの収束を確認してください。",
-      "<strong>The spherical interpolation depends on the triangulation.</strong> {0}. Each triangulation has its own lattice charge. Refine the sampling to check convergence."],
+      "<strong>球面插值依赖剖分，本次格点取样无法确定唯一的总拓扑荷 Q。</strong> {0}。请加密取样，再比较两种剖分。",
+      "<strong>球面上の補間が三角形分割に依存するため、この格子では全体のトポロジカル電荷 Q を一意に定められません。</strong> {0}。格子を細かくして、二通りの分割をもう一度比較してください。",
+      "<strong>The spherical interpolation depends on the triangulation, so this sampling does not define a unique total topological charge Q.</strong> {0}. Refine the sampling and compare the two triangulations again."],
     coplanarVerdict: [
       "<strong>自旋共面或接近共面，三角形分支检查通过。</strong> f={0}。对于无分支异常的共面场，Q=0 可以是定义良好的结果。",
       "<strong>スピンはほぼ同一平面内にあり、各三角形の立体角は一意に定まります。</strong> f={0}。同一平面内のスピン配置でも、立体角に曖昧さがなければ Q=0 は意味のある値です。",
@@ -1070,7 +1070,7 @@ window.VariationalNoteText = Object.freeze({
     valueInput: ["{0} 数值", "{0} の数値入力", "{0} numeric value"],
     slider: ["{0} 滑块", "{0} のスライダー", "{0} slider"],
     qnTitle: ["整数波矢 qn", "波数ベクトルの整数成分 qn", "Integer wavevectors qn"],
-    rotate: ["设置 q₂ = (−n₁ᵧ, n₁ₓ)", "q₂ の整数成分を (−n₁ᵧ, n₁ₓ) に設定", "Set q₂ = (−n₁ᵧ, n₁ₓ)"],
+    rotate: ["设置 n₂ = (−n₁ᵧ, n₁ₓ)", "n₂ = (−n₁ᵧ, n₁ₓ) に設定", "Set n₂ = (−n₁ᵧ, n₁ₓ)"],
     amplitudes: ["归一化前的振幅 / 偏置", "規格化前の振幅と一様成分", "Raw amplitudes and offsets"],
     phases: ["相位（以 π 为单位）", "位相（π を単位とする）", "Phases (in units of π)"],
     rawMz: ["Mz（归一化前偏置）", "Mz（規格化前の一様成分）", "Mz (raw offset)"],

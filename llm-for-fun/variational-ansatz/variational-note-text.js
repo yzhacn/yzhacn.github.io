@@ -37,9 +37,9 @@ window.VariationalNoteText = Object.freeze({
     "Structure factor |S(q)|² · extended Brillouin zone"
   ],
   "preview.sfCaption": [
-    "虚线框为第一布里渊区 |q₁|, |q₂| ≤ π，框外为周期复制像。预览将 q=0 置零，色标采用 (v/max)<sup>0.32</sup>。近均匀态的非零波矢谱权重低于显示阈值时，图中留白。",
-    "破線で囲んだ領域が第1ブリルアンゾーン |q₁|, |q₂| ≤ π です。枠の外には同じ分布が周期的に繰り返されます。図では q=0 の成分を除き、強度を (v/max)<sup>0.32</sup> で色の濃さに換算しています。一様状態に近く、q≠0 の成分の強度が表示のしきい値を下回るときは、何も表示されません。",
-    "The dashed square marks the first Brillouin zone, |q₁|, |q₂| ≤ π. Outside it, the pattern repeats periodically. The preview sets q=0 to zero and scales color as (v/max)<sup>0.32</sup>. A nearly uniform state gives a blank map when all finite-q intensities fall below the display threshold."
+    "虚线框为第一布里渊区 |q₁|, |q₂| ≤ π，框外为周期重复。预览隐藏 q=0 分量，色标采用 (v/max)<sup>0.32</sup>。当所有 q≠0 分量的谱权重之和不超过全谱权重的 10⁻¹² 时，图中不显示谱强度。",
+    "破線で囲んだ領域が第1ブリルアンゾーン |q₁|, |q₂| ≤ π です。枠の外では同じ分布が周期的に繰り返されます。図では q=0 の成分を除き、強度を (v/max)<sup>0.32</sup> で色の濃さに換算します。q≠0 の全成分の強度の和が全波数での強度の和の 10⁻¹² 倍以下なら、強度分布は表示しません。",
+    "The dashed square marks the first Brillouin zone, |q₁|, |q₂| ≤ π. The pattern repeats outside it. The preview hides q=0 and scales color as (v/max)<sup>0.32</sup>. It shows no intensity when the summed weight at q≠0 is at most 10⁻¹² of the total weight over all q."
   ],
   "preview.charge": ["晶格几何荷 Q_A / Q_B", "格子上のトポロジカル電荷 Q_A / Q_B", "Lattice geometric charge Q_A / Q_B"],
   "preview.magnetization": ["平均磁化 ⟨S_z⟩", "磁化の z 成分 ⟨S_z⟩", "Mean magnetization ⟨S_z⟩"],
@@ -138,20 +138,20 @@ window.VariationalNoteText = Object.freeze({
   "ed.t4": ["t₄ · 距离 √5", "t₄（距離 √5 のホッピング）", "t₄ · distance √5"],
   "ed.mu": ["μ · 化学势", "μ（化学ポテンシャル）", "μ · chemical potential"],
   "ed.J": ["J · Hund 耦合", "J（フント結合）", "J · Hund coupling"],
-  "ed.H": ["H · 沿 +z 的磁场", "H（+z 方向の磁場）", "H · field along +z"],
+  "ed.H": ["H · 磁场的 z 分量", "H（磁場の z 成分）", "H · z component of the magnetic field"],
   "ed.A": ["A · 单离子各向异性", "A（単イオン異方性）", "A · single-ion anisotropy"],
   "ed.calculate": ["计算当前构型", "この配置のエネルギーを計算", "Calculate this configuration"],
   "ed.download": ["导出本次数值 JSON", "計算結果を JSON 形式で保存", "Export numerical results (JSON)"],
   "ed.stop": ["停止计算", "計算を停止", "Stop calculation"],
   "ed.conventions": ["能量约定", "エネルギーの定義", "Energy conventions"],
   "ed.occupation": [
-    "T=0，电子占据 λ=ε−μ&lt;0 的能级。固定 μ 时比较巨势 Ω，每格点量除以 N=L²。",
-    "T=0 では、電子は λ=ε−μ&lt;0 を満たす準位を占有します。μ を固定してスピン配置を比較するときは、グランドポテンシャル Ω を用います。格子点あたりの値は、系全体の値を格子点数 N=L² で割ったものです。",
-    "At T=0 the occupied levels satisfy λ=ε−μ&lt;0. At fixed μ, compare the grand potential Ω. Divide totals by N=L² for per-site values."
+    "T=0 时，电子占据 λ=ε−μ&lt;0 的能级。固定 μ 时，用巨势 Ω 比较构型。总量除以格点数 N=L² 得到每格点量。",
+    "T=0 では、電子は λ=ε−μ&lt;0 の準位を占有します。μ を固定してスピン配置を比較するときは、グランドポテンシャル Ω を用います。格子点あたりの値は、系全体の値を格子点数 N=L² で割って求めます。",
+    "At T=0 the occupied levels satisfy λ=ε−μ&lt;0. At fixed μ, compare configurations using the grand potential Ω. Divide each total by the number of sites N=L² to obtain its per-site value."
   ],
   "ed.solver": [
-    "若自旋在格点上严格周期性重复，程序计算有限环面上全部允许的 Bloch 扇区。否则直接对角化整格矩阵，耗时随格子和设备而变。",
-    "小さな単位胞を周期的に並べてスピン配置を厳密に再現できる場合は、有限格子の周期境界条件で許されるすべてのブロッホ波数について、ハミルトニアンを対角化します。それ以外の場合は、格子全体のハミルトニアンをそのまま対角化します。計算時間は格子サイズと端末の性能によって変わります。",
-    "If the spins repeat exactly on the lattice, the calculation includes every Bloch sector allowed on the finite torus. Otherwise it diagonalizes the full lattice matrix. Runtime depends on the lattice size and the device."
+    "程序根据输入波矢寻找沿格轴的较小矩形胞。若该胞逐点重复后与整格自旋完全一致，就对角化有限环面的全部 Bloch 扇区；否则直接对角化整格矩阵。",
+    "入力した波数ベクトルから、格子軸に沿った小さな長方形の単位胞を求めます。その単位胞を繰り返して各格子点のスピンが厳密に再現される場合は、周期境界条件で許されるすべてのブロッホ波数について対角化します。それ以外は格子全体を対角化します。",
+    "The input wavevectors determine a candidate rectangular cell aligned with the lattice axes. If this cell is smaller than the lattice and its repetitions match every spin exactly, the solver diagonalizes all Bloch sectors allowed on the finite torus. Otherwise it diagonalizes the full lattice Hamiltonian."
   ]
 });
